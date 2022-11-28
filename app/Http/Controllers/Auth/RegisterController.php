@@ -47,10 +47,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'birthdate' => ['required', 'date'],
+            'address' => ['required','string', 'max:255'],
+            'gender' => ['required','string', 'max:255'],
+            'phonenum' => ['required','string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -62,10 +67,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(array $data): User
     {
         return User::create([
-            'name' => $data['name'],
+            'fname' => $data['fname'],
+            'lname' => $data['lname'],
+            'birthdate' => $data['birthdate'],
+            'address' => $data['address'],
+            'gender' => $data['gender'],
+            'phonenum' => $data['phonenum'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
