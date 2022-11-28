@@ -45,16 +45,94 @@
 
                 <div class="input-group mb-3">
                     <input type="text"
-                           name="name"
-                           class="form-control @error('name') is-invalid @enderror"
-                           value="{{ old('name') }}"
-                           placeholder="Full name">
+                           name="fname"
+                           class="form-control @error('fname') is-invalid @enderror"
+                           value="{{ old('fname') }}"
+                           placeholder="Křestní jméno">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    @error('name')
+                    @error('fname')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="lname"
+                           class="form-control @error('lname') is-invalid @enderror"
+                           value="{{ old('lname') }}"
+                           placeholder="Přijmení">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    @error('lname')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="date"
+                           name="birthdate"
+                           class="form-control @error('birthdate') is-invalid @enderror"
+                           value="{{ old('birthdate') }}"
+                           placeholder="Datum narození:">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    @error('birthdate')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="address"
+                           class="form-control @error('address') is-invalid @enderror"
+                           value="{{ old('address') }}"
+                           placeholder="Přijmení">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    @error('address')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="gender"
+                           class="form-control @error('gender') is-invalid @enderror"
+                           placeholder="Gender">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    @error('gender')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="tel"
+                           name="phonenum"
+                           class="form-control @error('phonenum') is-invalid @enderror"
+                           placeholder="Phonenum">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    @error('phonenum')
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
