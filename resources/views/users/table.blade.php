@@ -3,27 +3,29 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                <th>Fname</th>
-                <th>Lname</th>
-                <th>Birthdate</th>
-                <th>Adress</th>
-                <th>Email</th>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Birth date</th>
+                <th>Address</th>
+                <th>E-mail</th>
                 <th>Gender</th>
-                <th>Phonenum</th>
-                <th colspan="3">Action</th>
+                <th>Phone number</th>
+                <th colspan="3">Actions</th>
             </tr>
             </thead>
             <tbody>
             @foreach($users as $user)
                 <tr>
+                    <td>{{ $user->id }}</td>
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>
-                    <td>{{ $user->birthdate }}</td>
-                    <td>{{ $user->adress }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->gender }}</td>
+                    <td>{{ date_format($user->birthdate, "d.m.Y") }}</td>
+                    <td>{{ mb_strimwidth($user->address, 0, 10, "...") }}</td>
+                    <td>{{ mb_strimwidth($user->email, 0, 6, "...") }}</td>
+                    <td>{{ mb_strimwidth($user->gender, 0, 10, "...")}}</td>
                     <td>{{ $user->phonenum }}</td>
-                    <td  style="width: 120px">
+                    <td>
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             <a href="{{ route('users.show', [$user->id]) }}"

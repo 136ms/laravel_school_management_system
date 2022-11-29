@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticable;
 
 class User extends Authenticable
 {
+    use HasFactory;
     public $table = 'users';
 
     public $fillable = [
         'fname',
         'lname',
         'birthdate',
-        'adress',
+        'address',
         'email',
         'gender',
         'phonenum',
@@ -23,7 +25,7 @@ class User extends Authenticable
         'fname' => 'string',
         'lname' => 'string',
         'birthdate' => 'date',
-        'adress' => 'string',
+        'address' => 'string',
         'email' => 'string',
         'gender' => 'string',
         'phonenum' => 'string',
@@ -34,12 +36,10 @@ class User extends Authenticable
         'fname' => 'required|string|max:255',
         'lname' => 'required|string|max:255',
         'birthdate' => 'required|date',
-        'adress' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
         'email' => 'required',
         'gender' => 'required|string|max:255',
         'phonenum' => 'required|string|max:255',
         'password' => 'required'
     ];
-
-
 }

@@ -1,18 +1,18 @@
 <!-- Fname Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('fname', 'Fname:') !!}
+    {!! Form::label('fname', 'First name:') !!}
     {!! Form::text('fname', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) !!}
 </div>
 
 <!-- Lname Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lname', 'Lname:') !!}
+    {!! Form::label('lname', 'Last name:') !!}
     {!! Form::text('lname', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) !!}
 </div>
 
 <!-- Birthdate Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('birthdate', 'Birthdate:') !!}
+    {!! Form::label('birthdate', 'Birth date:') !!}
     {!! Form::text('birthdate', null, ['class' => 'form-control','id'=>'birthdate']) !!}
 </div>
 
@@ -22,15 +22,15 @@
     </script>
 @endpush
 
-<!-- Adress Field -->
+<!-- Address Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('adress', 'Adress:') !!}
-    {!! Form::text('adress', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) !!}
+    {!! Form::label('address', 'Address:') !!}
+    {!! Form::text('address', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) !!}
 </div>
 
 <!-- Email Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('email', 'Email:') !!}
+    {!! Form::label('email', 'E-mail:') !!}
     {!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
@@ -42,12 +42,12 @@
 
 <!-- Phonenum Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('phonenum', 'Phonenum:') !!}
+    {!! Form::label('phonenum', 'Phone number:') !!}
     {!! Form::text('phonenum', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) !!}
 </div>
 
 <!-- password Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('password', 'Password:') !!}
+    {!! Form::label('password', 'New password:') !!}
     {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
 </div>

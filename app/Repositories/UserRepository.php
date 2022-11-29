@@ -11,7 +11,7 @@ class UserRepository extends BaseRepository
         'fname',
         'lname',
         'birthdate',
-        'adress',
+        'address',
         'email',
         'gender',
         'phonenum',

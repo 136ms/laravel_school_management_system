@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Laracasts\Flash\Flash;
 
 class UserController extends AppBaseController
@@ -44,7 +45,7 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-
+        $input['password'] = Hash::make($input['password']);
         $user = $this->userRepository->create($input);
 
         Flash::success('User saved successfully.');
@@ -96,7 +97,6 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-
         $user = $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');

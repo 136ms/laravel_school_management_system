@@ -7,6 +7,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 abstract class BaseRepository
 {
@@ -133,6 +134,8 @@ abstract class BaseRepository
         $model = $query->findOrFail($id);
 
         $model->fill($input);
+
+        $model['password'] = Hash::make($model['password']);
 
         $model->save();
 
