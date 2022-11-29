@@ -10,7 +10,6 @@
                 <th>Email</th>
                 <th>Gender</th>
                 <th>Phonenum</th>
-                <th>Password</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -24,7 +23,6 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->gender }}</td>
                     <td>{{ $user->phonenum }}</td>
-                    <td>{{ $user->password }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
