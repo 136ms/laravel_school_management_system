@@ -2,48 +2,46 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticable;
 
-class User extends Authenticatable
+class User extends Authenticable
 {
-    use HasFactory, Notifiable;
+    public $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
+    public $fillable = [
         'fname',
         'lname',
         'birthdate',
-        'address',
+        'adress',
+        'email',
         'gender',
         'phonenum',
-        'email',
-        'password',
+        'password'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'fname' => 'string',
+        'lname' => 'string',
         'birthdate' => 'date',
+        'adress' => 'string',
+        'email' => 'string',
+        'gender' => 'string',
+        'phonenum' => 'string',
+        'password' => 'string'
     ];
+
+    public static $rules = [
+        'id' => 'required',
+        'fname' => 'required|string|max:255',
+        'lname' => 'required|string|max:255',
+        'birthdate' => 'required|date',
+        'adress' => 'required|string|max:255',
+        'email' => 'required',
+        'gender' => 'required|string|max:255',
+        'phonenum' => 'required|string|max:255',
+        'password' => 'required'
+    ];
+
+
 }

@@ -8,7 +8,14 @@ use App\Repositories\BaseRepository;
 class UserRepository extends BaseRepository
 {
     protected $fieldSearchable = [
-        
+        'fname',
+        'lname',
+        'birthdate',
+        'adress',
+        'email',
+        'gender',
+        'phonenum',
+        'password'
     ];
 
     public function getFieldsSearchable(): array

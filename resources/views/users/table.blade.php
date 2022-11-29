@@ -3,14 +3,28 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                
+                <th>Fname</th>
+                <th>Lname</th>
+                <th>Birthdate</th>
+                <th>Adress</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Phonenum</th>
+                <th>Password</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($users as $user)
                 <tr>
-                    
+                    <td>{{ $user->fname }}</td>
+                    <td>{{ $user->lname }}</td>
+                    <td>{{ $user->birthdate }}</td>
+                    <td>{{ $user->adress }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->gender }}</td>
+                    <td>{{ $user->phonenum }}</td>
+                    <td>{{ $user->password }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

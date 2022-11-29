@@ -93,16 +93,16 @@
 
                 <div class="input-group mb-3">
                     <input type="text"
-                           name="address"
-                           class="form-control @error('address') is-invalid @enderror"
-                           value="{{ old('address') }}"
-                           placeholder="Přijmení">
+                           name="adress"
+                           class="form-control @error('adress') is-invalid @enderror"
+                           value="{{ old('adress') }}"
+                           placeholder="Adress">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    @error('address')
+                    @error('adress')
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
