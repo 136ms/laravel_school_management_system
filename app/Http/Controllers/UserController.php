@@ -8,12 +8,13 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 use Laracasts\Flash\Flash;
 
 class UserController extends AppBaseController
 {
     /** @var UserRepository $userRepository*/
-    private $userRepository;
+    private UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepo)
     {

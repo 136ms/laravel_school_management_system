@@ -18,7 +18,6 @@
         @include('adminlte-templates::common.errors')
 
         <div class="card">
-
             {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
