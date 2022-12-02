@@ -15,7 +15,7 @@
                         <h5>Users</h5>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-user"></i>
                     </div>
                 </div>
                 <div class="small-box bg-gradient-purple m-2 col-lg-2">
@@ -25,6 +25,15 @@
                     </div>
                     <div class="icon">
                         <i class="fas fa-book-open"></i>
+                    </div>
+                </div>
+                <div class="small-box bg-gradient-info m-2 col-lg-2">
+                    <div class="inner">
+                        <h3>{{\App\Models\Subject::count()}}</h3>
+                        <h5>Classes</h5>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
                     </div>
                 </div>
             </div>
