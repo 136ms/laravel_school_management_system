@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="small-box bg-gradient-warning m-2 col-lg-2">
+                <div class="small-box bg-gradient-lime m-2 col-lg-2">
                     <div class="inner">
                         <h3>{{\App\Models\User::count()}}</h3>
                         <h5>Users</h5>
@@ -18,22 +18,13 @@
                         <i class="fas fa-users"></i>
                     </div>
                 </div>
-                <div class="small-box bg-gradient-danger m-2 col-lg-2">
+                <div class="small-box bg-gradient-purple m-2 col-lg-2">
                     <div class="inner">
-                        <h3>{{\App\Models\User::count()}}</h3>
-                        <h5>Teachers</h5>
+                        <h3>{{\App\Models\Subject::count()}}</h3>
+                        <h5>Subjects</h5>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                </div>
-                <div class="small-box bg-gradient-success m-2 col-lg-2">
-                    <div class="inner">
-                        <h3>{{\App\Models\User::count()}}</h3>
-                        <h5>Parents</h5>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-book-open"></i>
                     </div>
                 </div>
             </div>
