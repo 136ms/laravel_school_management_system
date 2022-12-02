@@ -3,7 +3,7 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>User ID</th>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Birth date</th>

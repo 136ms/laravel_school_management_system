@@ -135,8 +135,6 @@ abstract class BaseRepository
 
         $model->fill($input);
 
-        $model['password'] = Hash::make($model['password']);
-
         $model->save();
 
         return $model;
