@@ -17,7 +17,7 @@
             <tbody>
             @foreach($users as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->id }}.</td>
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>
                     <td>{{ date_format($user->birthdate, "d.m.Y") }}</td>

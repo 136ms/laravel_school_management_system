@@ -25,6 +25,8 @@
                     <h3 class="card-title">About {{$subject->subject_name}}</h3>
                 </div>
                 <div class="card-body">
+                    <strong>Subject ID</strong>
+                    <p class="text-muted">{{$subject->id}}</p>
                     <strong>Subject name</strong>
                     <p class="text-muted">{{$subject->subject_name}}</p>
                 </div>

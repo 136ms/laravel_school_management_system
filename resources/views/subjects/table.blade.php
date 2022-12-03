@@ -11,7 +11,7 @@
             <tbody>
             @foreach($subjects as $subject)
                 <tr>
-                    <td>{{ $subject->id }}</td>
+                    <td>{{ $subject->id }}.</td>
                     <td>{{ $subject->subject_name }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['subjects.destroy', $subject->id], 'method' => 'delete']) !!}

@@ -26,6 +26,8 @@
                     <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
                 </div>
                 <div class="card-body">
+                    <strong>User ID</strong>
+                    <p class="text-muted">{{$user->id}}</p>
                     <strong>First name</strong>
                     <p class="text-muted">{{$user->fname}}</p>
                     <strong>Last name</strong>

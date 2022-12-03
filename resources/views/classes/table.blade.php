@@ -3,7 +3,7 @@
         <table class="table" id="classes-table">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>Class ID</th>
                 <th>Class name</th>
                 <th colspan="3">Actions</th>
             </tr>
@@ -11,7 +11,7 @@
             <tbody>
             @foreach($classes as $class)
                 <tr>
-                    <td>{{ $class->id }}</td>
+                    <td>{{ $class->id }}.</td>
                     <td>{{ $class->class_name }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['classes.destroy', $class->id], 'method' => 'delete']) !!}
