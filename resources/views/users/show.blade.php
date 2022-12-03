@@ -31,7 +31,7 @@
                     <strong>Last name</strong>
                     <p class="text-muted">{{$user->lname}}</p>
                     <strong>Birth date</strong>
-                    <p class="text-muted">{{$user->birthdate}}</p>
+                    <p class="text-muted">{{date_format($user->birthdate, "d.m.Y")}}</p>
                     <strong>Address</strong>
                     <p class="text-muted">{{$user->address}}</p>
                     <strong>E-Mail</strong>

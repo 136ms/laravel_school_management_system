@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Overview</h1>
+                    <h1 class="m-0"><i class="fas fa-home"></i> Overview</h1>
                 </div>
             </div>
             <div class="row">
