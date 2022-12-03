@@ -1,4 +1,6 @@
-@section('title'){{$classes->class_name}}@endsection
+@section('title')
+    {{$classes->class_name}}
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -7,24 +9,26 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>
-                    {{$classes->class_name}}
+                        <i class="fas fa-users"></i>
+                        {{$classes->class_name}}
                     </h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
-                       href="{{ route('classes.index') }}">Back</a>
+                       href="{{ route('users.index') }}">
+                        Back
+                    </a>
+                </div>
+            </div>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">About {{$classes->class_name}}</h3>
+                </div>
+                <div class="card-body">
+                    <strong>Class name</strong>
+                    <p class="text-muted">{{$classes->class_name}}</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <div class="content px-3">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    @include('classes.show_fields')
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
