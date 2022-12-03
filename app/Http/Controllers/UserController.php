@@ -7,14 +7,16 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends AppBaseController
 {
     /** @var UserRepository $userRepository*/
-    private $userRepository;
+    private UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepo)
     {
@@ -67,7 +69,7 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.show')->with('user', $user);
+        return view('/profile')->with('user', $user);
     }
 
     /**
