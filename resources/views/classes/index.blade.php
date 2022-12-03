@@ -1,3 +1,4 @@
+@section('title'){{'Class list'}}@endsection
 @extends('layouts.app')
 
 @section('content')

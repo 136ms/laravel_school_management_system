@@ -1,3 +1,4 @@
+@section('title'){{'Add subject'}}@endsection
 @extends('layouts.app')
 
 @section('content')

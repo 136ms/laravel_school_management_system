@@ -1,3 +1,4 @@
+@section('title'){{$user->fname}} {{$user->lname}}@endsection
 @extends('layouts.app')
 @section('content')
     <div class="content-header">
