@@ -1,4 +1,6 @@
-@section('title'){{'Add user'}}@endsection
+@section('title')
+    {{'Add user'}}
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -7,7 +9,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                    Create User
+                        <i class="fas fa-user"></i>
+                        Create User
                     </h1>
                 </div>
             </div>

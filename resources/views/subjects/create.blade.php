@@ -1,4 +1,6 @@
-@section('title'){{'Add subject'}}@endsection
+@section('title')
+    {{'Add subject'}}
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -7,7 +9,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                    Create Subject
+                        <i class="fas fa-users"></i>
+                        Create Subject
                     </h1>
                 </div>
             </div>

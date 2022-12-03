@@ -7,6 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
+                        <i class="fas fa-user"></i>
                         Edit User
                     </h1>
                 </div>
