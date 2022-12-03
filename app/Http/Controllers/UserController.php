@@ -9,6 +9,7 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends AppBaseController
 {
@@ -124,5 +125,26 @@ class UserController extends AppBaseController
         Flash::success('User deleted successfully.');
 
         return redirect(route('users.index'));
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+
+        return view('profile')
+            ->with('user', $user);
+    }
+
+    public function editProfile($id)
+    {
+        $user = $this->userRepository->find($id);
+
+        if (empty($user)) {
+            Flash::error('User not found');
+
+            return redirect(route('users.index'));
+        }
+
+        return view('users.edit')->with('user', $user);
     }
 }

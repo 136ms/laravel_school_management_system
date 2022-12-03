@@ -1,3 +1,4 @@
+@section('title'){{$classes->class_name}}@endsection
 @extends('layouts.app')
 
 @section('content')

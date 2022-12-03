@@ -1,3 +1,4 @@
+@section('title'){{'Add user'}}@endsection
 @extends('layouts.app')
 
 @section('content')

@@ -1,3 +1,4 @@
+@section('title'){{$subject->subject_name}}@endsection
 @extends('layouts.app')
 
 @section('content')
