@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Laracasts\Flash\Flash;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends AppBaseController
 {
