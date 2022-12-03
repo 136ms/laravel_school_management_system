@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><i class="fas fa-users"></i> Subject list</h1>
+                    <h1><i class="fas fa-book"></i> Subject list</h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
