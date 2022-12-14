@@ -28,6 +28,12 @@
                 <div class="card-body">
                     <strong>User ID</strong>
                     <p class="text-muted">{{$user->id}}</p>
+                    <strong>Classes</strong>
+                    <p class="text-muted">
+                        @foreach($user->classes as $userClass)
+                            {{ $userClass->class_name }},
+                        @endforeach
+                    </p>
                     <strong>First name</strong>
                     <p class="text-muted">{{$user->fname}}</p>
                     <strong>Last name</strong>

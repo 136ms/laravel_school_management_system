@@ -24,7 +24,7 @@ class SubjectFactory extends Factory
     {
 
         return [
-            'subject_name' => $this->faker->unique()->randomElement(['ANJ','APP', 'CJL','CVD','MAT','VAP', 'ICT']),
+            'subject_name' => $this->faker->randomElement(['ANJ','APP', 'CJL','CVD','MAT','VAP', 'ICT']),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

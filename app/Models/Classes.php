@@ -21,6 +21,4 @@ class Classes extends Model
     public static $rules = [
         'class_name' => 'required|string|max:255'
     ];
-
-
 }

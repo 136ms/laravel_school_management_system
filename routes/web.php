@@ -19,8 +19,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
 
-Route::resource('users', App\Http\Controllers\UserController::class);
+
 
 Route::resource('subjects', App\Http\Controllers\SubjectController::class);
 
+
+
+
+
+
+
+
+
+
+
+Route::resource('users', App\Http\Controllers\UserController::class);
 Route::resource('classes', App\Http\Controllers\ClassesController::class);

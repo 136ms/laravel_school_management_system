@@ -29,6 +29,11 @@
                     <p class="text-muted">{{$classes->id}}</p>
                     <strong>Class name</strong>
                     <p class="text-muted">{{$classes->class_name}}</p>
+                    <strong>Class user IDs</strong>
+                    <br>
+                    @foreach($classes->users as $userClass)
+                        <a class="text-muted">{{ $userClass->pivot['user_id'] }}.,</a>
+                    @endforeach
                 </div>
             </div>
         </div>

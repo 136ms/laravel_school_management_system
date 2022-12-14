@@ -5,6 +5,7 @@
             <tr>
                 <th>Class ID</th>
                 <th>Class name</th>
+                <th>User IDs</th>
                 <th colspan="3">Actions</th>
             </tr>
             </thead>
@@ -13,6 +14,11 @@
                 <tr>
                     <td>{{ $class->id }}.</td>
                     <td>{{ $class->class_name }}</td>
+                    <td>
+                        @foreach($class->users as $classUser)
+                            {{ $classUser->pivot['user_id'] }}.,
+                        @endforeach
+                    </td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['classes.destroy', $class->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
