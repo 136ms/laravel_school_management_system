@@ -3,8 +3,8 @@
         <table class="table" id="subjects-table">
             <thead>
             <tr>
-                <th>Subject ID</th>
-                <th>Subject name</th>
+                <th>ID</th>
+                <th>Name</th>
                 <th colspan="3">Actions</th>
             </tr>
             </thead>
@@ -12,7 +12,7 @@
             @foreach($subjects as $subject)
                 <tr>
                     <td>{{ $subject->id }}.</td>
-                    <td>{{ $subject->subject_name }}</td>
+                    <td>{{ $subject->name }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['subjects.destroy', $subject->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

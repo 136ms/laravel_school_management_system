@@ -3,14 +3,16 @@
         <table class="table" id="groups-table">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
-                <th>Users</th>
-                <th colspan="3">Action</th>
+                <th>Group users</th>
+                <th colspan="3">Actions</th>
             </tr>
             </thead>
             <tbody>
             @foreach($groups as $group)
                 <tr>
+                    <td>{{ $group->id }}.</td>
                     <td>{{ $group->name }}</td>
                     <td>{{ $group->users()->count() }}</td>
                     <td  style="width: 120px">

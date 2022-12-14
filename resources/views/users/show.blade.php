@@ -26,14 +26,12 @@
                     <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
                 </div>
                 <div class="card-body">
-                    <strong>User ID</strong>
+                    <strong>ID</strong>
                     <p class="text-muted">{{$user->id}}</p>
-                    <strong>Classes</strong>
-                    <p class="text-muted">
-                        @foreach($user->classes as $userClass)
-                            {{ $userClass->class_name }},
-                        @endforeach
-                    </p>
+                    <strong>User group IDs</strong>
+                    @foreach($user->groups as $group)
+                        <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
+                    @endforeach
                     <strong>First name</strong>
                     <p class="text-muted">{{$user->fname}}</p>
                     <strong>Last name</strong>

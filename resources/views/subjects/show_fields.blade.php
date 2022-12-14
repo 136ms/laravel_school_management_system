@@ -6,8 +6,8 @@
 
 <!-- Subject Name Field -->
 <div class="col-sm-12">
-    {!! Form::label('subject_name', 'Subject name:') !!}
-    <p>{{ $subject->subject_name }}</p>
+    {!! Form::label('name', 'Subject name:') !!}
+    <p>{{ $subject->name }}</p>
 </div>
 
 <!-- Created At Field -->

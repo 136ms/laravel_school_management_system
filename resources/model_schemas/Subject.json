@@ -12,7 +12,7 @@
         "inView": false
     },
     {
-        "name": "subject_name",
+        "name": "name",
         "dbType": "string",
         "htmlType": "text",
         "validations": "required|string|max:255",

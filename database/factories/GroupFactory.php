@@ -24,7 +24,7 @@ class GroupFactory extends Factory
     {
 
         return [
-            'name' => $this->faker->company,
+            'name' => implode(",", $this->faker->unique()->randomElements(['1.AI', '2.AI', '3.AI', '4.AI', '1.AH', '2.AH', '3.AH', '4.AH','1.KC', '2.KC', '3.KC'], 1, false)),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

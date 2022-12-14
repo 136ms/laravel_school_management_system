@@ -12,15 +12,15 @@ class Subject extends Model
     public $table = 'subjects';
 
     public $fillable = [
-        'subject_name'
+        'name'
     ];
 
     protected $casts = [
-        'subject_name' => 'string'
+        'name' => 'string'
     ];
 
     public static $rules = [
-        'subject_name' => 'required|string|max:255'
+        'name' => 'required|string|max:255'
     ];
 
 

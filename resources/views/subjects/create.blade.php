@@ -10,7 +10,7 @@
                 <div class="col-sm-12">
                     <h1>
                         <i class="fas fa-book"></i>
-                        Create Subject
+                        Add Subject
                     </h1>
                 </div>
             </div>

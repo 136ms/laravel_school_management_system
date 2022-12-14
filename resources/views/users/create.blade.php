@@ -1,6 +1,4 @@
-@section('title')
-    {{'Add user'}}
-@endsection
+@section('title'){{'Add user'}}@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -10,7 +8,7 @@
                 <div class="col-sm-12">
                     <h1>
                         <i class="fas fa-user"></i>
-                        Create User
+                        Add User
                     </h1>
                 </div>
             </div>
@@ -34,7 +32,7 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
                 <a href="{{ route('users.index') }}" class="btn btn-default"> Cancel </a>
             </div>
 

@@ -17,13 +17,13 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::factory(1)
-            ->has(Group::factory(2))
+            ->has(Group::factory(1))
             ->create([
             'email' => 'test@gmail.com',
             'password' => Hash::make('12345'),
         ]);
-        User::factory(9)
-            ->has(Group::factory(2))
+        User::factory(10)
+            ->has(Group::factory(1))
             ->create();
     }
 }

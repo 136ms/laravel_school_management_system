@@ -1,5 +1,5 @@
 @section('title')
-    {{$subject->subject_name}}
+    {{$subject->name}}
 @endsection
 @extends('layouts.app')
 
@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <h1>
                         <i class="fas fa-book"></i>
-                        {{$subject->subject_name}}
+                        {{$subject->name}}
                     </h1>
                 </div>
                 <div class="col-sm-6">
@@ -22,13 +22,13 @@
             </div>
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">About {{$subject->subject_name}}</h3>
+                    <h3 class="card-title">About {{$subject->name}}</h3>
                 </div>
                 <div class="card-body">
                     <strong>Subject ID</strong>
                     <p class="text-muted">{{$subject->id}}</p>
                     <strong>Subject name</strong>
-                    <p class="text-muted">{{$subject->subject_name}}</p>
+                    <p class="text-muted">{{$subject->name}}</p>
                 </div>
             </div>
         </div>

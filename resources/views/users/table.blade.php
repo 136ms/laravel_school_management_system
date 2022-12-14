@@ -3,7 +3,7 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                <th>User ID</th>
+                <th>ID</th>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Birth date</th>
@@ -11,7 +11,7 @@
                 <th>E-mail</th>
                 <th>Gender</th>
                 <th>Phone number</th>
-                <th>Class</th>
+                <th>User groups</th>
                 <th colspan="3">Actions</th>
             </tr>
             </thead>
@@ -26,11 +26,7 @@
                     <td>{{ mb_strimwidth($user->email, 0, 6, "...") }}</td>
                     <td>{{ mb_strimwidth($user->gender, 0, 10, "...")}}</td>
                     <td>{{ $user->phonenum }}</td>
-                    <td>
-                        @foreach($user->groups as $group)
-                            {{ $group->name }},
-                        @endforeach
-                    </td>
+                    <td>{{ $user->groups()->count() }}</td>
                     <td>
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
