@@ -99,6 +99,18 @@ abstract class BaseRepository
     }
 
     /**
+     * Get count model
+     *
+     * @return int
+     */
+    public function count(): int
+    {
+        $query = $this->allQuery();
+
+        return $query->count();
+    }
+
+    /**
      * Create model record
      */
     public function create(array $input): Model
