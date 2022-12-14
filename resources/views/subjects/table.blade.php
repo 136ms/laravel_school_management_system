@@ -6,6 +6,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Subject groups</th>
+                <th>Subject users</th>
                 <th colspan="3">Actions</th>
             </tr>
             </thead>
@@ -15,6 +16,7 @@
                     <td>{{ $subject->id }}.</td>
                     <td>{{ $subject->name }}</td>
                     <td>{{ $subject->groups()->count() }}</td>
+                    <td>{{ $subject->users()->count() }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['subjects.destroy', $subject->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

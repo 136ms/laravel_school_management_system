@@ -18,6 +18,12 @@
         "relation": "mtm,Group"
     },
     {
+        "type": "relation",
+        "dbType": "bigInteger:unsigned:foreign,users,id",
+        "name": "users",
+        "relation": "mtm,User"
+    },
+    {
         "name": "name",
         "dbType": "string",
         "htmlType": "text",

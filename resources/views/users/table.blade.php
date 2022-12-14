@@ -12,6 +12,7 @@
                 <th>Gender</th>
                 <th>Phone number</th>
                 <th>User groups</th>
+                <th>User subjects</th>
                 <th colspan="3">Actions</th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <td>{{ mb_strimwidth($user->gender, 0, 10, "...")}}</td>
                     <td>{{ $user->phonenum }}</td>
                     <td>{{ $user->groups()->count() }}</td>
+                    <td>{{ $user->subjects()->count() }}</td>
                     <td>
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

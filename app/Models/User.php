@@ -49,4 +49,9 @@ class User extends Authenticable
     {
         return $this->belongsToMany(Group::class);
     }
+
+    public function subjects(): BelongsToMany
+    {
+        return $this->belongsToMany(Subject::class);
+    }
 }

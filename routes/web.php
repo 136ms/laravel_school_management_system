@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'showProfile'])->name('profile');
 
 Route::resource('subjects', App\Http\Controllers\SubjectController::class);
 

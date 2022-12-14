@@ -42,6 +42,14 @@
                             <p class="text-muted">{{$user->gender}}</p>
                             <strong><i class="fas fa-user"></i> Phone number</strong>
                             <p class="text-muted">{{$user->phonenum}}</p>
+                            <strong><i class="fas fa-user"></i> User group IDs</strong>
+                            @foreach($user->groups as $group)
+                                <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
+                            @endforeach
+                            <strong><i class="fas fa-user"></i> User subject IDs</strong>
+                            @foreach($user->subjects as $subject)
+                                <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -54,7 +54,6 @@ class HomeController extends Controller
             "users" => $this->userRepository->count(),
             "subjects" => $this->subjectRepository->count(),
             "groups" => $this->groupRepository->count()
-            // "subjects" => Subject::count()
         ]);
     }
 }

@@ -32,6 +32,10 @@
                     @foreach($user->groups as $group)
                         <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
                     @endforeach
+                    <strong>User subject IDs</strong>
+                    @foreach($user->subjects as $subject)
+                        <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
+                    @endforeach
                     <strong>First name</strong>
                     <p class="text-muted">{{$user->fname}}</p>
                     <strong>Last name</strong>
