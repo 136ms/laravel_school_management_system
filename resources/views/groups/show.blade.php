@@ -33,6 +33,10 @@
                     @foreach($group->users as $user)
                         <p class="text-muted">[{{ $user->id }}.] {{ $user->fname }} {{ $user->lname }}</p>
                     @endforeach
+                    <strong>Group subject IDs</strong>
+                    @foreach($group->subjects as $subject)
+                        <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
+                    @endforeach
                     <strong>Created at</strong>
                     <p class="text-muted">{{$group->created_at}}</p>
                     <strong>Updated at</strong>

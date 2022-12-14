@@ -29,6 +29,10 @@
                     <p class="text-muted">{{$subject->id}}</p>
                     <strong>Subject name</strong>
                     <p class="text-muted">{{$subject->name}}</p>
+                    <strong>Subject group IDs</strong>
+                    @foreach($subject->groups as $group)
+                        <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>

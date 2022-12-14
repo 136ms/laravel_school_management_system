@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Group extends Model
 {
     use HasFactory;
-
     public $table = 'groups';
 
     public $fillable = [
@@ -27,5 +26,10 @@ class Group extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function subjects(): BelongsToMany
+    {
+        return $this->belongsToMany(\App\Models\Subject::class);
     }
 }

@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateGroupRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\GroupRepository;
 use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
+use Flash;
 
 class GroupController extends AppBaseController
 {

@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 class SubjectRepository extends BaseRepository
 {
     protected $fieldSearchable = [
-        'subject_name'
+        'name'
     ];
 
     public function getFieldsSearchable(): array
