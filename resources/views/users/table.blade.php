@@ -27,8 +27,8 @@
                     <td>{{ mb_strimwidth($user->gender, 0, 10, "...")}}</td>
                     <td>{{ $user->phonenum }}</td>
                     <td>
-                        @foreach($user->classes as $userClass)
-                            {{ $userClass->class_name }},
+                        @foreach($user->groups as $group)
+                            {{ $group->name }},
                         @endforeach
                     </td>
                     <td>

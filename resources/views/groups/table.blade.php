@@ -3,16 +3,16 @@
         <table class="table" id="groups-table">
             <thead>
             <tr>
-                <th>Users</th>
                 <th>Name</th>
+                <th>Users</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($groups as $group)
                 <tr>
-                    <td>{{ $group->users }}</td>
                     <td>{{ $group->name }}</td>
+                    <td>{{ $group->users()->count() }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

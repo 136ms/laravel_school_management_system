@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticable
+class User extends Authenticatable
 {
     use HasFactory;
+
     public $table = 'users';
 
     public $fillable = [
@@ -42,4 +44,9 @@ class User extends Authenticable
         'phonenum' => 'required|string|max:255',
         'password' => 'required'
     ];
+
+    public function groups(): BelongsToMany
+    {
+        return $this->belongsToMany(Group::class);
+    }
 }

@@ -12,6 +12,12 @@
         "inView": false
     },
     {
+        "type": "relation",
+        "dbType": "bigInteger:unsigned:foreign,groups,id",
+        "name": "groups",
+        "relation": "mtm,Group"
+    },
+    {
         "name": "fname",
         "dbType": "string",
         "htmlType": "text",

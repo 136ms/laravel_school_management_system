@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="small-box bg-gradient-lime m-2 col-lg-2">
                     <div class="inner">
-                        <h3>{{\App\Models\User::count()}}</h3>
+                        <h3>{{$users}}</h3>
                         <h5>Users</h5>
                     </div>
                     <a href="{{route('users.index')}}">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="small-box bg-gradient-purple m-2 col-lg-2">
                     <div class="inner">
-                        <h3>{{\App\Models\Subject::count()}}</h3>
+                        <h3>{{$subjects}}</h3>
                         <h5>Subjects</h5>
                     </div>
                     <a href="{{route('subjects.index')}}">
@@ -37,7 +37,7 @@
                         <h3>{{\App\Models\Subject::count()}}</h3>
                         <h5>Classes</h5>
                     </div>
-                    <a href="{{route('classes.index')}}">
+                    <a href="{{route('groups.index')}}">
                         <div class="icon">
                             <i class="fas fa-users"></i>
                         </div>

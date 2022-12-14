@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Classes;
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +16,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(1)->create([
+        User::factory(1)
+            ->has(Group::factory(2))
+            ->create([
             'email' => 'test@gmail.com',
             'password' => Hash::make('12345'),
         ]);
-        User::factory(9)->create();
+        User::factory(9)
+            ->has(Group::factory(2))
+            ->create();
     }
 }

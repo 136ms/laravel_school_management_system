@@ -21,13 +21,6 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('classes.index') }}" class="nav-link {{ Request::is('classes*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-users text-info"></i>
-        <p>Classes</p>
-    </a>
-</li>
-
-<li class="nav-item">
     <a href="{{ route('groups.index') }}" class="nav-link {{ Request::is('groups*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-users"></i>
         <p>Groups</p>
