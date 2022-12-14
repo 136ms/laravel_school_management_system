@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Classes;
+use App\Models\Group;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateClassesRequest extends FormRequest
+class UpdateGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,8 @@ class CreateClassesRequest extends FormRequest
      */
     public function rules()
     {
-        return Classes::$rules;
+        $rules = Group::$rules;
+        
+        return $rules;
     }
 }

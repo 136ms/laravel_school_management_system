@@ -1,32 +1,26 @@
 <div class="card-body p-0">
     <div class="table-responsive">
-        <table class="table" id="classes-table">
+        <table class="table" id="groups-table">
             <thead>
             <tr>
-                <th>Class ID</th>
-                <th>Class name</th>
-                <th>User IDs</th>
-                <th colspan="3">Actions</th>
+                <th>Users</th>
+                <th>Name</th>
+                <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($classes as $class)
+            @foreach($groups as $group)
                 <tr>
-                    <td>{{ $class->id }}.</td>
-                    <td>{{ $class->class_name }}</td>
-                    <td>
-                        @foreach($class->users as $classUser)
-                            {{ $classUser->pivot['user_id'] }}.,
-                        @endforeach
-                    </td>
+                    <td>{{ $group->users }}</td>
+                    <td>{{ $group->name }}</td>
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['classes.destroy', $class->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('classes.show', [$class->id]) }}"
+                            <a href="{{ route('groups.show', [$group->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('classes.edit', [$class->id]) }}"
+                            <a href="{{ route('groups.edit', [$group->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>
@@ -42,7 +36,7 @@
 
     <div class="card-footer clearfix">
         <div class="float-right">
-            @include('adminlte-templates::common.paginate', ['records' => $classes])
+            @include('adminlte-templates::common.paginate', ['records' => $groups])
         </div>
     </div>
 </div>

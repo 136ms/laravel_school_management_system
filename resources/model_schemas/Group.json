@@ -12,7 +12,13 @@
         "inView": false
     },
     {
-        "name": "class_name",
+        "type": "relation",
+        "dbType": "bigInteger:unsigned:foreign,users,id",
+        "name": "users",
+        "relation": "mtm,User"
+    },
+    {
+        "name": "name",
         "dbType": "string",
         "htmlType": "text",
         "validations": "required|string|max:255",

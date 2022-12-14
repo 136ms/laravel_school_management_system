@@ -1,4 +1,3 @@
-@section('title'){{'Edit class'}}@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -7,8 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                        <i class="fas fa-users"></i>
-                        Edit Class
+                    Create Groups
                     </h1>
                 </div>
             </div>
@@ -21,17 +19,19 @@
 
         <div class="card">
 
-            {!! Form::model($classes, ['route' => ['classes.update', $classes->id], 'method' => 'patch']) !!}
+            {!! Form::open(['route' => 'groups.store']) !!}
 
             <div class="card-body">
+
                 <div class="row">
-                    @include('classes.fields')
+                    @include('groups.fields')
                 </div>
+
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('classes.index') }}" class="btn btn-default"> Cancel </a>
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('groups.index') }}" class="btn btn-default"> Cancel </a>
             </div>
 
             {!! Form::close() !!}

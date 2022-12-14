@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->id('id');
-            $table->string('class_name');
+            $table->bigInteger('users')->unsigned();
+            $table->string('name');
             $table->timestamps();
+            $table->foreign('users')->references('id')->on('users');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('classes');
+        Schema::drop('groups');
     }
 };

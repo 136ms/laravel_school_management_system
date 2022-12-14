@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Classes;
+use App\Models\Group;
 use App\Repositories\BaseRepository;
 
-class ClassesRepository extends BaseRepository
+class GroupRepository extends BaseRepository
 {
     protected $fieldSearchable = [
-        'class_name'
+        'name'
     ];
 
     public function getFieldsSearchable(): array
@@ -18,6 +18,6 @@ class ClassesRepository extends BaseRepository
 
     public function model(): string
     {
-        return Classes::class;
+        return Group::class;
     }
 }
