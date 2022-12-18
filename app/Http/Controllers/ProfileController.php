@@ -2,35 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\GroupRepository;
-use App\Repositories\SubjectRepository;
-use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash;
 
-class ProfileController extends AppBaseController
+class ProfileController extends Controller
 {
-    /** @var GroupRepository $groupRepository */
-    private GroupRepository $groupRepository;
-
-    /** @var SubjectRepository $subjectRepository */
-    private SubjectRepository $subjectRepository;
-
-    public function __construct(GroupRepository $groupRepository, SubjectRepository $subjectRepository)
+    public function index(Request $request)
     {
-        $this->groupRepository = $groupRepository;
-        $this->subjectRepository = $subjectRepository;
+        $user = $request->user();
+        return view('profiles.index' , $user)->with('user', $user);
     }
 
-    public function showProfile()
+    public function showProfileById(Request $request , $id)
     {
-        $user = Auth::user();
-        $group = $this->groupRepository->all();
-        $subject = $this->subjectRepository->all();
+        $user = $request->user()->find($id);
 
-        return view('profile')->with([
-            'user' => $user,
-            'group' => $group,
-            'subject' => $subject,
-        ]);
+        if (empty($user)) {
+            Flash::error('User not found');
+
+            return redirect(route('profiles.show'));
+        }
+
+        return view('profiles.show')->with('user', $user);
     }
 }
+
+
+
+

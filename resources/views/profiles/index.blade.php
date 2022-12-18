@@ -33,7 +33,7 @@
                             <strong><i class="fas fa-user"></i> Last name</strong>
                             <p class="text-muted">{{$user->lname}}</p>
                             <strong><i class="fas fa-user"></i> Birth date</strong>
-                            <p class="text-muted">{{date_format($user->birthdate, "d.m.Y")}}</p>
+                            <p class="text-muted"></p>
                             <strong><i class="fas fa-user"></i> Address</strong>
                             <p class="text-muted">{{$user->address}}</p>
                             <strong><i class="fas fa-user"></i> E-Mail</strong>

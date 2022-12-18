@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\BaseRepository;
 
 class UserRepository extends BaseRepository

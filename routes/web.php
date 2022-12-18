@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'showProfile'])->name('profile');
-
 Route::resource('subjects', App\Http\Controllers\SubjectController::class);
 
 Route::resource('users', App\Http\Controllers\UserController::class);
 
 Route::resource('groups', App\Http\Controllers\GroupController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'showProfileById'])->name('profileById');
