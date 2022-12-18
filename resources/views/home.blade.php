@@ -20,6 +20,12 @@
                         <i class="fas fa-user"></i>
                     </div>
                     </a>
+                        <a href="{{route('users.create')}}">
+                            <button type="button" class="btn btn-block bg-gradient-success btn-xs">Add user</button>
+                        </a>
+                        <a href="{{route('users.index')}}">
+                            <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Show users</button>
+                        </a>
                 </div>
                 <div class="small-box bg-gradient-purple m-2 col-lg-2">
                     <div class="inner">
@@ -31,6 +37,12 @@
                             <i class="fas fa-book"></i>
                         </div>
                     </a>
+                    <a href="{{route('subjects.create')}}">
+                        <button type="button" class="btn btn-block bg-gradient-success btn-xs">Add subject</button>
+                    </a>
+                    <a href="{{route('subjects.index')}}">
+                        <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Show subjects</button>
+                    </a>
                 </div>
                 <div class="small-box bg-gradient-info m-2 col-lg-2">
                     <div class="inner">
@@ -41,6 +53,12 @@
                         <div class="icon">
                             <i class="fas fa-users"></i>
                         </div>
+                    </a>
+                    <a href="{{route('groups.create')}}">
+                        <button type="button" class="btn btn-block bg-gradient-success btn-xs">Add group</button>
+                    </a>
+                    <a href="{{route('groups.index')}}">
+                        <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Show groups</button>
                     </a>
                 </div>
             </div>
