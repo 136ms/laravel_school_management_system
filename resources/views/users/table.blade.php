@@ -11,8 +11,8 @@
                 <th>E-mail</th>
                 <th>Gender</th>
                 <th>Phone number</th>
-                <th>User groups</th>
-                <th>User subjects</th>
+                <th>Groups</th>
+                <th>Subjects</th>
                 <th colspan="3">Actions</th>
             </tr>
             </thead>

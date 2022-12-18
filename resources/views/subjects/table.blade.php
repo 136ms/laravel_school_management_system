@@ -5,8 +5,8 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Subject groups</th>
-                <th>Subject users</th>
+                <th>Groups</th>
+                <th>Users</th>
                 <th colspan="3">Actions</th>
             </tr>
             </thead>
