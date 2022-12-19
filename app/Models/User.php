@@ -54,4 +54,14 @@ class User extends Authenticable
     {
         return $this->belongsToMany(Subject::class);
     }
+
+    public function parents(): BelongsToMany
+    {
+        return $this->belongsToMany(static::class, "child_parent", "parent_id", 'child_id');
+    }
+
+    public function children(): BelongsToMany
+    {
+        return $this->belongsToMany(static::class, "child_parent", "child_id", 'parent_id');
+    }
 }
