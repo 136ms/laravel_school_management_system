@@ -28,14 +28,31 @@
                 <div class="card-body">
                     <strong>ID</strong>
                     <p class="text-muted">{{$user->id}}</p>
+
+                    <strong>User parent IDs</strong>
+                    @if(isset($user->parents))
+                        @foreach($user->parents as $parent)
+                            <p class="text-muted">[{{ $parent->id }}.] {{ $parent->fname }} {{ $parent->lname }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
+
                     <strong>User group IDs</strong>
-                    @foreach($user->groups as $group)
-                        <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
-                    @endforeach
+                    @if(isset($user->groups))
+                        @foreach($user->groups as $group)
+                            <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
+
                     <strong>User subject IDs</strong>
-                    @foreach($user->subjects as $subject)
-                        <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
-                    @endforeach
+                    @if(isset($user->subjects))
+                        @foreach($user->subjects as $subject)
+                            <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
+
                     <strong>First name</strong>
                     <p class="text-muted">{{$user->fname}}</p>
                     <strong>Last name</strong>

@@ -29,14 +29,23 @@
                     <p class="text-muted">{{$group->id}}</p>
                     <strong>Group name</strong>
                     <p class="text-muted">{{$group->name}}</p>
+
                     <strong>Group user IDs</strong>
-                    @foreach($group->users as $user)
-                        <p class="text-muted">[{{ $user->id }}.] {{ $user->fname }} {{ $user->lname }}</p>
-                    @endforeach
+                    @if(isset($group->users))
+                        @foreach($group->users as $user)
+                            <p class="text-muted">[{{ $user->id }}.] {{ $user->fname }} {{ $user->lname }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
+
                     <strong>Group subject IDs</strong>
-                    @foreach($group->subjects as $subject)
-                        <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
-                    @endforeach
+                    @if(isset($group->subjects))
+                        @foreach($group->subjects as $subject)
+                            <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
+
                     <strong>Created at</strong>
                     <p class="text-muted">{{$group->created_at}}</p>
                     <strong>Updated at</strong>

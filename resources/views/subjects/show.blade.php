@@ -29,14 +29,22 @@
                     <p class="text-muted">{{$subject->id}}</p>
                     <strong>Subject name</strong>
                     <p class="text-muted">{{$subject->name}}</p>
+
                     <strong>Subject group IDs</strong>
-                    @foreach($subject->groups as $group)
-                        <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
-                    @endforeach
+                    @if(isset($subject->groups))
+                        @foreach($subject->groups as $group)
+                            <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
+
                     <strong>Subject user IDs</strong>
-                    @foreach($subject->users as $user)
-                        <p class="text-muted">[{{ $user->id }}.] {{ $user->fname }} {{ $user->lname }}</p>
-                    @endforeach
+                    @if(isset($subject->users))
+                        @foreach($subject->users as $user)
+                            <p class="text-muted">[{{ $user->id }}.] {{ $user->fname }} {{ $user->lname }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
                 </div>
             </div>
         </div>
