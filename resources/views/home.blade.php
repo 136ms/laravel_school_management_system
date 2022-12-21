@@ -20,12 +20,6 @@
                         <i class="fas fa-user"></i>
                     </div>
                     </a>
-                        <a href="{{route('users.create')}}">
-                            <button type="button" class="btn btn-block bg-gradient-success btn-xs">Add user</button>
-                        </a>
-                        <a href="{{route('users.index')}}">
-                            <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Show users</button>
-                        </a>
                 </div>
                 <div class="small-box bg-gradient-purple m-2 col-lg-2">
                     <div class="inner">
@@ -36,12 +30,6 @@
                         <div class="icon">
                             <i class="fas fa-book"></i>
                         </div>
-                    </a>
-                    <a href="{{route('subjects.create')}}">
-                        <button type="button" class="btn btn-block bg-gradient-success btn-xs">Add subject</button>
-                    </a>
-                    <a href="{{route('subjects.index')}}">
-                        <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Show subjects</button>
                     </a>
                 </div>
                 <div class="small-box bg-gradient-info m-2 col-lg-2">
@@ -54,14 +42,8 @@
                             <i class="fas fa-users"></i>
                         </div>
                     </a>
-                    <a href="{{route('groups.create')}}">
-                        <button type="button" class="btn btn-block bg-gradient-success btn-xs">Add group</button>
-                    </a>
-                    <a href="{{route('groups.index')}}">
-                        <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Show groups</button>
-                    </a>
                 </div>
-                <div class="small-box bg-gradient-info m-2 col-lg-2">
+                <div class="small-box bg-gradient-maroon m-2 col-lg-2">
                     <div class="inner">
                         <h3>{{$parents}}</h3>
                         <h5>Parents</h5>
@@ -69,6 +51,17 @@
                     <a href="{{route('users.index')}}">
                         <div class="icon">
                             <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="small-box bg-gradient-orange m-2 col-lg-2">
+                    <div class="inner">
+                        <h3>{{$teachers}}</h3>
+                        <h5>Teachers</h5>
+                    </div>
+                    <a href="{{route('users.index')}}">
+                        <div class="icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
                         </div>
                     </a>
                 </div>

@@ -52,6 +52,14 @@
                         @endforeach
                         <p></p>
                     @endif
+                    {{--If user is teacher he'll be shown here--}}
+                    <strong>User teacher IDs</strong>
+                    @if(isset($user->teachers))
+                        @foreach($user->teachers as $teacher)
+                            <p class="text-muted">[{{ $teacher->id }}.] {{ $teacher->fname }} {{ $teacher->lname }}</p>
+                        @endforeach
+                        <p></p>
+                    @endif
 
                     <strong>First name</strong>
                     <p class="text-muted">{{$user->fname}}</p>

@@ -43,13 +43,27 @@
                             <strong><i class="fas fa-user"></i> Phone number</strong>
                             <p class="text-muted">{{$user->phonenum}}</p>
                             <strong><i class="fas fa-user"></i> User group IDs</strong>
-                            @foreach($user->groups as $group)
-                                <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
-                            @endforeach
+                            @if(isset($user->groups))
+                                @foreach($user->groups as $group)
+                                    <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
+                                @endforeach
+                                <p></p>
+                            @endif
                             <strong><i class="fas fa-user"></i> User subject IDs</strong>
-                            @foreach($user->subjects as $subject)
-                                <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
-                            @endforeach
+                            @if(isset($user->subjects))
+                                @foreach($user->subjects as $subject)
+                                    <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
+                                @endforeach
+                                <p></p>
+                            @endif
+                            {{--If user is teacher he'll be shown here--}}
+                            <strong><i class="fas fa-user"></i> User teacher IDs</strong>
+                            @if(isset($user->teachers))
+                                @foreach($user->teachers as $teacher)
+                                    <p class="text-muted">[{{ $teacher->id }}.] {{ $teacher->fname }} {{ $teacher->lname }}</p>
+                                @endforeach
+                                <p></p>
+                            @endif
                         </div>
                     </div>
                 </div>

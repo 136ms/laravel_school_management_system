@@ -122,6 +122,17 @@ abstract class BaseRepository
     }
 
     /**
+     * Get teacher count
+     *
+     * @return int
+     */
+    public function countTeachers(): int
+    {
+        $query = $this->allQuery()->has('teachers');
+        return $query->count();
+    }
+
+    /**
      * Create model record
      */
     public function create(array $input): Model
