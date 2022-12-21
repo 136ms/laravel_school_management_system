@@ -53,7 +53,8 @@ class HomeController extends Controller
         return view('home')->with([
             "users" => $this->userRepository->count(),
             "subjects" => $this->subjectRepository->count(),
-            "groups" => $this->groupRepository->count()
+            "groups" => $this->groupRepository->count(),
+            "parents" => $this->userRepository->countParents()
         ]);
     }
 }

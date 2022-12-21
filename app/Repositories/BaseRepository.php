@@ -111,6 +111,17 @@ abstract class BaseRepository
     }
 
     /**
+     * Get parents count
+     *
+     * @return int
+     */
+    public function countParents(): int
+    {
+        $query = $this->allQuery()->has('parents');
+        return $query->count();
+    }
+
+    /**
      * Create model record
      */
     public function create(array $input): Model

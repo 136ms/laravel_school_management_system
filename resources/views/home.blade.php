@@ -61,6 +61,17 @@
                         <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Show groups</button>
                     </a>
                 </div>
+                <div class="small-box bg-gradient-info m-2 col-lg-2">
+                    <div class="inner">
+                        <h3>{{$parents}}</h3>
+                        <h5>Parents</h5>
+                    </div>
+                    <a href="{{route('users.index')}}">
+                        <div class="icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
