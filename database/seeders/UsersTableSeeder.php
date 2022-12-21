@@ -37,6 +37,12 @@ class UsersTableSeeder extends Seeder
             ->has(User::factory(2), 'parents')
                 ->create();
 
+        // seed teachers
+        User::factory(10)
+            // create teachers
+            ->has(User::factory(1), 'teachers')
+            ->create();
+
         // $users = User::all(); // all users with parents;
 
         // connect all generated students to groups and subjects (parents don`t)
