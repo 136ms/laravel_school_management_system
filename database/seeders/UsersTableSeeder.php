@@ -38,16 +38,19 @@ class UsersTableSeeder extends Seeder
                 ->create();
 
         // seed teachers
-        User::factory(10)
+        $teachers = User::factory(1)
             // create teachers
             ->has(User::factory(1), 'teachers')
+            // create subjects
+            ->has(Subject::factory(1))
             ->create();
 
         // $users = User::all(); // all users with parents;
 
         // connect all generated students to groups and subjects (parents don`t)
-        $users->each(function (User $user) use ($subjects, $groups) {
+        $users->each(function (User $user) use ($subjects, $groups, $teachers) {
            $user->groups()->sync($groups);
+           $user->teachers()->sync($teachers);
            $user->subjects()->sync($groups[0]->subjects);
         });
 
