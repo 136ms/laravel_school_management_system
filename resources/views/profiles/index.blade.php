@@ -42,6 +42,15 @@
                             <p class="text-muted">{{$user->gender}}</p>
                             <strong><i class="fas fa-user"></i> Phone number</strong>
                             <p class="text-muted">{{$user->phonenum}}</p>
+                            <strong><i class="fas fa-user"></i> Roles</strong>
+                            <p class="text-muted">{{$user->roles[0]->name}}</p>
+                            <strong><i class="fas fa-user"></i> Permissions</strong>
+                            @if(isset($user->roles[0]->permissions))
+                                @foreach($user->roles[0]->permissions as $permission)
+                                    <p class="text-muted">{{ $permission->name }}</p>
+                                @endforeach
+                                <p></p>
+                            @endif
                             <strong><i class="fas fa-user"></i> User group IDs</strong>
                             @if(isset($user->groups))
                                 @foreach($user->groups as $group)

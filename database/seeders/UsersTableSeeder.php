@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Group;
-use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class UsersTableSeeder extends Seeder
 {
+    use HasRoles;
     /**
      * Run the database seeds.
      *
@@ -17,6 +18,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         // seed groups
         $groups = Group::factory(10)
             ->has(Subject::factory(10))
@@ -53,6 +55,43 @@ class UsersTableSeeder extends Seeder
            $user->teachers()->sync($teachers);
            $user->subjects()->sync($groups[0]->subjects);
         });
+        */
+
+        // seed admin user
+        $admin = User::factory(1)
+            ->create([
+                'email' => 'admin@role.com',
+                'password' => Hash::make('admin'),
+            ]);
+        $adminRole = Role::findByName('Admin');
+        $admin[0]->assignRole([$adminRole]);
+
+        // seed student
+        $student = User::factory(1)
+            ->create([
+                'email' => 'student@role.com',
+                'password' => Hash::make('student'),
+            ]);
+        $studentRole = Role::findByName('Student');
+        $student[0]->assignRole([$studentRole]);
+
+        // seed teacher
+        $teacher = User::factory(1)
+            ->create([
+                'email' => 'teacher@role.com',
+                'password' => Hash::make('teacher'),
+            ]);
+        $teacherRole = Role::findByName('Teacher');
+        $teacher[0]->assignRole([$teacherRole]);
+
+        // seed parent
+        $parent = User::factory(1)
+            ->create([
+                'email' => 'parent@role.com',
+                'password' => Hash::make('parent'),
+            ]);
+        $parentRole = Role::findByName('Parent');
+        $parent[0]->assignRole([$parentRole]);
 
     }
 }
