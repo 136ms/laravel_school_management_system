@@ -32,56 +32,31 @@ class RolesTableSeeder extends Seeder
 
         // Create permissions
         $permissions = [
+            'menu_access',
             'admin_access',
-            'user_access',
-            'user_create',
-            'user_show',
-            'user_update',
-            'user_delete',
-            'group_access',
-            'group_create',
-            'group_show',
-            'group_update',
-            'group_delete',
-            'subject_access',
-            'subject_create',
-            'subject_show',
-            'subject_update',
-            'subject_delete',
-            'profiles_access'
+            'student_access',
+            'teacher_access',
+            'parent_access',
+
+        ];
+
+        $adminPermissions = [
+            'admin_access'
         ];
 
         $studentPermissions = [
-            'user_access',
-            'user_update',
-            'group_access',
-            'group_show',
-            'subject_access',
-            'subject_show',
-            'profiles_access',
+            'menu_access',
+            'student_access',
         ];
 
         $parentPermissions = [
-            'profiles_access',
-            'user_access',
-            'user_update',
-            'group_access',
-            'group_show',
-            'subject_access',
-            'subject_show',
+            'menu_access',
+            'parent_access',
         ];
 
         $teacherPermissions = [
-            'profiles_access',
-            'user_access',
-            'user_show',
-            'user_update',
-            'group_access',
-            'group_show',
-            'group_update',
-            'subject_access',
-            'subject_show',
-            'subject_update',
+            'menu_access',
+            'teacher_access',
         ];
 
         foreach ($permissions as $permission){
@@ -89,7 +64,7 @@ class RolesTableSeeder extends Seeder
         }
 
         // Grant all permissions to admin role
-        foreach ($permissions as $permission){
+        foreach ($adminPermissions as $permission){
             $adminRole->givePermissionTo($permission);
         }
 

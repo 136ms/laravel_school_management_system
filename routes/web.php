@@ -21,7 +21,8 @@ Route::resource('users', App\Http\Controllers\UserController::class);
 Route::resource('groups', App\Http\Controllers\GroupController::class);
 
 //Routes
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'showProfileById'])->name('profileById');
+Route::group(['middleware' => ['role:Admin']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+}
+);
