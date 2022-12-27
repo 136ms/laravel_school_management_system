@@ -1,15 +1,20 @@
-@section('title'){{'Home'}}@endsection
+@section('title')
+    {{'Home'}}
+@endsection
 @extends('layouts.app')
-@can('admin_access')
-    @section('content')
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0"><i class="fas fa-home"></i> Home</h1>
-                    </div>
+@section('content')
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0"><i class="fas fa-home"></i> Home</h1>
                 </div>
-                <div class="row">
+            </div>
+            <div class="row">
+                <a href="{{route('profile.index')}}" class="btn btn-app">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+                @can('admin_access')
                     <div class="small-box bg-gradient-lime m-2 col-lg-2">
                         <div class="inner">
                             <h3>{{$users}}</h3>
@@ -65,47 +70,43 @@
                             </div>
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-    @endsection
-@endcan
-@can('student_access')
-    @section('content')
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
+
                     <div class="col-sm-6">
-                        <h1 class="m-0"><i class="fas fa-home"></i> Home</h1>
+                        <h1 class="m-0"> Users</h1>
                     </div>
-                </div>
-            </div>
-        </div>
-    @endsection
-@endcan
-@can('teacher_access')
-    @section('content')
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
+
+                    <a href="{{route('users.create')}}" class="btn btn-app">
+                        <i class="fas fa-plus"></i> Create User
+                    </a>
+
+                    <a href="{{route('users.index')}}" class="btn btn-app">
+                        <i class="fas fa-list"></i> Users List
+                    </a>
+
                     <div class="col-sm-6">
-                        <h1 class="m-0"><i class="fas fa-home"></i> Home</h1>
+                        <h1 class="m-0"> Subjects</h1>
                     </div>
-                </div>
-            </div>
-        </div>
-    @endsection
-@endcan
-@can('parent_access')
-    @section('content')
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
+
+                    <a href="{{route('subjects.create')}}" class="btn btn-app">
+                        <i class="fas fa-plus"></i> Create Subject
+                    </a>
+
+                    <a href="{{route('subjects.index')}}" class="btn btn-app">
+                        <i class="fas fa-list"></i> Subject List
+                    </a>
+
                     <div class="col-sm-6">
-                        <h1 class="m-0"><i class="fas fa-home"></i> Home</h1>
+                        <h1 class="m-0"> Groups</h1>
                     </div>
-                </div>
+
+                    <a href="{{route('groups.create')}}" class="btn btn-app">
+                        <i class="fas fa-plus"></i> Create Group
+                    </a>
+                    <a href="{{route('groups.index')}}" class="btn btn-app">
+                        <i class="fas fa-list"></i> Group List
+                    </a>
+                @endcan
             </div>
         </div>
-    @endsection
-@endcan
+    </div>
+@endsection

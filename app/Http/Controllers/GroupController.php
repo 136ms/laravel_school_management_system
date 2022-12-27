@@ -4,19 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
-use App\Http\Controllers\AppBaseController;
 use App\Repositories\GroupRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 
 class GroupController extends AppBaseController
 {
     /** @var GroupRepository $groupRepository*/
     private $groupRepository;
 
-    public function __construct(GroupRepository $groupRepo)
+    /** @var UserRepository $userRepository*/
+    private $userRepository;
+
+    public function __construct(GroupRepository $groupRepo, UserRepository $userRepo)
     {
         $this->groupRepository = $groupRepo;
+        $this->userRepository = $userRepo;
     }
 
     /**
@@ -24,6 +28,7 @@ class GroupController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->userRepository->checkAdminRole();
         $groups = $this->groupRepository->paginate(10);
 
         return view('groups.index')
@@ -35,6 +40,7 @@ class GroupController extends AppBaseController
      */
     public function create()
     {
+        $this->userRepository->checkAdminRole();
         return view('groups.create');
     }
 
@@ -43,6 +49,7 @@ class GroupController extends AppBaseController
      */
     public function store(CreateGroupRequest $request)
     {
+        $this->userRepository->checkAdminRole();
         $input = $request->all();
 
         $group = $this->groupRepository->create($input);
@@ -57,6 +64,7 @@ class GroupController extends AppBaseController
      */
     public function show($id)
     {
+        $this->userRepository->checkAdminRole();
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
@@ -73,6 +81,7 @@ class GroupController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->userRepository->checkAdminRole();
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
@@ -89,6 +98,7 @@ class GroupController extends AppBaseController
      */
     public function update($id, UpdateGroupRequest $request)
     {
+        $this->userRepository->checkAdminRole();
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
@@ -111,6 +121,7 @@ class GroupController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->userRepository->checkAdminRole();
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {

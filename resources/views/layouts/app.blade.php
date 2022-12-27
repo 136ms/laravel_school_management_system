@@ -46,6 +46,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
+                <p class="m-0"><i class="fas fa-user-tie"></i> {{$user->roles[0]->name}}</p>
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
@@ -70,7 +71,7 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="{{route('profile')}}" class="btn btn-default btn-flat">Profile</a>
+                        <a href="{{route('profile.index')}}" class="btn btn-default btn-flat">Profile</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Sign out

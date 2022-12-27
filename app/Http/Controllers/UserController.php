@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laracasts\Flash\Flash;
 class UserController extends AppBaseController
@@ -22,8 +20,9 @@ class UserController extends AppBaseController
     /**
      * Display a listing of the User.
      */
-    public function index(Request $request)
+    public function index()
     {
+        $this->userRepository->checkAdminRole();
         $users = $this->userRepository->paginate(10);
 
         return view('users.index')
@@ -35,6 +34,7 @@ class UserController extends AppBaseController
      */
     public function create()
     {
+        $this->userRepository->checkAdminRole();
         return view('users.create');
     }
 
@@ -43,6 +43,7 @@ class UserController extends AppBaseController
      */
     public function store(CreateUserRequest $request)
     {
+        $this->userRepository->checkAdminRole();
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = $this->userRepository->create($input);
@@ -57,6 +58,7 @@ class UserController extends AppBaseController
      */
     public function show($id)
     {
+        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -73,6 +75,7 @@ class UserController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -89,6 +92,7 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
+        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -110,6 +114,7 @@ class UserController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {

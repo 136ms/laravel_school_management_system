@@ -4,26 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
-use App\Http\Controllers\AppBaseController;
 use App\Repositories\SubjectRepository;
-use Illuminate\Http\Request;
-use Flash;
+use App\Repositories\UserRepository;
+use Laracasts\Flash\Flash;
 
 class SubjectController extends AppBaseController
 {
     /** @var SubjectRepository $subjectRepository*/
     private $subjectRepository;
 
-    public function __construct(SubjectRepository $subjectRepo)
+    /** @var UserRepository $userRepository*/
+    private $userRepository;
+
+    public function __construct(SubjectRepository $subjectRepo, UserRepository $userRepository)
     {
         $this->subjectRepository = $subjectRepo;
+        $this->userRepository = $userRepository;
     }
 
     /**
      * Display a listing of the Subject.
      */
-    public function index(Request $request)
+    public function index()
     {
+        $this->userRepository->checkAdminRole();
         $subjects = $this->subjectRepository->paginate(10);
 
         return view('subjects.index')
@@ -35,6 +39,7 @@ class SubjectController extends AppBaseController
      */
     public function create()
     {
+        $this->userRepository->checkAdminRole();
         return view('subjects.create');
     }
 
@@ -43,6 +48,7 @@ class SubjectController extends AppBaseController
      */
     public function store(CreateSubjectRequest $request)
     {
+        $this->userRepository->checkAdminRole();
         $input = $request->all();
 
         $subject = $this->subjectRepository->create($input);
@@ -57,6 +63,7 @@ class SubjectController extends AppBaseController
      */
     public function show($id)
     {
+        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -73,6 +80,7 @@ class SubjectController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -89,6 +97,7 @@ class SubjectController extends AppBaseController
      */
     public function update($id, UpdateSubjectRequest $request)
     {
+        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -111,6 +120,7 @@ class SubjectController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {

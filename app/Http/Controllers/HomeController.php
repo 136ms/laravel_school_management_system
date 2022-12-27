@@ -6,6 +6,7 @@ use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -51,6 +52,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home')->with([
+            "user" => Auth::user(),
             "users" => $this->userRepository->count(),
             "subjects" => $this->subjectRepository->count(),
             "groups" => $this->groupRepository->count(),

@@ -14,7 +14,7 @@ class ProfileController extends Controller
         return view('profiles.index' , $user)->with('user', $user);
     }
 
-    public function showProfileById(Request $request , $id)
+    public function show(Request $request , $id)
     {
         $user = $request->user()->find($id);
 
