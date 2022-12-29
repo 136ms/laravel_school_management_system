@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="row">
-                <a href="{{route('profile.index')}}" class="btn btn-app">
+                <a href="{{route('profiles.index')}}" class="btn btn-app">
                     <i class="fas fa-user"></i> Profile
                 </a>
                 @can('admin_access')

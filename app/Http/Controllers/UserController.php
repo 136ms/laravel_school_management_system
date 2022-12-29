@@ -15,6 +15,8 @@ class UserController extends AppBaseController
     public function __construct(UserRepository $userRepo)
     {
         $this->userRepository = $userRepo;
+        $this->middleware('auth');
+        //TODO: Fixnout admina
     }
 
     /**
@@ -22,7 +24,6 @@ class UserController extends AppBaseController
      */
     public function index()
     {
-        $this->userRepository->checkAdminRole();
         $users = $this->userRepository->paginate(10);
 
         return view('users.index')
@@ -34,7 +35,6 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        $this->userRepository->checkAdminRole();
         return view('users.create');
     }
 
@@ -43,10 +43,9 @@ class UserController extends AppBaseController
      */
     public function store(CreateUserRequest $request)
     {
-        $this->userRepository->checkAdminRole();
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        $user = $this->userRepository->create($input);
+        $this->userRepository->create($input);
 
         Flash::success('User saved successfully.');
 
@@ -58,7 +57,6 @@ class UserController extends AppBaseController
      */
     public function show($id)
     {
-        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -75,7 +73,6 @@ class UserController extends AppBaseController
      */
     public function edit($id)
     {
-        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -92,7 +89,6 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
-        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -100,7 +96,7 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-        $user = $this->userRepository->update($request->all(), $id);
+        $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');
 
@@ -114,7 +110,6 @@ class UserController extends AppBaseController
      */
     public function destroy($id)
     {
-        $this->userRepository->checkAdminRole();
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {

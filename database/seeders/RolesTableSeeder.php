@@ -19,15 +19,15 @@ class RolesTableSeeder extends Seeder
         app()['cache']->forget('spatie.role.cache');
 
         // Create roles
-        Role::create(['name' => 'Admin']);
+        Role::create(['name' => 'admin']);
         Role::create(['name' => 'Student']);
         Role::create(['name' => 'Parent']);
         Role::create(['name' => 'Teacher']);
 
-        $adminRole = Role::findByName('Admin');
-        $studentRole = Role::findByName('Student');
-        $parentRole = Role::findByName('Parent');
-        $teacherRole = Role::findByName('Teacher');
+        $adminRole = Role::findByName('admin');
+        $studentRole = Role::findByName('student');
+        $parentRole = Role::findByName('parent');
+        $teacherRole = Role::findByName('teacher');
 
         // Create permissions
         $permissions = [

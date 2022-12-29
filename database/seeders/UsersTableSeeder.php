@@ -58,40 +58,44 @@ class UsersTableSeeder extends Seeder
         */
 
         // seed admin user
-        $admin = User::factory(1)
+        /** @var User $admin */
+        $admin = User::factory()
             ->create([
                 'email' => 'admin@role.com',
                 'password' => Hash::make('admin'),
             ]);
-        $adminRole = Role::findByName('Admin');
-        $admin[0]->assignRole([$adminRole]);
+        $adminRole = Role::findByName('admin');
+        $admin->assignRole($adminRole);
 
         // seed student
-        $student = User::factory(1)
+        /** @var User $student */
+        $student = User::factory()
             ->create([
                 'email' => 'student@role.com',
                 'password' => Hash::make('student'),
             ]);
-        $studentRole = Role::findByName('Student');
-        $student[0]->assignRole([$studentRole]);
+        $studentRole = Role::findByName('student');
+        $student->assignRole($studentRole);
 
         // seed teacher
-        $teacher = User::factory(1)
+        /** @var User $teacher */
+        $teacher = User::factory()
             ->create([
                 'email' => 'teacher@role.com',
                 'password' => Hash::make('teacher'),
             ]);
-        $teacherRole = Role::findByName('Teacher');
-        $teacher[0]->assignRole([$teacherRole]);
+        $teacherRole = Role::findByName('teacher');
+        $teacher->assignRole($teacherRole);
 
         // seed parent
-        $parent = User::factory(1)
+        /** @var User $parent */
+        $parent = User::factory()
             ->create([
                 'email' => 'parent@role.com',
                 'password' => Hash::make('parent'),
             ]);
-        $parentRole = Role::findByName('Parent');
-        $parent[0]->assignRole([$parentRole]);
+        $parentRole = Role::findByName('parent');
+        $parent->assignRole($parentRole);
 
     }
 }

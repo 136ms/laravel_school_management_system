@@ -27,7 +27,6 @@ class SubjectController extends AppBaseController
      */
     public function index()
     {
-        $this->userRepository->checkAdminRole();
         $subjects = $this->subjectRepository->paginate(10);
 
         return view('subjects.index')
@@ -39,7 +38,6 @@ class SubjectController extends AppBaseController
      */
     public function create()
     {
-        $this->userRepository->checkAdminRole();
         return view('subjects.create');
     }
 
@@ -48,7 +46,6 @@ class SubjectController extends AppBaseController
      */
     public function store(CreateSubjectRequest $request)
     {
-        $this->userRepository->checkAdminRole();
         $input = $request->all();
 
         $subject = $this->subjectRepository->create($input);
@@ -63,7 +60,6 @@ class SubjectController extends AppBaseController
      */
     public function show($id)
     {
-        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -80,7 +76,6 @@ class SubjectController extends AppBaseController
      */
     public function edit($id)
     {
-        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -97,7 +92,6 @@ class SubjectController extends AppBaseController
      */
     public function update($id, UpdateSubjectRequest $request)
     {
-        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -120,7 +114,6 @@ class SubjectController extends AppBaseController
      */
     public function destroy($id)
     {
-        $this->userRepository->checkAdminRole();
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {

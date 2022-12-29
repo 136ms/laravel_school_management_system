@@ -19,7 +19,7 @@
                     </div>
                     <h3 class="profile-username text-center">{{$user->fname}} {{$user->lname}}</h3>
                     <p class="text-muted text-center">4.AI</p>
-                    <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-block"><b>Edit</b></a>
+                    <a href="{{route('users.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
                     <a href="#" class="btn btn-primary btn-block"><b>Action button</b></a>
                     <a href="#" class="btn btn-primary btn-block"><b>Action button</b></a>
                     <br>
