@@ -1,10 +1,18 @@
-@can('menu_access')
 <li class="nav-item">
     <a href="{{ route('home.index') }}" class="nav-link {{ Request::is('home*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home text-orange"></i>
         <p>Home</p>
     </a>
 </li>
+@can('student_access')
+
+@endcan
+@can('teacher_access')
+
+@endcan
+@can('parent_access')
+
+@endcan
 @can('admin_access')
     <li class="nav-item">
         <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
@@ -26,5 +34,4 @@
             <p>Groups</p>
         </a>
     </li>
-@endcan
 @endcan

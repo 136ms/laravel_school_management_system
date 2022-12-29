@@ -3,6 +3,7 @@
 @endsection
 @extends('layouts.app')
 @section('content')
+    <p class="m-0"><i class="fas fa-user-tie"></i> {{$user->roles[0]->name}}</p>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">

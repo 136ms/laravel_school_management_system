@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use App\Models\User;
 
 class RolesTableSeeder extends Seeder
 {
@@ -32,7 +31,6 @@ class RolesTableSeeder extends Seeder
 
         // Create permissions
         $permissions = [
-            'menu_access',
             'admin_access',
             'student_access',
             'teacher_access',
@@ -45,17 +43,14 @@ class RolesTableSeeder extends Seeder
         ];
 
         $studentPermissions = [
-            'menu_access',
             'student_access',
         ];
 
         $parentPermissions = [
-            'menu_access',
             'parent_access',
         ];
 
         $teacherPermissions = [
-            'menu_access',
             'teacher_access',
         ];
 
