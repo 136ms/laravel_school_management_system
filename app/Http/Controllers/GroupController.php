@@ -16,6 +16,8 @@ class GroupController extends AppBaseController
     public function __construct(GroupRepository $groupRepository)
     {
         $this->groupRepository = $groupRepository;
+        $this->middleware('auth');
+        $this->middleware(['role:Admin','permission:groups_access']);
     }
 
     /**

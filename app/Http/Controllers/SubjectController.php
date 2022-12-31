@@ -11,15 +11,17 @@ use Laracasts\Flash\Flash;
 class SubjectController extends AppBaseController
 {
     /** @var SubjectRepository $subjectRepository*/
-    private $subjectRepository;
+    private SubjectRepository $subjectRepository;
 
     /** @var UserRepository $userRepository*/
-    private $userRepository;
+    private UserRepository $userRepository;
 
     public function __construct(SubjectRepository $subjectRepo, UserRepository $userRepository)
     {
         $this->subjectRepository = $subjectRepo;
         $this->userRepository = $userRepository;
+        $this->middleware('auth');
+        $this->middleware(['role:Admin','permission:subjects_access']);
     }
 
     /**

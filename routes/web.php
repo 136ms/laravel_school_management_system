@@ -21,6 +21,9 @@ Route::resource('users', App\Http\Controllers\UserController::class);
 Route::resource('groups', App\Http\Controllers\GroupController::class);
 Route::resource('profiles', App\Http\Controllers\ProfileController::class);
 
-//Uni-routes
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index.index');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+//Routes
+Route::get('/', function () {
+    return redirect('dashboard');
+});
+
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

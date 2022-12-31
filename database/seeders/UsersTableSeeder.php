@@ -96,6 +96,5 @@ class UsersTableSeeder extends Seeder
             ]);
         $parentRole = Role::findByName('parent');
         $parent->assignRole($parentRole);
-
     }
 }

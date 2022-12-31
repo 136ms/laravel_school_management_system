@@ -1,9 +1,11 @@
-<li class="nav-item">
-    <a href="{{ route('home.index') }}" class="nav-link {{ Request::is('home*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home text-orange"></i>
-        <p>Home</p>
-    </a>
-</li>
+@can('dashboard_access')
+    <li class="nav-item">
+        <a href="{{ route('dashboard') }}" class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-home text-orange"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+@endcan
 @can('student_access')
 
 @endcan

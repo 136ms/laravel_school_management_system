@@ -16,7 +16,7 @@ class UserController extends AppBaseController
     {
         $this->userRepository = $userRepo;
         $this->middleware('auth');
-        //TODO: Fixnout admina
+        $this->middleware(['role:Admin','permission:users_access']);
     }
 
     /**
