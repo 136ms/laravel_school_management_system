@@ -31,40 +31,53 @@ class RolesTableSeeder extends Seeder
 
         // Create permissions
         $permissions = [
-            'menu_access',
             'dashboard_access',
             'admin_access',
             'student_access',
             'teacher_access',
             'parent_access',
             'users_access',
+            'users_create',
+            'users_store',
+            'users_show',
+            'users_edit',
+            'users_update',
+            'users_destroy',
             'subjects_access',
+            'subjects_create',
+            'subjects_store',
+            'subjects_show',
+            'subjects_edit',
+            'subjects_update',
+            'subjects_destroy',
             'groups_access',
+            'groups_create',
+            'groups_store',
+            'groups_show',
+            'groups_edit',
+            'groups_update',
+            'groups_destroy',
         ];
 
         $adminPermissions = [
-            'menu_access',
-            'dashboard_access',
-            'admin_access',
-            'users_access',
-            'subjects_access',
-            'groups_access',
+            'admin_access'
         ];
 
         $studentPermissions = [
-            'menu_access',
             'dashboard_access',
             'student_access',
         ];
 
         $parentPermissions = [
-            'menu_access',
             'dashboard_access',
             'parent_access',
         ];
 
         $teacherPermissions = [
-            'menu_access',
+            'users_access',
+            'subjects_access',
+            'groups_access',
+            'users_show',
             'dashboard_access',
             'teacher_access',
         ];

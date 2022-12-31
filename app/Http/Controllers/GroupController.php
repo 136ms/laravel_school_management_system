@@ -6,6 +6,7 @@ use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Repositories\GroupRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
 
 class GroupController extends AppBaseController
@@ -17,7 +18,6 @@ class GroupController extends AppBaseController
     {
         $this->groupRepository = $groupRepository;
         $this->middleware('auth');
-        $this->middleware(['role:Admin','permission:groups_access']);
     }
 
     /**
@@ -25,6 +25,7 @@ class GroupController extends AppBaseController
      */
     public function index(Request $request)
     {
+        abort_if(Gate::denies('groups_access'), 403);
         $groups = $this->groupRepository->paginate(10);
 
         return view('groups.index')
@@ -36,6 +37,7 @@ class GroupController extends AppBaseController
      */
     public function create()
     {
+        abort_if(Gate::denies('groups_create'), 403);
         return view('groups.create');
     }
 
@@ -44,6 +46,7 @@ class GroupController extends AppBaseController
      */
     public function store(CreateGroupRequest $request)
     {
+        abort_if(Gate::denies('groups_store'), 403);
         $input = $request->all();
 
         $group = $this->groupRepository->create($input);
@@ -58,6 +61,7 @@ class GroupController extends AppBaseController
      */
     public function show($id)
     {
+        abort_if(Gate::denies('groups_show'), 403);
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
@@ -74,6 +78,7 @@ class GroupController extends AppBaseController
      */
     public function edit($id)
     {
+        abort_if(Gate::denies('groups_edit'), 403);
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
@@ -90,6 +95,7 @@ class GroupController extends AppBaseController
      */
     public function update($id, UpdateGroupRequest $request)
     {
+        abort_if(Gate::denies('groups_update'), 403);
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
@@ -112,6 +118,7 @@ class GroupController extends AppBaseController
      */
     public function destroy($id)
     {
+        abort_if(Gate::denies('groups_destroy'), 403);
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {

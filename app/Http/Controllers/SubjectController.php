@@ -6,6 +6,7 @@ use App\Http\Requests\CreateSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
 use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
 
 class SubjectController extends AppBaseController
@@ -21,7 +22,6 @@ class SubjectController extends AppBaseController
         $this->subjectRepository = $subjectRepo;
         $this->userRepository = $userRepository;
         $this->middleware('auth');
-        $this->middleware(['role:Admin','permission:subjects_access']);
     }
 
     /**
@@ -29,6 +29,7 @@ class SubjectController extends AppBaseController
      */
     public function index()
     {
+        abort_if(Gate::denies('subjects_access'), 403);
         $subjects = $this->subjectRepository->paginate(10);
 
         return view('subjects.index')
@@ -40,6 +41,7 @@ class SubjectController extends AppBaseController
      */
     public function create()
     {
+        abort_if(Gate::denies('subjects_create'), 403);
         return view('subjects.create');
     }
 
@@ -48,6 +50,7 @@ class SubjectController extends AppBaseController
      */
     public function store(CreateSubjectRequest $request)
     {
+        abort_if(Gate::denies('subjects_store'), 403);
         $input = $request->all();
 
         $subject = $this->subjectRepository->create($input);
@@ -62,6 +65,7 @@ class SubjectController extends AppBaseController
      */
     public function show($id)
     {
+        abort_if(Gate::denies('subjects_show'), 403);
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -78,6 +82,7 @@ class SubjectController extends AppBaseController
      */
     public function edit($id)
     {
+        abort_if(Gate::denies('subjects_edit'), 403);
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -94,6 +99,7 @@ class SubjectController extends AppBaseController
      */
     public function update($id, UpdateSubjectRequest $request)
     {
+        abort_if(Gate::denies('subjects_update'), 403);
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {
@@ -116,6 +122,7 @@ class SubjectController extends AppBaseController
      */
     public function destroy($id)
     {
+        abort_if(Gate::denies('subjects_destroy'), 403);
         $subject = $this->subjectRepository->find($id);
 
         if (empty($subject)) {

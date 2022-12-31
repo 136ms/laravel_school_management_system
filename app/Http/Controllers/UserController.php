@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Laracasts\Flash\Flash;
 class UserController extends AppBaseController
@@ -16,7 +17,6 @@ class UserController extends AppBaseController
     {
         $this->userRepository = $userRepo;
         $this->middleware('auth');
-        $this->middleware(['role:Admin','permission:users_access']);
     }
 
     /**
@@ -24,6 +24,8 @@ class UserController extends AppBaseController
      */
     public function index()
     {
+        abort_if(Gate::denies('users_access'), 403);
+
         $users = $this->userRepository->paginate(10);
 
         return view('users.index')
@@ -35,6 +37,7 @@ class UserController extends AppBaseController
      */
     public function create()
     {
+        abort_if(Gate::denies('users_create'), 403);
         return view('users.create');
     }
 
@@ -43,6 +46,7 @@ class UserController extends AppBaseController
      */
     public function store(CreateUserRequest $request)
     {
+        abort_if(Gate::denies('users_store'), 403);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $this->userRepository->create($input);
@@ -57,6 +61,7 @@ class UserController extends AppBaseController
      */
     public function show($id)
     {
+        abort_if(Gate::denies('users_show'), 403);
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -73,6 +78,7 @@ class UserController extends AppBaseController
      */
     public function edit($id)
     {
+        abort_if(Gate::denies('users_edit'), 403);
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -89,6 +95,7 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
+        abort_if(Gate::denies('users_update'), 403);
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
@@ -110,6 +117,7 @@ class UserController extends AppBaseController
      */
     public function destroy($id)
     {
+        abort_if(Gate::denies('users_destroy'), 403);
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
