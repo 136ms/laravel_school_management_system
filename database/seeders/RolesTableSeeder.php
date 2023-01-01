@@ -57,6 +57,11 @@ class RolesTableSeeder extends Seeder
             'groups_edit',
             'groups_update',
             'groups_destroy',
+            'profiles_access',
+            'profiles_show',
+            'profiles_edit',
+            'profiles_update',
+            'profiles_edit_users',
         ];
 
         $adminPermissions = [
@@ -66,11 +71,18 @@ class RolesTableSeeder extends Seeder
         $studentPermissions = [
             'dashboard_access',
             'student_access',
+            'profiles_access',
+            'profiles_edit',
+            'profiles_update',
+            'profiles_edit',
         ];
 
         $parentPermissions = [
             'dashboard_access',
             'parent_access',
+            'profiles_access',
+            'profiles_edit',
+            'profiles_update',
         ];
 
         $teacherPermissions = [
@@ -80,6 +92,11 @@ class RolesTableSeeder extends Seeder
             'users_show',
             'dashboard_access',
             'teacher_access',
+            'profiles_access',
+            'profiles_show',
+            'profiles_edit',
+            'profiles_update',
+            'profiles_edit_users',
         ];
 
         foreach ($permissions as $permission){

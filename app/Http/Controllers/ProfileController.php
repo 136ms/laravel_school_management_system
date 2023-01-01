@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
 
 class ProfileController extends Controller
 {
-    public function __construct()
+    /** @var UserRepository $userRepository*/
+    private UserRepository $userRepository;
+    public function __construct(UserRepository $userRepository)
     {
+        $this->userRepository = $userRepository;
         $this->middleware('auth');
-        //TODO: Fixnout Admina
     }
 
     /**
@@ -26,6 +33,7 @@ class ProfileController extends Controller
      */
     public function index(Request $request): View|Factory|Application
     {
+        abort_if(Gate::denies('profiles_access'), 403);
         $user = $request->user();
         return view('profiles.index', $user)->with('user', $user);
     }
@@ -39,25 +47,51 @@ class ProfileController extends Controller
      */
     public function show(Request $request, int $id): View|Factory|Redirector|RedirectResponse|Application
     {
+        abort_if(Gate::denies('profiles_show'), 403);
         $user = $request->user()->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Profile not found');
 
             return redirect(route('profiles.show'));
         }
 
         return view('profiles.show')->with('user', $user);
     }
+    public function edit()
+    {
+        abort_if(Gate::denies('profiles_edit'), 403);
+        $url = $_SERVER['REQUEST_URI'];
+        $profileId = preg_replace('/\D/', '', $url);
+        $profileId = intval($profileId);
+        $user = User::find($profileId);
+        if (Auth::user()->id != $profileId)
+        {
+            abort_if(Gate::denies('profiles_edit_users'), 403);
+        }
+        return view('profiles.edit')->with('user', $user)->with('id', $profileId);
+    }
 
     /**
-     * @param Request $request
-     * @return View|Factory|Redirector|Application|RedirectResponse
+     * Update the specified User in storage.
      */
-    public function edit(Request $request): View|Factory|Redirector|Application|RedirectResponse
+    public function update($id, UpdateUserRequest $request)
     {
-        return view('users.edit')->with('user', $request->user());
+        abort_if(Gate::denies('profiles_update'), 403);
+        $user = Auth::user();
+
+        if (empty($user)) {
+            Flash::error('User not found');
+
+            return redirect(route('profiles.index'));
+        }
+        $this->userRepository->update($request->all(), $id);
+
+        Flash::success('User updated successfully.');
+
+        return redirect(route('profiles.index'));
     }
+
 }
 
 

@@ -5,6 +5,7 @@
 @section('content')
     <div class="content-header">
         <div class="container">
+            @include('flash::message')
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">{{$user->fname}} {{$user->lname}} profile</h1>
@@ -19,15 +20,15 @@
                     </div>
                     <h3 class="profile-username text-center">{{$user->fname}} {{$user->lname}}</h3>
                     <p class="text-muted text-center">4.AI</p>
-                    <a href="{{route('users.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
-                    <a href="#" class="btn btn-primary btn-block"><b>Action button</b></a>
-                    <a href="#" class="btn btn-primary btn-block"><b>Action button</b></a>
+                    <a href="{{route('profiles.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
                     <br>
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
                         </div>
                         <div class="card-body">
+                            <strong><i class="fas fa-user"></i> ID</strong>
+                            <p class="text-muted">{{$user->id}}</p>
                             <strong><i class="fas fa-user"></i> First name</strong>
                             <p class="text-muted">{{$user->fname}}</p>
                             <strong><i class="fas fa-user"></i> Last name</strong>
@@ -44,36 +45,29 @@
                             <p class="text-muted">{{$user->phonenum}}</p>
                             <strong><i class="fas fa-user"></i> Roles</strong>
                             <p class="text-muted">{{$user->roles[0]->name}}</p>
-                            <strong><i class="fas fa-user"></i> Permissions</strong>
-                            @if(isset($user->roles[0]->permissions))
+                            @can('admin_access')
+                                <strong><i class="fas fa-user"></i> Permissions</strong>
                                 @foreach($user->roles[0]->permissions as $permission)
                                     <p class="text-muted">{{ $permission->name }}</p>
                                 @endforeach
                                 <p></p>
-                            @endif
-                            <strong><i class="fas fa-user"></i> User group IDs</strong>
-                            @if(isset($user->groups))
+                                <strong><i class="fas fa-user"></i> User group IDs</strong>
                                 @foreach($user->groups as $group)
                                     <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
                                 @endforeach
                                 <p></p>
-                            @endif
-
-                            <strong><i class="fas fa-user"></i> User subject IDs</strong>
-                            @if(isset($user->subjects))
+                                <strong><i class="fas fa-user"></i> User subject IDs</strong>
                                 @foreach($user->subjects as $subject)
                                     <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
                                 @endforeach
                                 <p></p>
-                            @endif
-                            {{--If user is teacher he'll be shown here--}}
-                            <strong><i class="fas fa-user"></i> User teacher IDs</strong>
-                            @if(isset($user->teachers))
+                                {{--If user is teacher he'll be shown here--}}
+                                <strong><i class="fas fa-user"></i> User teacher IDs</strong>
                                 @foreach($user->teachers as $teacher)
                                     <p class="text-muted">[{{ $teacher->id }}.] {{ $teacher->fname }} {{ $teacher->lname }}</p>
                                 @endforeach
                                 <p></p>
-                            @endif
+                            @endcan
                         </div>
                     </div>
                 </div>
