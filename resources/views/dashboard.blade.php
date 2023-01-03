@@ -18,6 +18,8 @@
                             <p class="text-muted">{{$user->lname}}</p>
                             <span class="badge bg-primary">Roles</span>
                             <p class="text-muted">{{$roles}}</p>
+                            <span class="badge bg-primary">Permissions</span>
+                            <p class="text-muted">{{$permissions}}</p>
                             @can('student_access')
                                 <h5 class="text-muted">Student widgets</h5>
                                 <span class="badge bg-primary">Groups</span>
@@ -52,8 +54,6 @@
                             <h3 class="card-title">Dashboard</h3>
                         </div>
                         <div class="card-body">
-                            <span class="badge bg-primary">Permissions</span>
-                            <p class="text-muted">{{$permissions}}</p>
                             @can('admin_access')
 
                             @endcan
