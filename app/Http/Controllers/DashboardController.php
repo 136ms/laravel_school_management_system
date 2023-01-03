@@ -61,6 +61,7 @@ class DashboardController extends Controller
             "teachers" => $this->userRepository->getUserTeacherNames(),
             "children" => $this->userRepository->getUserChildrenNames(),
             "roles" => $this->userRepository->getUserRoleNames(),
+            "permissions" => $this->userRepository->getUserPermissions(),
         ]);
     }
 }
