@@ -102,7 +102,7 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-        $this->userRepository->hashPassword($user, $user['password']);
+        $this->userRepository->hashPassword($user);
         $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');
