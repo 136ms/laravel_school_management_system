@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends BaseRepository
 {
@@ -151,5 +152,13 @@ class UserRepository extends BaseRepository
             return 'No permissions';
         }
 
+    }
+
+    public function hashPassword(array $model): array
+    {
+        if (Hash::needsRehash($model['password'])) {
+            $model['password'] = Hash::make($model['password']);
+        }
+        return $model;
     }
 }

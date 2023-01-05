@@ -90,6 +90,7 @@ class ProfileController extends Controller
         }
 
         $userRequest = $request->all();
+        $this->userRepository->hashPassword($userRequest, $userRequest['password']);
 
         $role = Role::findById($userRequest['roles']);
 
