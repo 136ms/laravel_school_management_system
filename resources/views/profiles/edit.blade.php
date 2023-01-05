@@ -30,7 +30,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('users.index') }}" class="btn btn-default"> Cancel </a>
+                <a href="{{ route('profiles.index') }}" class="btn btn-default"> Cancel </a>
             </div>
 
             {!! Form::close() !!}

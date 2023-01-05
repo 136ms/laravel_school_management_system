@@ -44,7 +44,7 @@
                             <strong><i class="fas fa-user"></i> Phone number</strong>
                             <p class="text-muted">{{$user->phonenum}}</p>
                             <strong><i class="fas fa-user"></i> Roles</strong>
-                            <p class="text-muted">{{$user->roles[0]->name}}</p>
+                            <p class="text-muted">{{$roles}}</p>
                             @can('admin_access')
                                 <strong><i class="fas fa-user"></i> Permissions</strong>
                                 @foreach($user->roles[0]->permissions as $permission)

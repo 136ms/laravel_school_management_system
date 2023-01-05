@@ -13,7 +13,10 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 use Laracasts\Flash\Flash;
+use Spatie\Permission\Models\Role;
 
 class ProfileController extends Controller
 {
@@ -35,7 +38,8 @@ class ProfileController extends Controller
     {
         abort_if(Gate::denies('profiles_access'), 403);
         $user = $request->user();
-        return view('profiles.index', $user)->with('user', $user);
+        $roles = $this->userRepository->getUserRoleNames();
+        return view('profiles.index', $user)->with('user', $user)->with('roles', $roles);
     }
 
     /**
@@ -69,7 +73,7 @@ class ProfileController extends Controller
         {
             abort_if(Gate::denies('profiles_edit_users'), 403);
         }
-        return view('profiles.edit')->with('user', $user)->with('id', $profileId);
+        return view('profiles.edit')->with('user', $user)->with('id', $profileId)->with('roles', Role::pluck('name', 'id'));
     }
 
     /**
@@ -79,12 +83,18 @@ class ProfileController extends Controller
     {
         abort_if(Gate::denies('profiles_update'), 403);
         $user = Auth::user();
-
         if (empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('profiles.index'));
         }
+
+        $userRequest = $request->all();
+
+        $role = Role::findById($userRequest['roles']);
+
+        $user->assignRole($role);
+
         $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');

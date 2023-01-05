@@ -37,7 +37,7 @@
 <!-- Gender Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('gender', 'Gender:') !!}
-    {!! Form::text('gender', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) !!}
+    {!! Form::select('gender',array('Male' => 'Male', 'Female' => 'Female', 'Other' => 'Other'),null,['class' => 'form-control']) !!}
 </div>
 
 <!-- Phonenum Field -->
@@ -49,5 +49,11 @@
 <!-- password Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'New password:') !!}
-    {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
+    {!! Form::password('password' ,['class' => 'form-control', 'required']) !!}
+</div>
+
+<!-- password Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('roles', 'Choose role:') !!}
+    {!! Form::select('roles',$roles,null,['class' => 'form-control']) !!}
 </div>
