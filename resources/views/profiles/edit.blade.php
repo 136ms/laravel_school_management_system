@@ -17,10 +17,12 @@
 
     <div class="content px-3">
 
-        @include('adminlte-templates::common.errors')
-
+        @include('flash::message')
+        @can('roles_update')
+            <a href="{{ route('users.roles.update', $user->id) }}" class="btn btn-primary"> Manage roles </a>
+        @endcan
         <div class="card">
-            {!! Form::model($user, ['route' => ['profiles.update', $id], 'method' => 'patch']) !!}
+            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
