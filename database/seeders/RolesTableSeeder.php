@@ -62,6 +62,7 @@ class RolesTableSeeder extends Seeder
             'profiles_edit',
             'profiles_update',
             'profiles_edit_users',
+            'roles_update'
         ];
 
         $adminPermissions = [
@@ -97,6 +98,8 @@ class RolesTableSeeder extends Seeder
             'profiles_edit',
             'profiles_update',
             'profiles_edit_users',
+            'users_update',
+            'users_edit',
         ];
 
         foreach ($permissions as $permission){
