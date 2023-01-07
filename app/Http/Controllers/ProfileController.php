@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Testing\Fluent\Concerns\Has;
 use Laracasts\Flash\Flash;
-use Spatie\Permission\Models\Role;
 
 class ProfileController extends Controller
 {
-    /** @var UserRepository $userRepository*/
+    /** @var UserRepository $userRepository */
     private UserRepository $userRepository;
+
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
@@ -29,80 +25,71 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show User profile
+     * Shows index User profile view
      *
-     * @param Request $request
-     * @return Application|Factory|View
+     * @return View|Factory|Application
      */
-    public function index(Request $request): View|Factory|Application
+    public function index(): View|Factory|Application
     {
         abort_if(Gate::denies('profiles_access'), 403);
-        $user = $request->user();
+
+        /** @var User $user */
+        $user = Auth::user();
+
         $roles = $this->userRepository->getUserRoleNames();
-        return view('profiles.index', $user)->with('user', $user)->with('roles', $roles);
+
+        if (!isset($roles)) {
+            Flash::error($user->fullName . ' profile was not found.');
+            return view('dashboard', $user)->with('user', $user);
+        } else {
+            return view('profiles.index', $user)->with('user', $user)->with('roles', $roles);
+        }
     }
 
     /**
-     * Show User profile by ID
+     * Shows show User profile view using specified id.
      *
-     * @param Request $request
-     * @param int $id ID of User
-     * @return Application|Factory|View|RedirectResponse|Redirector
+     * @param int $id
+     * @return View|Factory|Redirector|RedirectResponse|Application
      */
-    public function show(Request $request, int $id): View|Factory|Redirector|RedirectResponse|Application
+    public function show(int $id): View|Factory|Redirector|RedirectResponse|Application
     {
         abort_if(Gate::denies('profiles_show'), 403);
-        $user = $request->user()->find($id);
 
-        if (empty($user)) {
-            Flash::error('Profile not found');
+        /** @var User $user */
+        $user = $this->userRepository->find($id);
+
+        if (!isset($user)) {
+
+            Flash::error($user->fullName . ' profile was not found.');
 
             return redirect(route('profiles.show'));
+        } else {
+            return view('profiles.show')->with('user', $user);
         }
-
-        return view('profiles.show')->with('user', $user);
-    }
-    public function edit()
-    {
-        abort_if(Gate::denies('profiles_edit'), 403);
-        $url = $_SERVER['REQUEST_URI'];
-        $profileId = preg_replace('/\D/', '', $url);
-        $profileId = intval($profileId);
-        $user = User::find($profileId);
-        if (Auth::user()->id != $profileId)
-        {
-            abort_if(Gate::denies('profiles_edit_users'), 403);
-        }
-        return view('profiles.edit')->with('user', $user)->with('id', $profileId)->with('roles', Role::pluck('name', 'id'));
     }
 
     /**
-     * Update the specified User in storage.
+     * Shows edit User view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Redirector|Application|RedirectResponse
      */
-    public function update($id, UpdateUserRequest $request)
+    public function edit(int $id): View|Factory|Redirector|Application|RedirectResponse
     {
-        abort_if(Gate::denies('profiles_update'), 403);
-        $user = Auth::user();
-        if (empty($user)) {
-            Flash::error('User not found');
+        abort_if(Gate::denies('profiles_edit'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($id);
+
+        if (!isset($user)) {
+            Flash::error($user->fullName . ' profile was not found.');
 
             return redirect(route('profiles.index'));
+        } else {
+            return view('profiles.edit')->with('user', $user);
         }
-
-        $userRequest = $request->all();
-        $this->userRepository->hashPassword($userRequest, $userRequest['password']);
-
-        $role = Role::findById($userRequest['roles']);
-
-        $user->assignRole($role);
-
-        $this->userRepository->update($request->all(), $id);
-
-        Flash::success('User updated successfully.');
-
-        return redirect(route('profiles.index'));
     }
-
 }
 
 
