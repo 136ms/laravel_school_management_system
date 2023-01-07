@@ -7,6 +7,8 @@ use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -44,24 +46,35 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show User dashboard
      *
      * @return Renderable
      */
     public function index(): Renderable
     {
-        return view('dashboard')->with([
-            "user" => Auth::user(),
-            "userCount" => $this->userRepository->count(),
-            "subjects" => $this->subjectRepository->getUserSubjectNames(),
-            "subjectCount" => $this->subjectRepository->count(),
-            "groups" => $this->groupRepository->getUserGroupNames(),
-            "groupCount" => $this->groupRepository->count(),
-            "parents" => $this->userRepository->getUserParentNames(),
-            "teachers" => $this->userRepository->getUserTeacherNames(),
-            "children" => $this->userRepository->getUserChildrenNames(),
-            "roles" => $this->userRepository->getUserRoleNames(),
-            "permissions" => $this->userRepository->getUserPermissions(),
-        ]);
+        /** @var User $user */
+        $user = Auth::user();
+
+        if (isset($user))
+        {
+            return view('dashboard')->with([
+                'user' => $user,
+                'userCount' => $this->userRepository->count(),
+                'subjects' => $this->subjectRepository->getUserSubjectNames(),
+                'subjectCount' => $this->subjectRepository->count(),
+                'groups' => $this->groupRepository->getUserGroupNames(),
+                'groupCount' => $this->groupRepository->count(),
+                'parents' => $this->userRepository->getUserParentNames(),
+                'teachers' => $this->userRepository->getUserTeacherNames(),
+                'children' => $this->userRepository->getUserChildrenNames(),
+                'roles' => $this->userRepository->getUserRoleNames(),
+                'permissions' => $this->userRepository->getUserPermissions(),
+            ]);
+        }
+        else
+        {
+            Flash::error('Please login to your account.');
+            return view('auth.login');
+        }
     }
 }
