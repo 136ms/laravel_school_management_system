@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticable;
 use Spatie\Permission\Traits\HasRoles;
 
-
+/**
+ * @property string $lname
+ * @property string $fname
+ * @property string $fullName
+ */
 class User extends Authenticable
 {
     use HasRoles, HasFactory;
@@ -46,6 +50,11 @@ class User extends Authenticable
         'phonenum' => 'required|string|max:255',
         'password' => 'required'
     ];
+
+    public function getFullNameAttribute(): string
+    {
+        return $this->fname . ' ' . $this->lname;
+    }
 
     public function groups(): BelongsToMany
     {
