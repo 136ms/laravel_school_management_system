@@ -137,7 +137,7 @@ abstract class BaseRepository
     public function create(array $input): Model
     {
         $model = $this->model->newInstance($input);
-
+        $model['password'] = Hash::make($model['password']);
         $model->save();
 
         return $model;
