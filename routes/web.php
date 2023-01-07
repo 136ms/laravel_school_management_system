@@ -18,6 +18,8 @@ Auth::routes();
 //Resources
 Route::resource('subjects', App\Http\Controllers\SubjectController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
+Route::get('users/{id}/roles', [App\Http\Controllers\UserController::class, 'roleShow'])->name('users.roles.show');
+Route::patch('users/{id}/roles', [App\Http\Controllers\UserController::class, 'roleUpdate'])->name('users.roles.update');
 Route::resource('groups', App\Http\Controllers\GroupController::class);
 Route::resource('profiles', App\Http\Controllers\ProfileController::class);
 
