@@ -52,8 +52,3 @@
     {!! Form::password('password' ,['class' => 'form-control', 'required']) !!}
 </div>
 
-<!-- password Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('roles', 'Choose role:') !!}
-    {!! Form::select('roles',$roles,null,['class' => 'form-control']) !!}
-</div>
