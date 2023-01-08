@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
+use App\Models\Group;
 use App\Repositories\GroupRepository;
-use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Console\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
 
 class GroupController extends AppBaseController
 {
-    /** @var GroupRepository $groupRepository*/
+    /** @var GroupRepository $groupRepository */
     private GroupRepository $groupRepository;
 
     public function __construct(GroupRepository $groupRepository)
@@ -20,117 +26,160 @@ class GroupController extends AppBaseController
         $this->middleware('auth');
     }
 
+
     /**
-     * Display a listing of the Group.
+     * Shows index Groups view
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|Factory|View
      */
-    public function index(Request $request)
+    public function index(): View|Factory|\Illuminate\Contracts\Foundation\Application
     {
         abort_if(Gate::denies('groups_access'), 403);
+
         $groups = $this->groupRepository->paginate(10);
 
-        return view('groups.index')
-            ->with('groups', $groups);
+        if (!isset($groups)) {
+            Flash::error('Groups were not found.');
+
+            return view('dashboard');
+        } else {
+
+            return view('groups.index')
+                ->with('groups', $groups);
+        }
     }
 
+
     /**
-     * Show the form for creating a new Group.
+     * Shows create Group view
+     *
+     * @return Factory|View|\Illuminate\Contracts\Foundation\Application
      */
-    public function create()
+    public function create(): Factory|View|\Illuminate\Contracts\Foundation\Application
     {
         abort_if(Gate::denies('groups_create'), 403);
+
         return view('groups.create');
     }
 
+
     /**
-     * Store a newly created Group in storage.
+     * Creates new group
+     *
+     * @param CreateGroupRequest $request
+     * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
      */
-    public function store(CreateGroupRequest $request)
+    public function store(CreateGroupRequest $request): Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
         abort_if(Gate::denies('groups_store'), 403);
+
         $input = $request->all();
 
-        $group = $this->groupRepository->create($input);
+        if (!isset($input)) {
+            Flash::error('Group was not created successfully.');
+        } else {
+            $group = $this->groupRepository->create($input);
 
-        Flash::success('Group saved successfully.');
+            Flash::success($group->name . ' was created successfully.');
+        }
 
         return redirect(route('groups.index'));
     }
 
-    /**
-     * Display the specified Group.
-     */
-    public function show($id)
+
+    public function show(int $id): View|Factory|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
         abort_if(Gate::denies('groups_show'), 403);
+
+        /** @var Group $group */
         $group = $this->groupRepository->find($id);
 
-        if (empty($group)) {
-            Flash::error('Group not found');
+        if (!isset($group)) {
+            Flash::error($group->name . ' was not found');
 
             return redirect(route('groups.index'));
+        } else {
+            return view('groups.show')->with('group', $group);
         }
-
-        return view('groups.show')->with('group', $group);
     }
 
+
     /**
-     * Show the form for editing the specified Group.
+     * Shows edit Group view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
      */
-    public function edit($id)
+    public function edit(int $id): View|Factory|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
         abort_if(Gate::denies('groups_edit'), 403);
+
+        /** @var Group $group */
         $group = $this->groupRepository->find($id);
 
-        if (empty($group)) {
-            Flash::error('Group not found');
+        if (!isset($group)) {
+            Flash::error($group->name . ' was not found');
 
             return redirect(route('groups.index'));
+        } else {
+            return view('groups.edit')->with('group', $group);
         }
-
-        return view('groups.edit')->with('group', $group);
     }
 
+
     /**
-     * Update the specified Group in storage.
+     * Updates User Group using specified id
+     *
+     * @param int $id
+     * @param UpdateGroupRequest $request
+     * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
      */
-    public function update($id, UpdateGroupRequest $request)
+    public function update(int $id, UpdateGroupRequest $request): Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
         abort_if(Gate::denies('groups_update'), 403);
+
+        /** @var Group $group */
         $group = $this->groupRepository->find($id);
 
-        if (empty($group)) {
-            Flash::error('Group not found');
+        $input = $request->all();
 
-            return redirect(route('groups.index'));
+        if (!isset($group)) {
+            Flash::error($group->name . ' was not found');
+        } else {
+            $this->groupRepository->update($input, $id);
+
+            Flash::success($group->name . ' was updated successfully.');
         }
-
-        $group = $this->groupRepository->update($request->all(), $id);
-
-        Flash::success('Group updated successfully.');
 
         return redirect(route('groups.index'));
     }
 
+
     /**
-     * Remove the specified Group from storage.
+     * Removes Group using specified id.
      *
-     * @throws \Exception
+     * @param int $id
+     * @return Redirector|Application|RedirectResponse
+     * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(int $id): Redirector|Application|RedirectResponse
     {
         abort_if(Gate::denies('groups_destroy'), 403);
+
+        /** @var Group $group */
         $group = $this->groupRepository->find($id);
 
-        if (empty($group)) {
-            Flash::error('Group not found');
+        if (!isset($group)) {
 
-            return redirect(route('groups.index'));
+            Flash::error($group->name . ' was not found');
+
+        } else {
+
+            $this->groupRepository->delete($id);
+
+            Flash::success($group->name . ' was deleted successfully.');
+
         }
-
-        $this->groupRepository->delete($id);
-
-        Flash::success('Group deleted successfully.');
-
         return redirect(route('groups.index'));
     }
 }
