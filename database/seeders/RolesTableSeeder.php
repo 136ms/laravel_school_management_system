@@ -61,7 +61,8 @@ class RolesTableSeeder extends Seeder
             'profiles_show',
             'profiles_edit',
             'profiles_update',
-            'profiles_edit_users',
+            'profile_edit',
+            'profile_update',
             'roles_update'
         ];
 
@@ -73,17 +74,16 @@ class RolesTableSeeder extends Seeder
             'dashboard_access',
             'student_access',
             'profiles_access',
-            'profiles_edit',
-            'profiles_update',
-            'profiles_edit',
+            'profile_edit',
+            'profile_update',
         ];
 
         $parentPermissions = [
             'dashboard_access',
             'parent_access',
             'profiles_access',
-            'profiles_edit',
-            'profiles_update',
+            'profile_edit',
+            'profile_update',
         ];
 
         $teacherPermissions = [
@@ -97,48 +97,34 @@ class RolesTableSeeder extends Seeder
             'profiles_show',
             'profiles_edit',
             'profiles_update',
-            'profiles_edit_users',
+            'profile_edit',
+            'profile_update',
             'users_update',
             'users_edit',
         ];
 
-        foreach ($permissions as $permission){
+        foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
 
         // Grant all permissions to admin role
-        foreach ($adminPermissions as $permission){
+        foreach ($adminPermissions as $permission) {
             $adminRole->givePermissionTo($permission);
         }
 
         // Grant studentPermissions to student role
-        foreach ($studentPermissions as $permission){
+        foreach ($studentPermissions as $permission) {
             $studentRole->givePermissionTo($permission);
         }
 
         // Grant parentPermissions to parent role
-        foreach ($parentPermissions as $permission){
+        foreach ($parentPermissions as $permission) {
             $parentRole->givePermissionTo($permission);
         }
 
         // Grant teacherPermissions to teacher role
-        foreach ($teacherPermissions as $permission){
+        foreach ($teacherPermissions as $permission) {
             $teacherRole->givePermissionTo($permission);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
