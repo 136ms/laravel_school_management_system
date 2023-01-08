@@ -15,7 +15,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^v3.4.6",
-        "spatie/laravel-permission": "^5.7"
+        "spatie/laravel-permission": "^5.7",
+      "ext-http": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
