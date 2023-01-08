@@ -22,7 +22,7 @@
             <a href="{{ route('users.roles.update', $user->id) }}" class="btn btn-primary"> Manage roles </a>
         @endcan
         <div class="card">
-            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
+            {!! Form::model($user, ['route' => ['profiles.update', $user->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -32,7 +32,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('profiles.index') }}" class="btn btn-default"> Cancel </a>
+                <a href="{{ route('profile.index') }}" class="btn btn-default"> Cancel </a>
             </div>
 
             {!! Form::close() !!}
