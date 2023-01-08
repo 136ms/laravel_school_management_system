@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use Laracasts\Flash\Flash;
 use Spatie\Permission\Models\Role;
 
@@ -76,6 +77,7 @@ class UserController extends AppBaseController
         abort_if(Gate::denies('users_store'), 403);
 
         $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
 
         if (!isset($input)) {
             Flash::error('User was not created successfully.');
@@ -150,14 +152,16 @@ class UserController extends AppBaseController
         /** @var User $user */
         $user = $this->userRepository->find($id);
 
+        $input = $request->all();
+
+        $input['password'] = Hash::make($input['password']);
+
         if (!isset($user)) {
 
             Flash::error($user->fullName . ' was not found');
         } else {
 
-            $this->userRepository->hashPassword($user);
-
-            $this->userRepository->update($request->all(), $id);
+            $this->userRepository->update($input, $id);
 
             Flash::success($user->fullName . ' was updated successfully.');
         }
