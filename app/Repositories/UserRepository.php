@@ -154,11 +154,4 @@ class UserRepository extends BaseRepository
 
     }
 
-    public function hashPassword(User $user): User
-    {
-        if (Hash::needsRehash($user['password'])) {
-            $user['password'] = Hash::make($user['password']);
-        }
-        return $user;
-    }
 }
