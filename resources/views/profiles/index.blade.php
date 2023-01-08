@@ -19,7 +19,7 @@
                              alt="User profile picture">
                     </div>
                     <h3 class="profile-username text-center">{{$user->fname}} {{$user->lname}}</h3>
-                    <a href="{{route('profiles.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
+                    <a href="{{route('profile.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
                     <br>
                     <div class="card card-primary">
                         <div class="card-header">
