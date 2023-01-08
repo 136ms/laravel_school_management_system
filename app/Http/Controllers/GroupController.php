@@ -64,7 +64,7 @@ class GroupController extends AppBaseController
 
 
     /**
-     * Creates new group
+     * Creates new Group
      *
      * @param CreateGroupRequest $request
      * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
@@ -87,6 +87,12 @@ class GroupController extends AppBaseController
     }
 
 
+    /**
+     * Shows show Group view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
+     */
     public function show(int $id): View|Factory|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
         abort_if(Gate::denies('groups_show'), 403);
