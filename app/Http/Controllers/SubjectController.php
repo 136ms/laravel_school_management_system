@@ -83,7 +83,7 @@ class SubjectController extends AppBaseController
             Flash::success($subject->name . ' was created successfully.');
         }
 
-        return redirect(route('groups.index'));
+        return redirect(route('subjects.index'));
     }
 
 
