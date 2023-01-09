@@ -18,8 +18,10 @@
                             <p class="text-muted">{{$user->lname}}</p>
                             <span class="badge bg-primary">Roles</span>
                             <p class="text-muted">{{$roles}}</p>
+                            @can('permission_widget')
                             <span class="badge bg-primary">Permissions</span>
                             <p class="text-muted">{{$permissions}}</p>
+                            @endcan
                             @can('student_widget')
                                 <h5 class="text-muted">Student widgets</h5>
                                 <span class="badge bg-primary">Groups</span>
