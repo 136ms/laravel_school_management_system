@@ -68,16 +68,16 @@ class User extends Authenticable
 
     public function parents(): BelongsToMany
     {
-        return $this->belongsToMany(static::class, "child_parent", "child_id", 'parent_id');
+        return $this->belongsToMany(static::class, "child_parent", "child_id", "parent_id");
     }
 
     public function children(): BelongsToMany
     {
-        return $this->belongsToMany(static::class, "child_parent", "parent_id", 'child_id');
+        return $this->belongsToMany(static::class, "child_parent", "parent_id", "child_id");
     }
 
     public function teachers(): BelongsToMany
     {
-        return $this->belongsToMany(static::class, "teacher_user", "user_id", 'teacher_id');
+        return $this->belongsToMany(static::class, "teacher_user", "user_id", "teacher_id");
     }
 }
