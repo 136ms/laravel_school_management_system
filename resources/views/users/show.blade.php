@@ -29,37 +29,17 @@
                     <strong>ID</strong>
                     <p class="text-muted">{{$user->id}}</p>
 
-                    <strong>User parent IDs</strong>
-                    @if(isset($user->parents))
-                        @foreach($user->parents as $parent)
-                            <p class="text-muted">[{{ $parent->id }}.] {{ $parent->fname }} {{ $parent->lname }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
+                    <strong>Parents</strong>
+                    <p class="text-muted">{{$parents}}</p>
 
-                    <strong>User group IDs</strong>
-                    @if(isset($user->groups))
-                        @foreach($user->groups as $group)
-                            <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
+                    <strong>Groups</strong>
+                    <p class="text-muted">{{$groups}}</p>
 
-                    <strong>User subject IDs</strong>
-                    @if(isset($user->subjects))
-                        @foreach($user->subjects as $subject)
-                            <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
-                    {{--If user is teacher he'll be shown here--}}
-                    <strong>User teacher IDs</strong>
-                    @if(isset($user->teachers))
-                        @foreach($user->teachers as $teacher)
-                            <p class="text-muted">[{{ $teacher->id }}.] {{ $teacher->fname }} {{ $teacher->lname }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
+                    <strong>Subjects</strong>
+                    <p class="text-muted">{{$subjects}}</p>
+
+                    <strong>Teachers</strong>
+                    <p class="text-muted">{{$teachers}}</p>
 
                     <strong>First name</strong>
                     <p class="text-muted">{{$user->fname}}</p>
