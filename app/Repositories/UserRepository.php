@@ -35,7 +35,7 @@ class UserRepository extends BaseRepository
      *
      * @return string
      */
-    public function getUserTeacherNames(): string
+    public function getTeacherNames(): string
     {
         $user = Auth::user();
         if (!$user) {
@@ -60,7 +60,7 @@ class UserRepository extends BaseRepository
      *
      * @return string
      */
-    public function getUserChildrenNames(): string
+    public function getChildrenNames(): string
     {
         $user = Auth::user();
         if (!$user) {
@@ -85,7 +85,7 @@ class UserRepository extends BaseRepository
      *
      * @return RedirectResponse|string
      */
-    public function getUserParentNames(): string|RedirectResponse
+    public function getParentNames(): string|RedirectResponse
     {
         $user = Auth::user();
         if (!$user) {
@@ -110,7 +110,7 @@ class UserRepository extends BaseRepository
      *
      * @return string|RedirectResponse
      */
-    public function getUserRoleNames(): string|RedirectResponse
+    public function getRoleNames(): string|RedirectResponse
     {
         $user = Auth::user();
         if (!$user) {
@@ -135,7 +135,7 @@ class UserRepository extends BaseRepository
      *
      * @return string|RedirectResponse
      */
-    public function getUserPermissions(): string|RedirectResponse
+    public function getPermissions(): string|RedirectResponse
     {
         $user = Auth::user();
         if (!$user) {

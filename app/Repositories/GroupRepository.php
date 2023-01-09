@@ -29,7 +29,7 @@ class GroupRepository extends BaseRepository
      * @return string|RedirectResponse
      */
 
-    public function getUserGroupNames(): string|RedirectResponse
+    public function getGroupNames(): string|RedirectResponse
     {
         $user = Auth::getUser();
 

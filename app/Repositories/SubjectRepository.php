@@ -27,7 +27,7 @@ class SubjectRepository extends BaseRepository
      *
      * @return string|RedirectResponse
      */
-    public function getUserSubjectNames(): string|RedirectResponse
+    public function getSubjectNames(): string|RedirectResponse
     {
         $user = Auth::user();
         if (!$user) {

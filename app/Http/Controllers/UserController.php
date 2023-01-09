@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\Group;
 use App\Models\User;
 use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
