@@ -60,15 +60,15 @@ class DashboardController extends Controller
             return view('dashboard')->with([
                 'user' => $user,
                 'userCount' => $this->userRepository->count(),
-                'subjects' => $this->subjectRepository->getUserSubjectNames(),
+                'subjects' => $this->subjectRepository->getSubjectNames(),
                 'subjectCount' => $this->subjectRepository->count(),
-                'groups' => $this->groupRepository->getUserGroupNames(),
+                'groups' => $this->groupRepository->getGroupNames(),
                 'groupCount' => $this->groupRepository->count(),
-                'parents' => $this->userRepository->getUserParentNames(),
-                'teachers' => $this->userRepository->getUserTeacherNames(),
-                'children' => $this->userRepository->getUserChildrenNames(),
-                'roles' => $this->userRepository->getUserRoleNames(),
-                'permissions' => $this->userRepository->getUserPermissions(),
+                'parents' => $this->userRepository->getParentNames(),
+                'teachers' => $this->userRepository->getTeacherNames(),
+                'children' => $this->userRepository->getChildrenNames(),
+                'roles' => $this->userRepository->getRoleNames(),
+                'permissions' => $this->userRepository->getPermissions(),
             ]);
         }
         else
