@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Group;
 use App\Models\User;
+use App\Repositories\GroupRepository;
+use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -23,9 +26,17 @@ class UserController extends AppBaseController
     /** @var UserRepository $userRepository */
     private UserRepository $userRepository;
 
-    public function __construct(UserRepository $userRepo)
+    /** @var SubjectRepository $subjectRepository */
+    private SubjectRepository $subjectRepository;
+
+    /** @var GroupRepository $groupRepository */
+    private GroupRepository $groupRepository;
+
+    public function __construct(UserRepository $userRepository, SubjectRepository $subjectRepository, GroupRepository $groupRepository)
     {
-        $this->userRepository = $userRepo;
+        $this->userRepository = $userRepository;
+        $this->subjectRepository = $subjectRepository;
+        $this->groupRepository = $groupRepository;
         $this->middleware('auth');
     }
 
@@ -103,6 +114,10 @@ class UserController extends AppBaseController
 
         /** @var User $user */
         $user = $this->userRepository->find($id);
+        $groups = $this->groupRepository->getGroupNames();
+        $subjects = $this->subjectRepository->getSubjectNames();
+        $parents = $this->userRepository->getParentNames();
+        $teachers = $this->userRepository->getTeacherNames();
 
         if (!isset($user)) {
 
@@ -110,7 +125,13 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         } else {
-            return view('users.show')->with('user', $user);
+            return view('users.show')->with([
+                'user' => $user,
+                'groups' => $groups,
+                'subjects' => $subjects,
+                'parents' => $parents,
+                'teachers' => $teachers,
+            ]);
         }
     }
 
