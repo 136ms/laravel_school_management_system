@@ -33,9 +33,9 @@ class RolesTableSeeder extends Seeder
         $permissions = [
             'dashboard_access',
             'admin_access',
-            'student_access',
-            'teacher_access',
-            'parent_access',
+            'student_widget',
+            'teacher_widget',
+            'parent_widget',
             'users_access',
             'users_create',
             'users_store',
@@ -72,7 +72,7 @@ class RolesTableSeeder extends Seeder
 
         $studentPermissions = [
             'dashboard_access',
-            'student_access',
+            'student_widget',
             'profiles_access',
             'profile_edit',
             'profile_update',
@@ -80,7 +80,7 @@ class RolesTableSeeder extends Seeder
 
         $parentPermissions = [
             'dashboard_access',
-            'parent_access',
+            'parent_widget',
             'profiles_access',
             'profile_edit',
             'profile_update',
@@ -92,7 +92,7 @@ class RolesTableSeeder extends Seeder
             'groups_access',
             'users_show',
             'dashboard_access',
-            'teacher_access',
+            'teacher_widget',
             'profiles_access',
             'profiles_show',
             'profiles_edit',

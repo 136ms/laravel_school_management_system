@@ -20,7 +20,7 @@
                             <p class="text-muted">{{$roles}}</p>
                             <span class="badge bg-primary">Permissions</span>
                             <p class="text-muted">{{$permissions}}</p>
-                            @can('student_access')
+                            @can('student_widget')
                                 <h5 class="text-muted">Student widgets</h5>
                                 <span class="badge bg-primary">Groups</span>
                                 <p class="text-muted">{{$groups}}</p>
@@ -31,7 +31,7 @@
                                 <span class="badge bg-primary">Parents</span>
                                 <p class="text-muted">{{$parents}}</p>
                             @endcan
-                            @can('teacher_access')
+                            @can('teacher_widget')
                                 <h5 class="text-muted">Teacher widgets</h5>
                                 <span class="badge bg-primary">Groups</span>
                                 <p class="text-muted">{{$groups}}</p>
@@ -39,7 +39,7 @@
                                 <span class="badge bg-primary">Subjects</span>
                                 <p class="text-muted">{{$subjects}}</p>
                             @endcan
-                            @can('parent_access')
+                            @can('parent_widget')
                                 <h5 class="text-muted">Parent widgets</h5>
                                 <span class="badge bg-primary">Children</span>
                                 <p class="text-muted">{{$children}}</p>

@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laracasts\Flash\Flash;
 
 class UserRepository extends BaseRepository
 {
@@ -135,23 +136,28 @@ class UserRepository extends BaseRepository
         }
     }
 
-    public function getUserPermissions()
+    /**
+     * Get a list of the user's permissions as a string.
+     *
+     * @return string
+     */
+    public function getUserPermissions(): string
     {
-        $permissions = Auth::user()->getAllPermissions();
-
-        $permissionsCount = $permissions->count();
-
-        if ($permissionsCount > 0) {
-            $userPermissionsList = [];
-
-            for ($i = 0; $i < $permissionsCount; $i++) {
-                $userPermissionsList[$i] = $permissions[$i]['name'];
+        try {
+            $user = Auth::user();
+            if (!$user) {
+                Flash::error('No user authenticated');
+                return redirect()->back();
             }
-            return implode(', ', $userPermissionsList);
-        } else {
-            return 'No permissions';
+            $permissions = $user->getAllPermissions();
+            $permissionNames = $permissions->map(function ($permission) {
+                return $permission['name'];
+            });
+            return implode(', ', $permissionNames->all());
+        } catch (\Exception) {
+            Flash::error('Error retrieving permissions');
+            return redirect()->back();
         }
-
     }
 
 }
