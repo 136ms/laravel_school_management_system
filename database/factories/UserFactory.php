@@ -26,7 +26,7 @@ class UserFactory extends Factory
         return [
             'fname' => $this->faker->firstName,
             'lname' => $this->faker->lastName,
-            'birthdate' => $this->faker->date(),
+            'birthdate' => $this->faker->dateTime('HH:mm:ss'),
             'address' => $this->faker->address(),
             'email' => $this->faker->unique()->safeEmail(),
             'gender' => $this->faker->randomElement(['Male', 'Female', 'Other']),
