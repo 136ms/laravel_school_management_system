@@ -38,7 +38,7 @@ class ProfileController extends Controller
         /** @var User $user */
         $user = Auth::user();
 
-        $roles = $this->userRepository->getUserRoleNames();
+        $roles = $this->userRepository->getRoleNames();
 
         if (!isset($roles)) {
             Flash::error($user->fullName . ' profile was not found.');
