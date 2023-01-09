@@ -3,13 +3,13 @@
 namespace App\Repositories;
 
 use App\Models\Group;
-use App\Repositories\BaseRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 
 class GroupRepository extends BaseRepository
 {
-    protected $fieldSearchable = [
+    protected array $fieldSearchable = [
         'name'
     ];
 
@@ -23,24 +23,30 @@ class GroupRepository extends BaseRepository
         return Group::class;
     }
 
-    public function getUserGroupNames() : string{
-        $groups = Auth::getUser()->groups;
+    /**
+     * Get a list of the user's groups as a string.
+     *
+     * @return string|RedirectResponse
+     */
 
-        $groupCount = $groups->count();
+    public function getUserGroupNames(): string|RedirectResponse
+    {
+        $user = Auth::getUser();
 
-        if ($groupCount > 0)
-        {
-            $userGroupList = [];
-
-            for ($i = 0; $i < $groupCount; $i++)
-            {
-                $userGroupList[$i] = $groups[$i]['name'];
-            }
-
-            return implode(', ', $userGroupList);
+        if (!$user) {
+            Flash::error('No user authenticated');
+            return redirect()->back();
         }
-        else{
+
+        $groups = $user->groups;
+        if ($groups->isEmpty()) {
             return 'No groups';
         }
+
+        $groupNames = $groups->map(function ($group) {
+            return $group['name'];
+        });
+
+        return implode(', ', $groupNames->all());
     }
 }
