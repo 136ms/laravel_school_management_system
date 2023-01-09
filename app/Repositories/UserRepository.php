@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Laracasts\Flash\Flash;
 
 class UserRepository extends BaseRepository
@@ -30,134 +30,128 @@ class UserRepository extends BaseRepository
         return User::class;
     }
 
+    /**
+     * Get a list of the user's teacher names as a string.
+     *
+     * @return string
+     */
     public function getUserTeacherNames(): string
     {
-        $teachers = Auth::getUser()->teachers;
+        $user = Auth::user();
+        if (!$user) {
+            Flash::error('No user authenticated');
+            return redirect()->back();
+        }
 
-        $teachersCount = $teachers->count();
-
-        if ($teachersCount > 0) {
-            $userTeacherFnameList = [];
-            $userTeacherLnameList = [];
-            $userTeacherList = [];
-
-            for ($i = 0; $i < $teachersCount; $i++) {
-                $userTeacherFnameList[$i] = $teachers[$i]['fname'];
-            }
-
-            for ($i = 0; $i < $teachersCount; $i++) {
-                $userTeacherLnameList[$i] = $teachers[$i]['lname'];
-            }
-
-            for ($i = 0; $i < $teachersCount; $i++) {
-                $userTeacherList[$i] = $userTeacherFnameList[$i] . ' ' . $userTeacherLnameList[$i];
-            }
-
-            return implode(', ', $userTeacherList);
-        } else {
+        $teachers = $user->teachers;
+        if ($teachers->isEmpty()) {
             return 'No teachers';
         }
+
+        $teacherNames = $teachers->map(function ($teacher) {
+            return $teacher['fname'] . ' ' . $teacher['lname'];
+        });
+
+        return implode(', ', $teacherNames->all());
     }
 
+    /**
+     * Get a list of the user's child names as a string.
+     *
+     * @return string
+     */
     public function getUserChildrenNames(): string
     {
-        $children = Auth::getUser()->children;
+        $user = Auth::user();
+        if (!$user) {
+            Flash::error('No user authenticated');
+            return redirect()->back();
+        }
 
-        $childrenCount = $children->count();
-
-        if ($childrenCount > 0) {
-            $userChildrenFnameList = [];
-            $userChildrenLnameList = [];
-            $userChildrenList = [];
-
-            for ($i = 0; $i < $childrenCount; $i++) {
-                $userChildrenFnameList[$i] = $children[$i]['fname'];
-            }
-
-            for ($i = 0; $i < $childrenCount; $i++) {
-                $userChildrenLnameList[$i] = $children[$i]['lname'];
-            }
-
-            for ($i = 0; $i < $childrenCount; $i++) {
-                $userChildrenList[$i] = $userChildrenFnameList[$i] . ' ' . $userChildrenLnameList[$i];
-            }
-
-            return implode(', ', $userChildrenList);
-        } else {
+        $children = $user->children;
+        if ($children->isEmpty()) {
             return 'No children';
         }
+
+        $childNames = $children->map(function ($child) {
+            return $child['fname'] . ' ' . $child['lname'];
+        });
+
+        return implode(', ', $childNames->all());
     }
 
-    public function getUserParentNames(): string
+    /**
+     * Get a list of the user's parent names as a string.
+     *
+     * @return RedirectResponse|string
+     */
+    public function getUserParentNames(): string|RedirectResponse
     {
-        $parents = Auth::getUser()->parents;
+        $user = Auth::user();
+        if (!$user) {
+            Flash::error('No user authenticated');
+            return redirect()->back();
+        }
 
-        $parentsCount = $parents->count();
-
-        if ($parentsCount > 0) {
-            $userParentsFnameList = [];
-            $userParentsLnameList = [];
-            $userParentsList = [];
-
-            for ($i = 0; $i < $parentsCount; $i++) {
-                $userParentsFnameList[$i] = $parents[$i]['fname'];
-            }
-
-            for ($i = 0; $i < $parentsCount; $i++) {
-                $userParentsLnameList[$i] = $parents[$i]['lname'];
-            }
-
-            for ($i = 0; $i < $parentsCount; $i++) {
-                $userParentsList[$i] = $userParentsFnameList[$i] . ' ' . $userParentsLnameList[$i];
-            }
-
-            return implode(', ', $userParentsList);
-        } else {
+        $parents = $user->parents;
+        if ($parents->isEmpty()) {
             return 'No parents';
         }
+
+        $parentNames = $parents->map(function ($parent) {
+            return $parent['fname'] . ' ' . $parent['lname'];
+        });
+
+        return implode(', ', $parentNames->all());
     }
 
-    public function getUserRoleNames(): string
+    /**
+     * Get a list of the user's role names as a string.
+     *
+     * @return string|RedirectResponse
+     */
+    public function getUserRoleNames(): string|RedirectResponse
     {
-        $roles = Auth::getUser()->roles;
-
-        $rolesCount = $roles->count();
-
-        if ($rolesCount > 0) {
-            $userRolesList = [];
-
-            for ($i = 0; $i < $rolesCount; $i++) {
-                $userRolesList[$i] = $roles[$i]['name'];
-            }
-
-            return implode(', ', $userRolesList);
-        } else {
-            return 'No parents';
+        $user = Auth::user();
+        if (!$user) {
+            Flash::error('No user authenticated');
+            return redirect()->back();
         }
+
+        $roles = $user->roles;
+        if ($roles->isEmpty()) {
+            return 'No roles';
+        }
+
+        $roleNames = $roles->map(function ($role) {
+            return $role['name'];
+        });
+
+        return implode(', ', $roleNames->all());
     }
 
     /**
      * Get a list of the user's permissions as a string.
      *
-     * @return string
+     * @return string|RedirectResponse
      */
-    public function getUserPermissions(): string
+    public function getUserPermissions(): string|RedirectResponse
     {
-        try {
-            $user = Auth::user();
-            if (!$user) {
-                Flash::error('No user authenticated');
-                return redirect()->back();
-            }
-            $permissions = $user->getAllPermissions();
-            $permissionNames = $permissions->map(function ($permission) {
-                return $permission['name'];
-            });
-            return implode(', ', $permissionNames->all());
-        } catch (\Exception) {
-            Flash::error('Error retrieving permissions');
+        $user = Auth::user();
+        if (!$user) {
+            Flash::error('No user authenticated');
             return redirect()->back();
         }
-    }
 
+        $permissions = $user->getAllPermissions();
+        if ($permissions->isEmpty()) {
+            return 'No permissions';
+        }
+
+        $permissionNames = $permissions->map(function ($permission) {
+            return $permission['name'];
+        });
+
+        return implode(', ', $permissionNames->all());
+    }
 }
