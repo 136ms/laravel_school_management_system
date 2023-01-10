@@ -18,6 +18,12 @@
     <div class="content px-3">
 
         @include('flash::message')
+        @can('group_users_update')
+            <a href="{{ route('groups.users.show', $group->id) }}" class="btn btn-primary"> Manage users </a>
+        @endcan
+        @can('group_subjects_update')
+            <a href="{{ route('groups.subjects.show', $group->id) }}" class="btn btn-primary"> Manage subjects </a>
+        @endcan
 
         <div class="card">
 
