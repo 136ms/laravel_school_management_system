@@ -209,7 +209,7 @@ class SubjectController extends AppBaseController
     }
 
     /**
-     * Updates Role for requested User
+     * Updates Users for requested Subject
      *
      * @param Request $request
      * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
@@ -268,14 +268,14 @@ class SubjectController extends AppBaseController
     }
 
     /**
-     * Updates Group for requested User
+     * Updates Group for requested Subject
      *
      * @param Request $request
      * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
      */
     public function subjectUpdateGroups(Request $request): Redirector|\Illuminate\Console\Application|RedirectResponse
     {
-        abort_if(Gate::denies('groups_subjects_update'), 403);
+        abort_if(Gate::denies('subjects_groups_update'), 403);
 
         /** @var Subject $subject */
         $subject = $this->subjectRepository->find($request->subject_id);

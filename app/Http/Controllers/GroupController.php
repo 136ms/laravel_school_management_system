@@ -210,7 +210,7 @@ class GroupController extends AppBaseController
     }
 
     /**
-     * Updates Role for requested User
+     * Updates Users for requested Group
      *
      * @param Request $request
      * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
@@ -245,7 +245,7 @@ class GroupController extends AppBaseController
 
 
     /**
-     * Shows assign role view using specified id
+     * Shows assign users view using specified id
      *
      * @param int $id
      * @return View|Factory|Application
@@ -269,7 +269,7 @@ class GroupController extends AppBaseController
     }
 
     /**
-     * Updates Role for requested User
+     * Updates Subject for requested Group
      *
      * @param Request $request
      * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
@@ -304,7 +304,7 @@ class GroupController extends AppBaseController
 
 
     /**
-     * Shows assign role view using specified id
+     * Shows assign subject view using specified id
      *
      * @param int $id
      * @return View|Factory|Application

@@ -340,7 +340,7 @@ class UserController extends AppBaseController
     }
 
     /**
-     * Updates Group for requested User
+     * Updates Subject for requested User
      *
      * @param Request $request
      * @return Redirector|Application|RedirectResponse
@@ -492,7 +492,7 @@ class UserController extends AppBaseController
 
 
     /**
-     * Shows assign parent view using specified id
+     * Shows assign teacher view using specified id
      *
      * @param int $id
      * @return View|Factory|Application
