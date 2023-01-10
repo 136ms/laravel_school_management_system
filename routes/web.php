@@ -23,6 +23,10 @@ Route::get('users/{id}/roles', [App\Http\Controllers\UserController::class, 'rol
 Route::patch('users/{id}/roles', [App\Http\Controllers\UserController::class, 'roleUpdate'])->name('users.roles.update');
 
 Route::resource('groups', App\Http\Controllers\GroupController::class);
+Route::get('groups/{id}/users', [App\Http\Controllers\GroupController::class, 'groupShowUsers'])->name('groups.users.show');
+Route::patch('groups/{id}/users', [App\Http\Controllers\GroupController::class, 'groupUpdateUsers'])->name('groups.users.update');
+Route::get('groups/{id}/subjects', [App\Http\Controllers\GroupController::class, 'groupShowSubjects'])->name('groups.subjects.show');
+Route::patch('groups/{id}/subjects', [App\Http\Controllers\GroupController::class, 'groupUpdateSubjects'])->name('groups.subjects.update');
 
 Route::get('profiles/{id}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profiles.edit');
 Route::patch('profiles/{id}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profiles.update');
