@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Models\Group;
+use App\Models\Subject;
+use App\Models\User;
 use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
@@ -13,9 +15,11 @@ use Illuminate\Console\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
+use Spatie\Permission\Models\Role;
 
 class GroupController extends AppBaseController
 {
@@ -203,5 +207,123 @@ class GroupController extends AppBaseController
 
         }
         return redirect(route('groups.index'));
+    }
+
+    /**
+     * Updates Role for requested User
+     *
+     * @param Request $request
+     * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
+     */
+    public function groupUpdateUsers(Request $request): Redirector|Application|RedirectResponse
+    {
+        abort_if(Gate::denies('group_users_update'), 403);
+
+        /** @var Group $group */
+        $group = $this->groupRepository->find($request->group_id);
+
+        /** @var Request $users */
+        $users = $request->users;
+
+        if (isset($group)) {
+
+            $group->users()->sync([]);
+            $group->users()->attach($users);
+            $group->users()->sync($users);
+
+            Flash::success('Group users updated successfully.');
+
+            return redirect(route('groups.index'));
+
+        } else {
+
+            Flash::error('Group or Users do not not exist!');
+
+            return redirect(route('groups.edit' , $group));
+        }
+    }
+
+
+    /**
+     * Shows assign role view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Application
+     */
+    public function groupShowUsers(int $id): View|Factory|Application
+    {
+        abort_if(Gate::denies('groups_users_edit'), 403);
+
+        /** @var Group $group */
+        $group = $this->groupRepository->find($id);
+
+        /** @var Role $users */
+        $users = User::all();
+
+        if (isset($group) && isset($users)) {
+            return view('groups.manage-group-users')->with('group', $group)->with('users', $users);
+        } else {
+            Flash::error('User or Role does not exist!');
+            return view('groups.edit')->with('group', $group);
+        }
+    }
+
+    /**
+     * Updates Role for requested User
+     *
+     * @param Request $request
+     * @return Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
+     */
+    public function groupUpdateSubjects(Request $request): Redirector|Application|RedirectResponse
+    {
+        abort_if(Gate::denies('groups_subjects_update'), 403);
+
+        /** @var Group $group */
+        $group = $this->groupRepository->find($request->group_id);
+
+        /** @var Request $subjects */
+        $subjects = $request->subjects;
+
+        if (isset($group)) {
+
+            $group->subjects()->sync([]);
+            $group->subjects()->attach($subjects);
+            $group->subjects()->sync($subjects);
+
+            Flash::success('Group subjects updated successfully.');
+
+            return redirect(route('groups.index'));
+
+        } else {
+
+            Flash::error('Group or Users do not not exist!');
+
+            return redirect(route('groups.edit' , $group));
+        }
+    }
+
+
+    /**
+     * Shows assign role view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Application
+     */
+    public function groupShowSubjects(int $id): View|Factory|Application
+    {
+        abort_if(Gate::denies('groups_subjects_edit'), 403);
+
+        /** @var Group $group */
+        $group = $this->groupRepository->find($id);
+
+        /** @var Subject $subjects */
+        $subjects = Subject::all();
+
+        if (isset($group)) {
+            return view('groups.manage-group-subjects')->with('group', $group)->with('subjects', $subjects);
+        } else {
+            Flash::error('User or Subject does not exist!');
+            return view('groups.edit')->with('group', $group);
+        }
     }
 }
