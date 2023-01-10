@@ -313,7 +313,7 @@ class SubjectController extends AppBaseController
         abort_if(Gate::denies('subjects_groups_edit'), 403);
 
         /** @var Group $group */
-        $subject = $this->groupRepository->find($id);
+        $subject = $this->subjectRepository->find($id);
 
         /** @var Group $groups */
         $groups = Group::all();
