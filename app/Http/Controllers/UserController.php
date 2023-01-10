@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Group;
+use App\Models\Subject;
 use App\Models\User;
 use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
@@ -227,7 +229,7 @@ class UserController extends AppBaseController
      * @param Request $request
      * @return Redirector|Application|RedirectResponse
      */
-    public function roleUpdate(Request $request): Redirector|Application|RedirectResponse
+    public function userUpdateRole(Request $request): Redirector|Application|RedirectResponse
     {
         abort_if(Gate::denies('roles_update'), 403);
 
@@ -260,7 +262,7 @@ class UserController extends AppBaseController
      * @param int $id
      * @return View|Factory|Application
      */
-    public function roleShow(int $id): View|Factory|Application
+    public function userShowRole(int $id): View|Factory|Application
     {
         abort_if(Gate::denies('roles_update'), 403);
 
@@ -275,6 +277,240 @@ class UserController extends AppBaseController
         } else {
             Flash::error('User or Role does not exist!');
             return view('users.edit', $user);
+        }
+    }
+
+    /**
+     * Updates Group for requested User
+     *
+     * @param Request $request
+     * @return Redirector|Application|RedirectResponse
+     */
+    public function userUpdateGroup(Request $request): Redirector|Application|RedirectResponse
+    {
+        abort_if(Gate::denies('users_groups_update'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($request->user_id);
+
+        /** @var Request $groups */
+        $groups = $request->groups;
+
+        if (isset($user)) {
+
+            $user->groups()->sync([]);
+            $user->groups()->attach($groups);
+            $user->groups()->sync($groups);
+
+            Flash::success('User Groups updated successfully.');
+
+            return redirect(route('users.index'));
+
+        } else {
+
+            Flash::error('User or Groups do not not exist!');
+
+            return redirect(route('users.edit', $user));
+        }
+    }
+
+
+    /**
+     * Shows assign group view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Application
+     */
+    public function userShowGroup(int $id): View|Factory|Application
+    {
+        abort_if(Gate::denies('users_groups_edit'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($id);
+
+        /** @var Group $groups */
+        $groups = Group::all();
+
+        if (isset($user)) {
+            return view('users.manage-user-groups')->with('user', $user)->with('groups', $groups);
+        } else {
+            Flash::error('User or Role does not exist!');
+            return redirect(route('users.edit', $user));
+        }
+    }
+
+    /**
+     * Updates Group for requested User
+     *
+     * @param Request $request
+     * @return Redirector|Application|RedirectResponse
+     */
+    public function userUpdateSubject(Request $request): Redirector|Application|RedirectResponse
+    {
+        abort_if(Gate::denies('users_subjects_update'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($request->user_id);
+
+        /** @var Request $subjects */
+        $subjects = $request->subjects;
+
+        if (isset($user)) {
+
+            $user->subjects()->sync([]);
+            $user->subjects()->attach($subjects);
+            $user->subjects()->sync($subjects);
+
+            Flash::success('User Subjects updated successfully.');
+
+            return redirect(route('users.index'));
+
+        } else {
+
+            Flash::error('User or Subjects do not not exist!');
+
+            return redirect(route('users.edit', $user));
+        }
+    }
+
+
+    /**
+     * Shows assign subject view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Application
+     */
+    public function userShowSubject(int $id): View|Factory|Application
+    {
+        abort_if(Gate::denies('users_subjects_edit'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($id);
+
+        /** @var Subject $subjects */
+        $subjects = Subject::all();
+
+        if (isset($user)) {
+            return view('users.manage-user-subjects')->with('user', $user)->with('subjects', $subjects);
+        } else {
+            Flash::error('User or Subjects do not not exist!');
+            return redirect(route('users.edit', $user));
+        }
+    }
+
+    /**
+     * Updates Parent for requested User
+     *
+     * @param Request $request
+     * @return Redirector|Application|RedirectResponse
+     */
+    public function userUpdateParent(Request $request): Redirector|Application|RedirectResponse
+    {
+        abort_if(Gate::denies('users_parents_update'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($request->user_id);
+
+        /** @var Request $parents */
+        $parents = $request->parents;
+
+        if (isset($user)) {
+
+            $user->parents()->sync([]);
+            $user->parents()->attach($parents);
+            $user->parents()->sync($parents);
+
+            Flash::success('User Parents updated successfully.');
+
+            return redirect(route('users.index'));
+
+        } else {
+
+            Flash::error('User or Parents do not not exist!');
+
+            return redirect(route('users.edit', $user));
+        }
+    }
+
+
+    /**
+     * Shows assign parent view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Application
+     */
+    public function userShowParent(int $id): View|Factory|Application
+    {
+        abort_if(Gate::denies('users_parents_edit'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($id);
+
+        $parents = User::role('Parent')->get();
+
+        if (isset($user)) {
+            return view('users.manage-user-parents')->with('user', $user)->with('parents', $parents);
+        } else {
+            Flash::error('User or Teachers do not not exist!');
+            return redirect(route('users.edit', $user));
+        }
+    }
+
+    /**
+     * Updates Teacher for requested User
+     *
+     * @param Request $request
+     * @return Redirector|Application|RedirectResponse
+     */
+    public function userUpdateTeacher(Request $request): Redirector|Application|RedirectResponse
+    {
+        abort_if(Gate::denies('users_teachers_update'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($request->user_id);
+
+        /** @var Request $teachers */
+        $teachers = $request->teachers;
+
+        if (isset($user)) {
+
+            $user->teachers()->sync([]);
+            $user->teachers()->attach($teachers);
+            $user->teachers()->sync($teachers);
+
+            Flash::success('User Teachers updated successfully.');
+
+            return redirect(route('users.index'));
+
+        } else {
+
+            Flash::error('User or Teachers do not not exist!');
+
+            return redirect(route('users.edit', $user));
+        }
+    }
+
+
+    /**
+     * Shows assign parent view using specified id
+     *
+     * @param int $id
+     * @return View|Factory|Application
+     */
+    public function userShowTeacher(int $id): View|Factory|Application
+    {
+        abort_if(Gate::denies('users_teachers_edit'), 403);
+
+        /** @var User $user */
+        $user = $this->userRepository->find($id);
+
+        $teachers = User::role('Teacher')->get();
+
+        if (isset($user)) {
+            return view('users.manage-user-teachers')->with('user', $user)->with('teachers', $teachers);
+        } else {
+            Flash::error('User or Teachers do not not exist!');
+            return redirect(route('users.edit', $user));
         }
     }
 }
