@@ -23,6 +23,18 @@
         @can('roles_update')
             <a href="{{ route('users.roles.update', $user->id) }}" class="btn btn-primary"> Manage roles </a>
         @endcan
+        @can('users_groups_update')
+            <a href="{{ route('users.groups.update', $user->id) }}" class="btn btn-primary"> Manage groups </a>
+        @endcan
+        @can('users_subjects_update')
+            <a href="{{ route('users.subjects.update', $user->id) }}" class="btn btn-primary"> Manage subjects </a>
+        @endcan
+        @can('users_parents_update')
+            <a href="{{ route('users.parents.update', $user->id) }}" class="btn btn-primary"> Manage parents </a>
+        @endcan
+        @can('users_parents_update')
+            <a href="{{ route('users.teachers.update', $user->id) }}" class="btn btn-primary"> Manage teachers </a>
+        @endcan
         <div class="card">
             {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
 
