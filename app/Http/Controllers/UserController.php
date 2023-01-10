@@ -271,7 +271,7 @@ class UserController extends AppBaseController
         $roles = Role::all();
 
         if (isset($user) && isset($roles)) {
-            return view('roles.edit')->with('user', $user)->with('roles', $roles);
+            return view('roles.manage-roles')->with('user', $user)->with('roles', $roles);
         } else {
             Flash::error('User or Role does not exist!');
             return view('users.edit', $user);
