@@ -17,6 +17,10 @@ Auth::routes();
 
 //Resources
 Route::resource('subjects', App\Http\Controllers\SubjectController::class);
+Route::get('subjects/{id}/users', [App\Http\Controllers\SubjectController::class, 'subjectShowUsers'])->name('subjects.users.show');
+Route::patch('subjects/{id}/users', [App\Http\Controllers\SubjectController::class, 'subjectUpdateUsers'])->name('subjects.users.update');
+Route::get('subjects/{id}/groups', [App\Http\Controllers\SubjectController::class, 'subjectShowGroups'])->name('subjects.groups.show');
+Route::patch('subjects/{id}/groups', [App\Http\Controllers\SubjectController::class, 'subjectUpdateGroups'])->name('subjects.groups.update');
 
 Route::resource('users', App\Http\Controllers\UserController::class);
 Route::get('users/{id}/roles', [App\Http\Controllers\UserController::class, 'roleShow'])->name('users.roles.show');
