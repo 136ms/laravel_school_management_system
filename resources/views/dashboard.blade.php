@@ -6,6 +6,7 @@
     @can('dashboard_access')
         <div class="container">
             <div class="row pt-3">
+                @include('flash::message')
                 <div class="col-sm-4">
                     <div class="card card-primary">
                         <div class="card-header">
@@ -56,7 +57,6 @@
                             <h3 class="card-title">Dashboard</h3>
                         </div>
                         <div class="card-body">
-                            @include('flash::message')
                             @can('admin_access')
 
                             @endcan

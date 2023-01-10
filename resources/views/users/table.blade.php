@@ -21,6 +21,7 @@
             <tbody>
             @foreach($users as $user)
                 <tr>
+                    @include('flash::message')
                     <td>{{ $user->id }}.</td>
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>

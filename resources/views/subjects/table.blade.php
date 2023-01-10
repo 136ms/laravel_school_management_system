@@ -1,5 +1,6 @@
 <div class="card-body p-0">
     <div class="table-responsive">
+        @include('flash::message')
         <table class="table" id="subjects-table">
             <thead>
             <tr>

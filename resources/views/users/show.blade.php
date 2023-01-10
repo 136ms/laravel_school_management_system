@@ -26,6 +26,7 @@
                     <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
                 </div>
                 <div class="card-body">
+                    @include('flash::message')
                     <strong>ID</strong>
                     <p class="text-muted">{{$user->id}}</p>
 
