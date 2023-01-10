@@ -92,7 +92,7 @@ class SubjectRepository extends BaseRepository
 
         $subjects = $user->subjects;
         if ($subjects->isEmpty()) {
-            return 'No users';
+            return 'No subjects';
         }
 
         $subjectNames = $subjects->map(function ($subject) {

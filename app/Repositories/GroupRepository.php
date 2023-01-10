@@ -118,7 +118,7 @@ class GroupRepository extends BaseRepository
 
         $users = $group->users;
         if ($users->isEmpty()) {
-            return 'No groups';
+            return 'No users';
         }
 
         $userNames = $users->map(function ($user) {
@@ -145,7 +145,7 @@ class GroupRepository extends BaseRepository
 
         $subjects = $group->subjects;
         if ($subjects->isEmpty()) {
-            return 'No groups';
+            return 'No subjects';
         }
 
         $subjectNames = $subjects->map(function ($subject) {
