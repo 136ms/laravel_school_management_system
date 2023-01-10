@@ -6,6 +6,8 @@ use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Models\Group;
 use App\Repositories\GroupRepository;
+use App\Repositories\SubjectRepository;
+use App\Repositories\UserRepository;
 use Exception;
 use Illuminate\Console\Application;
 use Illuminate\Contracts\View\Factory;
@@ -17,11 +19,19 @@ use Laracasts\Flash\Flash;
 
 class GroupController extends AppBaseController
 {
+    /** @var UserRepository $userRepository */
+    private UserRepository $userRepository;
+
+    /** @var SubjectRepository $subjectRepository */
+    private SubjectRepository $subjectRepository;
+
     /** @var GroupRepository $groupRepository */
     private GroupRepository $groupRepository;
 
-    public function __construct(GroupRepository $groupRepository)
+    public function __construct(UserRepository $userRepository, SubjectRepository $subjectRepository, GroupRepository $groupRepository)
     {
+        $this->userRepository = $userRepository;
+        $this->subjectRepository = $subjectRepository;
         $this->groupRepository = $groupRepository;
         $this->middleware('auth');
     }
@@ -99,13 +109,19 @@ class GroupController extends AppBaseController
 
         /** @var Group $group */
         $group = $this->groupRepository->find($id);
+        $users = $this->groupRepository->getGroupUserNames($id);
+        $subjects = $this->groupRepository->getGroupSubjectNames($id);
 
         if (!isset($group)) {
             Flash::error($group->name . ' was not found');
 
             return redirect(route('groups.index'));
         } else {
-            return view('groups.show')->with('group', $group);
+            return view('groups.show')->with([
+                'group' => $group,
+                'users' => $users,
+                'subjects' => $subjects,
+            ]);
         }
     }
 
