@@ -30,21 +30,11 @@
                     <strong>Subject name</strong>
                     <p class="text-muted">{{$subject->name}}</p>
 
-                    <strong>Subject group IDs</strong>
-                    @if(isset($subject->groups))
-                        @foreach($subject->groups as $group)
-                            <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
+                    <strong>Subject groups</strong>
+                    <p class="text-muted">{{$groups}}</p>
 
-                    <strong>Subject user IDs</strong>
-                    @if(isset($subject->users))
-                        @foreach($subject->users as $user)
-                            <p class="text-muted">[{{ $user->id }}.] {{ $user->fname }} {{ $user->lname }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
+                    <strong>Subject users</strong>
+                    <p class="text-muted">{{$users}}</p>
                 </div>
             </div>
         </div>

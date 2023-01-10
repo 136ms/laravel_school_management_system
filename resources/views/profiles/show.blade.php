@@ -42,29 +42,16 @@
                             <strong><i class="fas fa-user"></i> Phone number</strong>
                             <p class="text-muted">{{$user->phonenum}}</p>
                             <strong><i class="fas fa-user"></i> Roles</strong>
-                            <p class="text-muted">{{$user->roles[0]->name}}</p>
+                            <p class="text-muted">{{$roles}}</p>
                             @can('admin_access')
-                            <strong><i class="fas fa-user"></i> Permissions</strong>
-                                @foreach($user->roles[0]->permissions as $permission)
-                                    <p class="text-muted">{{ $permission->name }}</p>
-                                @endforeach
-                                <p></p>
-                            <strong><i class="fas fa-user"></i> User group IDs</strong>
-                                @foreach($user->groups as $group)
-                                    <p class="text-muted">[{{ $group->id }}.] {{ $group->name }}</p>
-                                @endforeach
-                                <p></p>
-                            <strong><i class="fas fa-user"></i> User subject IDs</strong>
-                                @foreach($user->subjects as $subject)
-                                    <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
-                                @endforeach
-                                <p></p>
-                            {{--If user is teacher he'll be shown here--}}
-                            <strong><i class="fas fa-user"></i> User teacher IDs</strong>
-                                @foreach($user->teachers as $teacher)
-                                    <p class="text-muted">[{{ $teacher->id }}.] {{ $teacher->fname }} {{ $teacher->lname }}</p>
-                                @endforeach
-                                <p></p>
+                                <strong><i class="fas fa-user"></i> Permissions</strong>
+                                <p class="text-muted">{{$permissions}}</p>
+                                <strong><i class="fas fa-user"></i> Groups</strong>
+                                <p class="text-muted">{{$groups}}</p>
+                                <strong><i class="fas fa-user"></i> Subjects</strong>
+                                <p class="text-muted">{{$subjects}}</p>
+                                <strong><i class="fas fa-user"></i> Teachers</strong>
+                                <p class="text-muted">{{$teachers}}</p>
                             @endcan
                         </div>
                     </div>

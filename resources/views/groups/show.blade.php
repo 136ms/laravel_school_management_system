@@ -9,7 +9,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-users"></i>
                         {{$group->name}}
                     </h1>
                 </div>
@@ -29,23 +29,10 @@
                     <p class="text-muted">{{$group->id}}</p>
                     <strong>Group name</strong>
                     <p class="text-muted">{{$group->name}}</p>
-
-                    <strong>Group user IDs</strong>
-                    @if(isset($group->users))
-                        @foreach($group->users as $user)
-                            <p class="text-muted">[{{ $user->id }}.] {{ $user->fname }} {{ $user->lname }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
-
-                    <strong>Group subject IDs</strong>
-                    @if(isset($group->subjects))
-                        @foreach($group->subjects as $subject)
-                            <p class="text-muted">[{{ $subject->id }}.] {{ $subject->name }}</p>
-                        @endforeach
-                        <p></p>
-                    @endif
-
+                    <strong>Group users</strong>
+                    <p class="text-muted">{{$users}}</p>
+                    <strong>Group subjects</strong>
+                    <p class="text-muted">{{$subjects}}</p>
                     <strong>Created at</strong>
                     <p class="text-muted">{{$group->created_at}}</p>
                     <strong>Updated at</strong>
