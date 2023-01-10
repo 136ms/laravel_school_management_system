@@ -13,19 +13,13 @@ use App\Models\User;
 class DashboardController extends Controller
 {
 
-    /**
-     * @var SubjectRepository
-     */
+    /** @var SubjectRepository */
     private SubjectRepository $subjectRepository;
 
-    /**
-     * @var UserRepository
-     */
+    /** @var UserRepository */
     private UserRepository $userRepository;
 
-    /**
-     * @var GroupRepository
-     */
+    /** @var GroupRepository */
     private GroupRepository $groupRepository;
 
     /**
@@ -55,8 +49,7 @@ class DashboardController extends Controller
         /** @var User $user */
         $user = Auth::user();
 
-        if (isset($user))
-        {
+        if (isset($user)) {
             return view('dashboard')->with([
                 'user' => $user,
                 'userCount' => $this->userRepository->count(),
@@ -70,9 +63,7 @@ class DashboardController extends Controller
                 'roles' => $this->userRepository->getRoleNames(),
                 'permissions' => $this->userRepository->getPermissions(),
             ]);
-        }
-        else
-        {
+        } else {
             Flash::error('Please login to your account.');
             return view('auth.login');
         }
