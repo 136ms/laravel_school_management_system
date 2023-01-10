@@ -31,7 +31,9 @@ class UserController extends AppBaseController
     /** @var GroupRepository $groupRepository */
     private GroupRepository $groupRepository;
 
-    public function __construct(UserRepository $userRepository, SubjectRepository $subjectRepository, GroupRepository $groupRepository)
+    public function __construct(UserRepository    $userRepository,
+                                SubjectRepository $subjectRepository,
+                                GroupRepository   $groupRepository)
     {
         $this->userRepository = $userRepository;
         $this->subjectRepository = $subjectRepository;
