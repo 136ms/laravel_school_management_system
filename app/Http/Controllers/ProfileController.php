@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Repositories\GroupRepository;
+use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -17,12 +19,24 @@ use Laracasts\Flash\Flash;
 
 class ProfileController extends Controller
 {
-    /** @var UserRepository $userRepository */
+    /** @var SubjectRepository */
+    private SubjectRepository $subjectRepository;
+
+    /** @var UserRepository */
     private UserRepository $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    /** @var GroupRepository */
+    private GroupRepository $groupRepository;
+
+    public function __construct(
+        SubjectRepository $subjectRepository,
+        UserRepository    $userRepository,
+        GroupRepository   $groupRepository
+    )
     {
+        $this->subjectRepository = $subjectRepository;
         $this->userRepository = $userRepository;
+        $this->groupRepository = $groupRepository;
         $this->middleware('auth');
     }
 
@@ -37,14 +51,37 @@ class ProfileController extends Controller
 
         /** @var User $user */
         $user = Auth::user();
-
         $roles = $this->userRepository->getRoleNames();
+        $permissions = $this->userRepository->getPermissions();
+        $groups = $this->groupRepository->getGroupNames();
+        $subjects = $this->subjectRepository->getSubjectNames();
+        $teachers = $this->userRepository->getTeacherNames();
+        $parents = $this->userRepository->getParentNames();
+        $children = $this->userRepository->getChildrenNames();
 
         if (!isset($roles)) {
             Flash::error($user->fullName . ' profile was not found.');
-            return view('dashboard', $user)->with('user', $user);
+            return view('dashboard')->with([
+                'user' => $user,
+                'roles' => $roles,
+                'permissions' => $permissions,
+                'groups' => $groups,
+                'subjects' => $subjects,
+                'teachers' => $teachers,
+                'parents' => $parents,
+                'children' => $children,
+            ]);
         } else {
-            return view('profiles.index', $user)->with('user', $user)->with('roles', $roles);
+            return view('profiles.index')->with([
+                'user' => $user,
+                'roles' => $roles,
+                'permissions' => $permissions,
+                'groups' => $groups,
+                'subjects' => $subjects,
+                'teachers' => $teachers,
+                'parents' => $parents,
+                'children' => $children,
+            ]);
         }
     }
 
@@ -60,14 +97,39 @@ class ProfileController extends Controller
 
         /** @var User $user */
         $user = $this->userRepository->find($id);
+        $roles = $this->userRepository->getUserRoleNames($id);
+        $permissions = $this->userRepository->getUserPermissions($id);
+        $groups = $this->groupRepository->getUserGroupNames($id);
+        $subjects = $this->subjectRepository->getUserSubjectNames($id);
+        $teachers = $this->userRepository->getUserTeacherNames($id);
+        $parents = $this->userRepository->getUserParentNames($id);
+        $children = $this->userRepository->getUserChildrenNames($id);
 
         if (!isset($user)) {
 
             Flash::error($user->fullName . ' profile was not found.');
 
-            return redirect(route('profiles.show'));
+            return view('profiles.index')->with([
+                'user' => $user,
+                'roles' => $roles,
+                'permissions' => $permissions,
+                'groups' => $groups,
+                'subjects' => $subjects,
+                'teachers' => $teachers,
+                'parents' => $parents,
+                'children' => $children,
+            ]);
         } else {
-            return view('profiles.show')->with('user', $user);
+            return view('profiles.show')->with([
+                'user' => $user,
+                'roles' => $roles,
+                'permissions' => $permissions,
+                'groups' => $groups,
+                'subjects' => $subjects,
+                'teachers' => $teachers,
+                'parents' => $parents,
+                'children' => $children,
+            ]);
         }
     }
 
