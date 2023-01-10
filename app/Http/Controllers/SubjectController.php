@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
 use App\Models\Subject;
+use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
+use App\Repositories\UserRepository;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -17,12 +19,20 @@ use Laracasts\Flash\Flash;
 
 class SubjectController extends AppBaseController
 {
-    /** @var SubjectRepository $subjectRepository*/
+    /** @var UserRepository $userRepository */
+    private UserRepository $userRepository;
+
+    /** @var SubjectRepository $subjectRepository */
     private SubjectRepository $subjectRepository;
 
-    public function __construct(SubjectRepository $subjectRepo)
+    /** @var GroupRepository $groupRepository */
+    private GroupRepository $groupRepository;
+
+    public function __construct(UserRepository $userRepository, SubjectRepository $subjectRepository, GroupRepository $groupRepository)
     {
-        $this->subjectRepository = $subjectRepo;
+        $this->userRepository = $userRepository;
+        $this->subjectRepository = $subjectRepository;
+        $this->groupRepository = $groupRepository;
         $this->middleware('auth');
     }
 
@@ -99,13 +109,19 @@ class SubjectController extends AppBaseController
 
         /** @var Subject $subject */
         $subject = $this->subjectRepository->find($id);
+        $groups = $this->groupRepository->getSubjectGroupNames($id);
+        $users = $this->subjectRepository->getSubjectUserNames($id);
 
         if (!isset($subject)) {
             Flash::error($subject->name . ' was not found');
 
             return redirect(route('subjects.index'));
         } else {
-            return view('subjects.show')->with('subject', $subject);
+            return view('subjects.show')->with([
+                'subject' => $subject,
+                'groups' => $groups,
+                'users' => $users,
+            ]);
         }
     }
 
