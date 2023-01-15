@@ -1,4 +1,6 @@
-@section('title'){{'Group list'}}@endsection
+@section('title')
+    {{'Group list'}}
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -8,12 +10,14 @@
                 <div class="col-sm-6">
                     <h1><i class="fas fa-users"></i> Group list</h1>
                 </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('groups.create') }}">
-                        Add Group
-                    </a>
-                </div>
+                @can('groups_create')
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary float-right"
+                           href="{{ route('groups.create') }}">
+                            Add Group
+                        </a>
+                    </div>
+                @endcan
             </div>
         </div>
     </section>

@@ -8,12 +8,14 @@
                 <div class="col-sm-6">
                     <h1><i class="fas fa-user"></i> User list</h1>
                 </div>
+                @can('users_create')
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
                        href="{{ route('users.create') }}">
                         Add User
                     </a>
                 </div>
+                @endcan
             </div>
         </div>
     </section>
