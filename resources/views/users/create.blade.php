@@ -1,4 +1,6 @@
-@section('title'){{'Add user'}}@endsection
+@section('title')
+    {{'Add user'}}
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -27,6 +29,10 @@
 
                 <div class="row">
                     @include('users.fields')
+                    <div class="form-group col-sm-6">
+                        {!! Form::label('roles[]', 'Roles:') !!}
+                        {!! Form::select('roles[]', $roles->pluck('name', 'id'), null, ['class' => 'form-control', 'multiple'=> 'multiple']) !!}
+                    </div>
                 </div>
 
             </div>

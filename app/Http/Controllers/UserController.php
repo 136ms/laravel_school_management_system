@@ -76,7 +76,11 @@ class UserController extends AppBaseController
     {
         abort_if(Gate::denies('users_create'), 403);
 
-        return view('users.create');
+        $roles = Role::all();
+
+        return view('users.create')->with([
+            'roles' => $roles
+        ]);
     }
 
 
@@ -98,6 +102,10 @@ class UserController extends AppBaseController
         } else {
             $user = $this->userRepository->create($input);
 
+            foreach ($input['roles'] as $role)
+            {
+                $user->assignRole($role);
+            }
             Flash::success($user->fullName . ' was created successfully.');
         }
 
