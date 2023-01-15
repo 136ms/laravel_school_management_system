@@ -117,10 +117,10 @@ class UserController extends AppBaseController
 
         /** @var User $user */
         $user = $this->userRepository->find($id);
-        $groups = $this->groupRepository->getGroupNames();
-        $subjects = $this->subjectRepository->getSubjectNames();
-        $parents = $this->userRepository->getParentNames();
-        $teachers = $this->userRepository->getTeacherNames();
+        $groups = $this->groupRepository->getUserGroupNames($user->id);
+        $subjects = $this->subjectRepository->getUserSubjectNames($user->id);
+        $parents = $this->userRepository->getUserParentNames($user->id);
+        $teachers = $this->userRepository->getUserTeacherNames($user->id);
 
         if (!isset($user)) {
 
