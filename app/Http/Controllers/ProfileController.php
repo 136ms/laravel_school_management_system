@@ -97,13 +97,13 @@ class ProfileController extends Controller
 
         /** @var User $user */
         $user = $this->userRepository->find($id);
-        $roles = $this->userRepository->getUserRoleNames($id);
-        $permissions = $this->userRepository->getUserPermissions($id);
-        $groups = $this->groupRepository->getUserGroupNames($id);
-        $subjects = $this->subjectRepository->getUserSubjectNames($id);
-        $teachers = $this->userRepository->getUserTeacherNames($id);
-        $parents = $this->userRepository->getUserParentNames($id);
-        $children = $this->userRepository->getUserChildrenNames($id);
+        $roles = $this->userRepository->getUserRoleNames($user->id);
+        $permissions = $this->userRepository->getUserPermissions($user->id);
+        $groups = $this->groupRepository->getUserGroupNames($user->id);
+        $subjects = $this->subjectRepository->getUserSubjectNames($user->id);
+        $teachers = $this->userRepository->getUserTeacherNames($user->id);
+        $parents = $this->userRepository->getUserParentNames($user->id);
+        $children = $this->userRepository->getUserChildrenNames($user->id);
 
         if (!isset($user)) {
 
