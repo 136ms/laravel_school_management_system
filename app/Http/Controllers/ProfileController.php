@@ -151,7 +151,7 @@ class ProfileController extends Controller
 
             return redirect(route('profiles.index'));
         } else {
-            return view('profiles.edit')->with('user', $user);
+            return view('profiles.edit')->with(['user' => $user]);
         }
     }
 
@@ -172,7 +172,7 @@ class ProfileController extends Controller
 
             return redirect(route('profiles.index'));
         } else {
-            return view('profiles.edit-profile')->with('user', $user);
+            return view('profiles.edit-profile')->with(['user' => $user]);
         }
     }
 

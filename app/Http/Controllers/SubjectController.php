@@ -58,7 +58,7 @@ class SubjectController extends AppBaseController
         } else {
 
             return view('subjects.index')
-                ->with('subjects', $subjects);
+                ->with(['subjects' => $subjects]);
         }
     }
 
@@ -147,7 +147,7 @@ class SubjectController extends AppBaseController
 
             return redirect(route('subjects.index'));
         } else {
-            return view('subjects.edit')->with('subject', $subject);
+            return view('subjects.edit')->with(['subject' => $subject]);
         }
     }
 
@@ -260,10 +260,13 @@ class SubjectController extends AppBaseController
         $users = User::all();
 
         if (isset($subject) && isset($users)) {
-            return view('subjects.manage-subject-users')->with('subject', $subject)->with('users', $users);
+            return view('subjects.manage-subject-users')->with([
+                'subject' => $subject,
+                'users' => $users
+            ]);
         } else {
             Flash::error('User or Subject does not exist!');
-            return view('subjects.edit')->with('subject', $subject);
+            return view('subjects.edit')->with(['subject' => $subject]);
         }
     }
 
@@ -319,10 +322,13 @@ class SubjectController extends AppBaseController
         $groups = Group::all();
 
         if (isset($subject)) {
-            return view('subjects.manage-subject-groups')->with('subject', $subject)->with('groups', $groups);
+            return view('subjects.manage-subject-groups')->with([
+                'subject' => $subject,
+                'groups' => $groups
+            ]);
         } else {
             Flash::error('User or Group does not exist!');
-            return view('subjects.edit')->with('subject', $subject);
+            return view('subjects.edit')->with(['subject' => $subject]);
         }
     }
 }

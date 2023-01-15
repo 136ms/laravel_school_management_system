@@ -62,7 +62,7 @@ class UserController extends AppBaseController
         } else {
 
             return view('users.index')
-                ->with('users', $users);
+                ->with(['users' => $users]);
         }
     }
 
@@ -157,7 +157,7 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         } else {
-            return view('users.edit')->with('user', $user);
+            return view('users.edit')->with(['user' => $user]);
         }
     }
 
@@ -273,7 +273,10 @@ class UserController extends AppBaseController
         $roles = Role::all();
 
         if (isset($user) && isset($roles)) {
-            return view('roles.manage-roles')->with('user', $user)->with('roles', $roles);
+            return view('roles.manage-roles')->with([
+                'user' => $user,
+                'roles' => $roles
+            ]);
         } else {
             Flash::error('User or Role does not exist!');
             return view('users.edit', $user);
@@ -332,7 +335,10 @@ class UserController extends AppBaseController
         $groups = Group::all();
 
         if (isset($user)) {
-            return view('users.manage-user-groups')->with('user', $user)->with('groups', $groups);
+            return view('users.manage-user-groups')->with([
+                'user'=> $user,
+                'groups' => $groups
+                ]);
         } else {
             Flash::error('User or Role does not exist!');
             return redirect(route('users.edit', $user));
@@ -391,7 +397,10 @@ class UserController extends AppBaseController
         $subjects = Subject::all();
 
         if (isset($user)) {
-            return view('users.manage-user-subjects')->with('user', $user)->with('subjects', $subjects);
+            return view('users.manage-user-subjects')->with([
+                'user' => $user,
+                'subjects' => $subjects
+            ]);
         } else {
             Flash::error('User or Subjects do not not exist!');
             return redirect(route('users.edit', $user));
@@ -449,7 +458,10 @@ class UserController extends AppBaseController
         $parents = User::role('Parent')->get();
 
         if (isset($user)) {
-            return view('users.manage-user-parents')->with('user', $user)->with('parents', $parents);
+            return view('users.manage-user-parents')->with([
+                'user' => $user,
+                'parents' => $parents
+            ]);
         } else {
             Flash::error('User or Teachers do not not exist!');
             return redirect(route('users.edit', $user));
@@ -507,7 +519,10 @@ class UserController extends AppBaseController
         $teachers = User::role('Teacher')->get();
 
         if (isset($user)) {
-            return view('users.manage-user-teachers')->with('user', $user)->with('teachers', $teachers);
+            return view('users.manage-user-teachers')->with([
+                'user' => $user,
+                'teachers' => $teachers
+                ]);
         } else {
             Flash::error('User or Teachers do not not exist!');
             return redirect(route('users.edit', $user));

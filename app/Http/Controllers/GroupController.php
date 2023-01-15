@@ -148,7 +148,9 @@ class GroupController extends AppBaseController
 
             return redirect(route('groups.index'));
         } else {
-            return view('groups.edit')->with('group', $group);
+            return view('groups.edit')->with([
+                'group' => $group
+            ]);
         }
     }
 
@@ -261,10 +263,15 @@ class GroupController extends AppBaseController
         $users = User::all();
 
         if (isset($group) && isset($users)) {
-            return view('groups.manage-group-users')->with('group', $group)->with('users', $users);
+            return view('groups.manage-group-users')->with([
+                'group' => $group,
+                'users'=> $users
+            ]);
         } else {
             Flash::error('User or Role does not exist!');
-            return view('groups.edit')->with('group', $group);
+            return view('groups.edit')->with([
+                'group' => $group
+            ]);
         }
     }
 
@@ -320,10 +327,13 @@ class GroupController extends AppBaseController
         $subjects = Subject::all();
 
         if (isset($group)) {
-            return view('groups.manage-group-subjects')->with('group', $group)->with('subjects', $subjects);
+            return view('groups.manage-group-subjects')->with([
+                'group' => $group,
+                'subjects'=> $subjects
+                ]);
         } else {
             Flash::error('User or Subject does not exist!');
-            return view('groups.edit')->with('group', $group);
+            return view('groups.edit')->with(['group' => $group]);
         }
     }
 }
