@@ -102,8 +102,7 @@ class UserController extends AppBaseController
         } else {
             $user = $this->userRepository->create($input);
 
-            foreach ($input['roles'] as $role)
-            {
+            foreach ($input['roles'] as $role) {
                 $user->assignRole($role);
             }
             Flash::success($user->fullName . ' was created successfully.');
@@ -344,9 +343,9 @@ class UserController extends AppBaseController
 
         if (isset($user)) {
             return view('users.manage-user-groups')->with([
-                'user'=> $user,
+                'user' => $user,
                 'groups' => $groups
-                ]);
+            ]);
         } else {
             Flash::error('User or Role does not exist!');
             return redirect(route('users.edit', $user));
@@ -530,10 +529,38 @@ class UserController extends AppBaseController
             return view('users.manage-user-teachers')->with([
                 'user' => $user,
                 'teachers' => $teachers
-                ]);
+            ]);
         } else {
             Flash::error('User or Teachers do not not exist!');
             return redirect(route('users.edit', $user));
+        }
+    }
+
+
+    public function userShowAvatarUpload()
+    {
+        abort_if(Gate::denies('user_picture_edit'), 403);
+        return view('users.manage-user-picture');
+    }
+
+    public function userUploadAvatar(Request $request)
+    {
+        abort_if(Gate::denies('user_picture_update'), 403);
+
+        if (!is_null($request->avatar)) {
+            $request->validate([
+                'avatar' => 'required|image',
+            ]);
+            $avatarName = time() . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $avatarName);
+
+            Auth()->user()->update(['avatar' => $avatarName]);
+
+            Flash::success('Profile picture updated successfully!');
+            return redirect(route('user.avatar'));
+        } else {
+            Flash::error('No profile picture was choosen!');
+            return back();
         }
     }
 }
