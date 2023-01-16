@@ -14,12 +14,15 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle"
-                             src="https://assets.infyom.com/logo/blue_logo_150x150.png"
-                             alt="User profile picture">
+                        <img src="/avatars/{{ Auth::user()->avatar }}" class="profile-user-img img-fluid img-circle" alt="User profile picture">
                     </div>
                     <h3 class="profile-username text-center">{{$user->fname}} {{$user->lname}}</h3>
+                    @can('profile_edit')
                     <a href="{{route('profile.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
+                    @endcan
+                    @can('profile_edit')
+                    <a href="{{route('user.avatar', $user)}}" class="btn btn-primary btn-block"><b>Change Avatar</b></a>
+                    @endcan
                     <br>
                     <div class="card card-primary">
                         <div class="card-header">
