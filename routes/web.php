@@ -44,6 +44,9 @@ Route::patch('users/{id}/parents', [App\Http\Controllers\UserController::class, 
 //Assign teachers
 Route::get('users/{id}/teachers', [App\Http\Controllers\UserController::class, 'userShowTeacher'])->name('users.teachers.show');
 Route::patch('users/{id}/teachers', [App\Http\Controllers\UserController::class, 'userUpdateTeacher'])->name('users.teachers.update');
+//Upload user picture
+Route::get('/avatar', [App\Http\Controllers\UserController::class, 'userShowAvatarUpload'])->name('user.avatar');
+Route::post('/avatar', [App\Http\Controllers\UserController::class, 'userUploadAvatar'])->name('user.avatar.update');
 
 //Group routes
 //Assign roles
