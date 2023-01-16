@@ -81,6 +81,8 @@ class RolesTableSeeder extends Seeder
             'profile_update',
             'roles_update',
             'permission_widget',
+            'user_picture_edit',
+            'user_picture_update'
         ];
 
         $adminPermissions = [
@@ -93,6 +95,8 @@ class RolesTableSeeder extends Seeder
             'profiles_access',
             'profile_edit',
             'profile_update',
+            'user_picture_edit',
+            'user_picture_update'
         ];
 
         $parentPermissions = [
@@ -101,6 +105,8 @@ class RolesTableSeeder extends Seeder
             'profiles_access',
             'profile_edit',
             'profile_update',
+            'user_picture_edit',
+            'user_picture_update'
         ];
 
         $teacherPermissions = [
@@ -118,6 +124,8 @@ class RolesTableSeeder extends Seeder
             'profile_update',
             'users_update',
             'users_edit',
+            'user_picture_edit',
+            'user_picture_update'
         ];
 
         foreach ($permissions as $permission) {
