@@ -31,9 +31,11 @@
                     <td>{{ mb_strimwidth($user->email, 0, 6, "...") }}</td>
                     <td>{{ mb_strimwidth($user->gender, 0, 10, "...")}}</td>
                     <td>{{ $user->phonenum }}</td>
+                    <td>
                     @foreach($user->roles as $role)
-                        <td>{{ $role->name }}</td>
+                        {{ $role['name'] }}
                     @endforeach
+                    </td>
                     <td>{{ $user->groups()->count() }}</td>
                     <td>{{ $user->subjects()->count() }}</td>
                     <td>{{ $user->parents()->count() }}</td>
