@@ -8,17 +8,17 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap4-toggle/3.6.1/bootstrap4-toggle.min.css"
           integrity="sha512-EzrsULyNzUc4xnMaqTrB4EpGvudqpetxG/WNjCpG6ZyyAGxeB6OBF9o246+mwx3l/9Cn838iLIcrxpPHTiygAA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <!-- AdminLTE -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css"
           integrity="sha512-mxrUXSjrxl8vm5GwafxcqTrEwO1/oBNU25l20GODsysHReZo4uhVISzAKzaABH6/tTfAxZrY2FprmeAP5UZY8A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <!-- iCheck -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css"
@@ -53,20 +53,19 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
-                         class="user-image img-circle elevation-2" alt="User Image">
+                    <img src="/avatars/{{ Auth::user()->avatar }}" class="user-image img-circle elevation-2" alt="User profile picture">
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
                     <li class="user-header bg-primary">
-                        <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
-                             class="img-circle elevation-2"
-                             alt="User Image">
+                        <img src="/avatars/{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User profile picture">
                         <p>
-                            {{ Auth::user()->name }}
-                            <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
-                        </p>
+                            {{ Auth::user()->fullName }}
+                        </p>Roles:
+                        @foreach(Auth::user()->roles as $role)
+                            <small>{{$role->name}}</small>
+                        @endforeach
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
