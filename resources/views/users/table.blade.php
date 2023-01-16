@@ -4,6 +4,7 @@
             <thead>
             <tr>
                 <th>ID</th>
+                <th>Role</th>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Birth date</th>
@@ -23,6 +24,9 @@
                 <tr>
                     @include('flash::message')
                     <td>{{ $user->id }}.</td>
+                    @foreach($user->roles as $role)
+                        <td>{{ $role->name }}</td>
+                    @endforeach
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>
                     <td>{{ date_format($user->birthdate, "d.m.Y") }}</td>
