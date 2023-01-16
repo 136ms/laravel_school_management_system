@@ -4,7 +4,6 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Role</th>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Birth date</th>
@@ -12,6 +11,7 @@
                 <th>E-mail</th>
                 <th>Gender</th>
                 <th>Phone number</th>
+                <th>Role</th>
                 <th>Groups</th>
                 <th>Subjects</th>
                 <th>Parents</th>
@@ -24,9 +24,6 @@
                 <tr>
                     @include('flash::message')
                     <td>{{ $user->id }}.</td>
-                    @foreach($user->roles as $role)
-                        <td>{{ $role->name }}</td>
-                    @endforeach
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>
                     <td>{{ date_format($user->birthdate, "d.m.Y") }}</td>
@@ -34,6 +31,9 @@
                     <td>{{ mb_strimwidth($user->email, 0, 6, "...") }}</td>
                     <td>{{ mb_strimwidth($user->gender, 0, 10, "...")}}</td>
                     <td>{{ $user->phonenum }}</td>
+                    @foreach($user->roles as $role)
+                        <td>{{ $role->name }}</td>
+                    @endforeach
                     <td>{{ $user->groups()->count() }}</td>
                     <td>{{ $user->subjects()->count() }}</td>
                     <td>{{ $user->parents()->count() }}</td>
