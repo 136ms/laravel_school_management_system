@@ -35,10 +35,14 @@
         @can('users_parents_update')
             <a href="{{ route('users.teachers.update', $user->id) }}" class="btn btn-primary"> Manage teachers </a>
         @endcan
+        @can('users_picture_update')
+            <a href="{{ route('users.avatar.update', $user->id) }}" class="btn btn-primary"> Manage avatar </a>
+        @endcan
         <div class="card">
             {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
+                <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 50px" alt="User profile picture">
                 <div class="row">
                     @include('users.fields')
                 </div>
