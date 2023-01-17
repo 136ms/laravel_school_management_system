@@ -19,6 +19,7 @@ Auth::routes();
 Route::resource('subjects', App\Http\Controllers\SubjectController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
 Route::resource('groups', App\Http\Controllers\GroupController::class);
+Route::resource('grades', App\Http\Controllers\GradeController::class);
 
 //Subject routes
 //Assign users
