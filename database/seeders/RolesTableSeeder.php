@@ -82,7 +82,9 @@ class RolesTableSeeder extends Seeder
             'roles_update',
             'permission_widget',
             'user_picture_edit',
-            'user_picture_update'
+            'user_picture_update',
+            'users_picture_edit',
+            'users_picture_update',
         ];
 
         $adminPermissions = [
@@ -125,7 +127,9 @@ class RolesTableSeeder extends Seeder
             'users_update',
             'users_edit',
             'user_picture_edit',
-            'user_picture_update'
+            'user_picture_update',
+            'users_picture_edit',
+            'users_picture_update',
         ];
 
         foreach ($permissions as $permission) {

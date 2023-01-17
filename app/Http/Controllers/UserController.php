@@ -583,7 +583,7 @@ class UserController extends AppBaseController
      */
     public function userShowAvatarUploadById(int $id): Factory|View|Application
     {
-        abort_if(Gate::denies('user_picture_edit'), 403);
+        abort_if(Gate::denies('users_picture_edit'), 403);
         $user = $this->userRepository->find($id);
         return view('users.manage-users-picture')->with(['user' => $user]);
     }
@@ -597,7 +597,7 @@ class UserController extends AppBaseController
      */
     public function userUploadAvatarById(Request $request, int $id): Redirector|RedirectResponse|Application
     {
-        abort_if(Gate::denies('user_picture_update'), 403);
+        abort_if(Gate::denies('users_picture_update'), 403);
 
         $user = $this->userRepository->find($id);
 
