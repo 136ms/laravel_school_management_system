@@ -81,4 +81,9 @@ class User extends Authenticable
     {
         return $this->belongsToMany(static::class, "teacher_user", "user_id", "teacher_id");
     }
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
 }
