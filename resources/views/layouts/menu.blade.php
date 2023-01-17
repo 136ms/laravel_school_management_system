@@ -30,3 +30,11 @@
         </a>
     </li>
 @endcan
+@can('grades_access')
+    <li class="nav-item">
+        <a href="{{ route('grades.index') }}" class="nav-link {{ Request::is('grades*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-graduation-cap text-yellow"></i>
+            <p>Grades</p>
+        </a>
+    </li>
+@endcan
