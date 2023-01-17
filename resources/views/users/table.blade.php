@@ -3,6 +3,7 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
+                <th>Avatar</th>
                 <th>ID</th>
                 <th>First name</th>
                 <th>Last name</th>
@@ -23,6 +24,7 @@
             @foreach($users as $user)
                 <tr>
                     @include('flash::message')
+                    <td><img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 50px" alt="User profile picture"></td>
                     <td>{{ $user->id }}.</td>
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>
