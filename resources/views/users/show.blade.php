@@ -19,13 +19,16 @@
                        href="{{ route('users.index') }}">
                         Back
                     </a>
+                    <a class="btn btn-primary float-right mr-1" id="print-button">
+                        Print
+                    </a>
                 </div>
             </div>
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body" id="print-data">
                     @include('flash::message')
                     <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 5%" alt="User profile picture">
                     <br>
@@ -68,4 +71,14 @@
             </div>
         </div>
     </section>
+    <script>
+        document.getElementById("print-button").addEventListener("click", function(){
+            var dataToPrint = document.getElementById("print-data");
+            window.document.write(dataToPrint.innerHTML);
+            window.print();
+            setTimeout(function(){
+                window.history.back();
+            });
+        });
+    </script>
 @endsection
