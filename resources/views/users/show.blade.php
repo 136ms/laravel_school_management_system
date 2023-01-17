@@ -27,6 +27,8 @@
                 </div>
                 <div class="card-body">
                     @include('flash::message')
+                    <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 5%" alt="User profile picture">
+                    <br>
                     <strong>ID</strong>
                     <p class="text-muted">{{$user->id}}</p>
 
