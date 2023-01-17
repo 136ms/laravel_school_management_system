@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -38,7 +39,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest', [
+            'except' => 'logout',
+        ]);
     }
 
     /**
@@ -69,15 +72,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $role = Role::findByName('Student');
+        $user = User::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'birthdate' => $data['birthdate'],
-            'address' => $data['adress'],
+            'address' => $data['address'],
             'gender' => $data['gender'],
             'phonenum' => $data['phonenum'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->assignRole($role);
+        return $user;
     }
 }

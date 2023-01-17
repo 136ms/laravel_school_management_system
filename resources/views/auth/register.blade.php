@@ -93,7 +93,7 @@
 
                 <div class="input-group mb-3">
                     <input type="text"
-                           name="adress"
+                           name="address"
                            class="form-control @error('adress') is-invalid @enderror"
                            value="{{ old('adress') }}"
                            placeholder="Adress">
