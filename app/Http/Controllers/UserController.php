@@ -536,14 +536,25 @@ class UserController extends AppBaseController
         }
     }
 
-
-    public function userShowAvatarUpload()
+    /**
+     * Show profile picture upload.
+     *
+     * @return Factory|View|Application
+     */
+    public function userShowAvatarUpload(): Factory|View|Application
     {
+
         abort_if(Gate::denies('user_picture_edit'), 403);
         return view('users.manage-user-picture');
     }
 
-    public function userUploadAvatar(Request $request)
+    /**
+     * Update profile picture.
+     *
+     * @param Request $request
+     * @return Redirector|RedirectResponse|Application
+     */
+    public function userUploadAvatar(Request $request): Redirector|RedirectResponse|Application
     {
         abort_if(Gate::denies('user_picture_update'), 403);
 
@@ -560,6 +571,49 @@ class UserController extends AppBaseController
             return redirect(route('user.avatar'));
         } else {
             Flash::error('No profile picture was choosen!');
+            return back();
+        }
+    }
+
+    /**
+     * Show profile picture upload with by specified id.
+     *
+     * @param int $id
+     * @return Factory|View|Application
+     */
+    public function userShowAvatarUploadById(int $id): Factory|View|Application
+    {
+        abort_if(Gate::denies('user_picture_edit'), 403);
+        $user = $this->userRepository->find($id);
+        return view('users.manage-users-picture')->with(['user' => $user]);
+    }
+
+    /**
+     * Update profile picture upload with by specified id.
+     *
+     * @param Request $request
+     * @param int $id
+     * @return Redirector|RedirectResponse|Application
+     */
+    public function userUploadAvatarById(Request $request, int $id): Redirector|RedirectResponse|Application
+    {
+        abort_if(Gate::denies('user_picture_update'), 403);
+
+        $user = $this->userRepository->find($id);
+
+        if (!is_null($request->avatar) && !is_null($user)) {
+            $request->validate([
+                'avatar' => 'required|image',
+            ]);
+            $avatarName = time() . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $avatarName);
+
+            $user->update(['avatar' => $avatarName]);
+
+            Flash::success('User profile picture updated successfully!');
+            return redirect(route('users.avatar', $user->id))->with(['user' => $user]);
+        } else {
+            Flash::error('No profile picture was choosen or User does not exist!');
             return back();
         }
     }
