@@ -16,10 +16,10 @@ class CreateGradesTable extends Migration
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->double('weight', 8, 2);
-            $table->float('grade');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('subject_id');
+            $table->integer('grade');
+            $table->float('weight');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('subject_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('subject_id')->references('id')->on('subjects');
             $table->timestamps();
