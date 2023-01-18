@@ -9,28 +9,18 @@ class Grade extends Model
 {
     use HasFactory;
 
-    public $table = 'users';
+    public $table = 'grades';
 
     public $fillable = [
         'name',
-        'weight',
         'grade',
-        'created_at',
-        'updated_at',
-    ];
-
-    protected $casts = [
-        'name' => 'string',
-        'weight' => 'string',
-        'grade' => 'date',
-        'created_at' => 'string',
-        'updated_at' => 'string',
+        'weight',
     ];
 
     public static $rules = [
         'name' => 'required|string|max:50',
-        'weight' => 'required|double',
-        'grade' => 'required|float',
+        'grade' => 'required|integer',
+        'weight' => 'required|float',
     ];
 
     public function user()
