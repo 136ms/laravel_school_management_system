@@ -1,34 +1,67 @@
-/*Admin theme*/
-body.admin .btn{
-    background-color: red;
-    color: white !important;
-    border-color: red;
-}
-
-body.admin .btn-primary{
-    background-color: red !important;
-}
-
-body.admin .badge{
-    background-color: red !important;
+/* Admin */
+body.admin .card-header{
+    background-color: #212529 !important;
 }
 
 body.admin .card-primary.card-outline{
-    border-top: 3px solid red !important;
+    border-top: 3px solid #212529;
+}
+
+body.admin .badge{
+    background-color: #212529 !important;
 }
 
 body.admin .user-header{
-    background-color: red !important;
+    background-color: #212529 !important;
 }
 
-body.admin .card-primary:not(.card-outline) > .card-header{
-    background-color: red !important;
+/* Student */
+body.student .card-header{
+    background-color: green !important;
 }
 
-body.admin .btn-primary:active{
-    border: none;
+body.student .card-primary.card-outline{
+    border-top: 3px solid green;
 }
 
-body.admin .btn-default:hover{
-    background-color: red !important;
+body.student .badge{
+    background-color: green !important;
+}
+
+body.student .user-header{
+    background-color: green !important;
+}
+
+/* Parent */
+body.parent .card-header{
+    background-color: mediumpurple !important;
+}
+
+body.parent .card-primary.card-outline{
+    border-top: 3px solid mediumpurple;
+}
+
+body.parent .badge{
+    background-color: mediumpurple !important;
+}
+
+body.parent .user-header{
+    background-color: mediumpurple !important;
+}
+
+/* Teacher */
+body.teacher .card-header{
+    background-color: orange !important;
+}
+
+body.teacher .card-primary.card-outline{
+    border-top: 3px solid orange;
+}
+
+body.teacher .badge{
+    background-color: orange !important;
+}
+
+body.teacher .user-header{
+    background-color: orange !important;
 }
