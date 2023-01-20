@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
+use App\Repositories\GradeRepository;
 use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
@@ -27,13 +28,18 @@ class GradeController extends Controller
     /** @var GroupRepository $groupRepository */
     private GroupRepository $groupRepository;
 
+    /** @var GradeRepository $gradeRepository */
+    private GradeRepository $gradeRepository;
+
     public function __construct(UserRepository    $userRepository,
                                 SubjectRepository $subjectRepository,
-                                GroupRepository   $groupRepository)
+                                GroupRepository   $groupRepository,
+                                GradeRepository   $gradeRepository)
     {
         $this->userRepository = $userRepository;
         $this->subjectRepository = $subjectRepository;
         $this->groupRepository = $groupRepository;
+        $this->gradeRepository = $gradeRepository;
         $this->middleware('auth');
     }
 
@@ -82,10 +88,19 @@ class GradeController extends Controller
         abort_if(Gate::denies('grades_store'), 403);
 
         $input = $request->all();
-        dd($input);
 
+        if (!isset($input)) {
+            Flash::error('Grade was not created successfully.');
+            return view('grades.create');
+        } else {
+            $grade['name'] = $input['name'];
+            $grade['grade'] = intval($input['grade']);
+            $grade['weight'] = floatval($input['weight']);
+            $this->gradeRepository->create($grade);
 
-        return redirect()->route('grades.index')->with('success', 'Grade created successfully.');
+            Flash::success('Grade was created successfully.');
+            return redirect(route('grades.index'));
+        }
     }
 }
 
