@@ -77,10 +77,12 @@ class GradeController extends Controller
 
         $grades = $this->gradeRepository->all();
         $users = $this->userRepository->all();
+        $subjects = $this->subjectRepository->all();
 
         return view('grades.create')->with([
             'grades' => $grades,
-            'users' => $users
+            'users' => $users,
+            'subjects' => $subjects,
         ]);
     }
 
@@ -100,6 +102,7 @@ class GradeController extends Controller
             $grade['weight'] = floatval($input['weight']);
             $grade['author_id'] = Auth::id();
             $grade['user_id'] = $input['user_id'];
+            $grade['subject_id'] = $input['subject_id'];
             $grade->save();
 
             Flash::success('Grade was created successfully.');
@@ -143,6 +146,7 @@ class GradeController extends Controller
         /** @var Grade $grade */
         $grade = $this->gradeRepository->find($id);
         $users = $this->userRepository->all();
+        $subjects = $this->subjectRepository->all();
 
         if (!isset($grade)) {
             Flash::error($grade->name . ' was not found');
@@ -151,7 +155,8 @@ class GradeController extends Controller
         } else {
             return view('grades.edit')->with([
                 'grade' => $grade,
-                'users' => $users
+                'users' => $users,
+                'subjects' => $subjects,
             ]);
         }
     }

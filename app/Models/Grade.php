@@ -17,6 +17,7 @@ class Grade extends Model
         'grade',
         'weight',
         'user_id',
+        'subject_id',
     ];
 
     public static $rules = [

@@ -19,5 +19,10 @@
     {!! Form::select('user_id', $users->pluck('lname', 'id'), null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('subject_id', 'Subject:') !!}
+    {!! Form::select('subject_id', $subjects->pluck('name', 'id'), null, ['class' => 'form-control']) !!}
+</div>
+
 
 
