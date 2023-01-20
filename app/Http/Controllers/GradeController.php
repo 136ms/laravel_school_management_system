@@ -14,6 +14,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
@@ -53,7 +54,7 @@ class GradeController extends Controller
     {
         abort_if(Gate::denies('grades_access'), 403);
 
-        $grades = DB::table('grades')->paginate(10);
+        $grades = $this->gradeRepository->paginate(10);
 
         if (!isset($grades)) {
             Flash::error('Grades were not found.');
@@ -75,7 +76,7 @@ class GradeController extends Controller
     {
         abort_if(Gate::denies('grades_create'), 403);
 
-        $grades = Grade::all();
+        $grades = $this->gradeRepository->all();
         $users = $this->userRepository->all();
 
         return view('grades.create')->with([
@@ -94,10 +95,12 @@ class GradeController extends Controller
             Flash::error('Grade was not created successfully.');
             return view('grades.create');
         } else {
+            $grade = new Grade();
             $grade['name'] = $input['name'];
             $grade['grade'] = intval($input['grade']);
             $grade['weight'] = floatval($input['weight']);
-            $this->gradeRepository->create($grade);
+            $grade['author_id'] = Auth::id();
+            $grade->save();
 
             Flash::success('Grade was created successfully.');
             return redirect(route('grades.index'));
