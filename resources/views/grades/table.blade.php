@@ -8,6 +8,8 @@
                 <th>Grade</th>
                 <th>Weight</th>
                 <th>Author</th>
+                <th>Student</th>
+                <th>Subject</th>
                 <th>Created at</th>
                 <th>Updated at</th>
                 <th colspan="3">Actions</th>
@@ -22,6 +24,8 @@
                     <td>{{ $grade->grade }}</td>
                     <td>{{ $grade->weight }}</td>
                     <td>{{ $grade->author->fullName }}</td>
+                    <td>{{ $grade->student->fullName }}</td>
+                    <td>{{ $grade->subject->name }}</td>
                     <td>{{ $grade->created_at }}</td>
                     <td>{{ $grade->updated_at }}</td>
                     <td>

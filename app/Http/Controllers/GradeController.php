@@ -54,6 +54,8 @@ class GradeController extends Controller
         abort_if(Gate::denies('grades_access'), 403);
 
         $grades = $this->gradeRepository->paginate(10);
+        $users = $this->userRepository->paginate(10);
+        $subjects = $this->subjectRepository->paginate(10);
 
         if (!isset($grades)) {
             Flash::error('Grades were not found.');
@@ -62,7 +64,11 @@ class GradeController extends Controller
         } else {
 
             return view('grades.index')
-                ->with(['grades' => $grades]);
+                ->with([
+                    'grades' => $grades,
+                    'users' => $users,
+                    'subjects' => $subjects
+                ]);
         }
     }
 
@@ -86,7 +92,13 @@ class GradeController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    /**
+     * Creates new Grade
+     *
+     * @param Request $request
+     * @return View|Factory|Redirector|RedirectResponse|Application
+     */
+    public function store(Request $request): View|Factory|Redirector|RedirectResponse|Application
     {
         abort_if(Gate::denies('grades_store'), 403);
 

@@ -31,6 +31,11 @@ class Grade extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function student() : BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function subject() : BelongsTo
     {
         return $this->belongsTo(Subject::class);
