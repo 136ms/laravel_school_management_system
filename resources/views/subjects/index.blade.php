@@ -1,4 +1,6 @@
-@section('title'){{'Subject list'}}@endsection
+@section('title')
+    {{'Subject list'}}
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -9,12 +11,12 @@
                     <h1><i class="fas fa-book"></i> Subject list</h1>
                 </div>
                 @can('subjects_create')
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('subjects.create') }}">
-                        Add Subject
-                    </a>
-                </div>
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary float-right"
+                           href="{{ route('subjects.create') }}">
+                            Add Subject
+                        </a>
+                    </div>
                 @endcan
             </div>
         </div>

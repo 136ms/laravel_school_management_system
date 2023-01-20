@@ -66,7 +66,6 @@ class UserController extends AppBaseController
         }
     }
 
-
     /**
      * Shows create User view
      *
@@ -82,7 +81,6 @@ class UserController extends AppBaseController
             'roles' => $roles
         ]);
     }
-
 
     /**
      * Creates new User
@@ -110,7 +108,6 @@ class UserController extends AppBaseController
 
         return redirect(route('users.index'));
     }
-
 
     /**
      * Shows show User view using specified id
@@ -145,7 +142,6 @@ class UserController extends AppBaseController
         }
     }
 
-
     /**
      * Shows edit User view using specified id
      *
@@ -167,7 +163,6 @@ class UserController extends AppBaseController
             return view('users.edit')->with(['user' => $user]);
         }
     }
-
 
     /**
      * Updates User using specified id.
@@ -200,7 +195,6 @@ class UserController extends AppBaseController
         return redirect(route('users.index'));
     }
 
-
     /**
      * Removes User using specified id.
      *
@@ -228,7 +222,6 @@ class UserController extends AppBaseController
         }
         return redirect(route('users.index'));
     }
-
 
     /**
      * Updates Role for requested User
@@ -261,7 +254,6 @@ class UserController extends AppBaseController
             return view('users.edit', $user);
         }
     }
-
 
     /**
      * Shows assign role view using specified id
@@ -324,7 +316,6 @@ class UserController extends AppBaseController
         }
     }
 
-
     /**
      * Shows assign group view using specified id
      *
@@ -385,7 +376,6 @@ class UserController extends AppBaseController
             return redirect(route('users.edit', $user));
         }
     }
-
 
     /**
      * Shows assign subject view using specified id
@@ -448,7 +438,6 @@ class UserController extends AppBaseController
         }
     }
 
-
     /**
      * Shows assign parent view using specified id
      *
@@ -508,7 +497,6 @@ class UserController extends AppBaseController
             return redirect(route('users.edit', $user));
         }
     }
-
 
     /**
      * Shows assign teacher view using specified id

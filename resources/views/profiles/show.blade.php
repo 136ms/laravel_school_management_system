@@ -14,7 +14,8 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img src="/avatars/{{ $user->avatar }}" class="profile-user-img img-fluid img-circle" alt="User profile picture">
+                        <img src="/avatars/{{ $user->avatar }}" class="profile-user-img img-fluid img-circle"
+                             alt="User profile picture">
 
                     </div>
                     <h3 class="profile-username text-center">{{$user->fname}} {{$user->lname}}</h3>

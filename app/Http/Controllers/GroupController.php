@@ -40,7 +40,6 @@ class GroupController extends AppBaseController
         $this->middleware('auth');
     }
 
-
     /**
      * Shows index Groups view
      *
@@ -63,7 +62,6 @@ class GroupController extends AppBaseController
         }
     }
 
-
     /**
      * Shows create Group view
      *
@@ -75,7 +73,6 @@ class GroupController extends AppBaseController
 
         return view('groups.create');
     }
-
 
     /**
      * Creates new Group
@@ -99,7 +96,6 @@ class GroupController extends AppBaseController
 
         return redirect(route('groups.index'));
     }
-
 
     /**
      * Shows show Group view using specified id
@@ -129,7 +125,6 @@ class GroupController extends AppBaseController
         }
     }
 
-
     /**
      * Shows edit Group view using specified id
      *
@@ -153,7 +148,6 @@ class GroupController extends AppBaseController
             ]);
         }
     }
-
 
     /**
      * Updates User Group using specified id
@@ -181,7 +175,6 @@ class GroupController extends AppBaseController
 
         return redirect(route('groups.index'));
     }
-
 
     /**
      * Removes Group using specified id.
@@ -241,10 +234,9 @@ class GroupController extends AppBaseController
 
             Flash::error('Group or Users do not not exist!');
 
-            return redirect(route('groups.edit' , $group));
+            return redirect(route('groups.edit', $group));
         }
     }
-
 
     /**
      * Shows assign users view using specified id
@@ -265,7 +257,7 @@ class GroupController extends AppBaseController
         if (isset($group) && isset($users)) {
             return view('groups.manage-group-users')->with([
                 'group' => $group,
-                'users'=> $users
+                'users' => $users
             ]);
         } else {
             Flash::error('User or Role does not exist!');
@@ -305,10 +297,9 @@ class GroupController extends AppBaseController
 
             Flash::error('Group or Users do not not exist!');
 
-            return redirect(route('groups.edit' , $group));
+            return redirect(route('groups.edit', $group));
         }
     }
-
 
     /**
      * Shows assign subject view using specified id
@@ -329,8 +320,8 @@ class GroupController extends AppBaseController
         if (isset($group)) {
             return view('groups.manage-group-subjects')->with([
                 'group' => $group,
-                'subjects'=> $subjects
-                ]);
+                'subjects' => $subjects
+            ]);
         } else {
             Flash::error('User or Subject does not exist!');
             return view('groups.edit')->with(['group' => $group]);

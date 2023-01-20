@@ -1,4 +1,6 @@
-@section('title'){{'Edit group'}}@endsection
+@section('title')
+    {{'Edit group'}}
+@endsection
 @extends('layouts.app')
 
 @section('content')

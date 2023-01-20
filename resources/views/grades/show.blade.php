@@ -61,11 +61,11 @@
         </div>
     </section>
     <script>
-        document.getElementById("print-button").addEventListener("click", function(){
+        document.getElementById("print-button").addEventListener("click", function () {
             var dataToPrint = document.getElementById("print-data");
             window.document.write(dataToPrint.innerHTML);
             window.print();
-            setTimeout(function(){
+            setTimeout(function () {
                 window.history.back();
             });
         });

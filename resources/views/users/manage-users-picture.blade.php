@@ -26,7 +26,8 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 50px" alt="User profile picture">
+                        <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2"
+                             style="width: 50px" alt="User profile picture">
                         <br>
                         <label for="exampleInputFile">Picture upload</label>
                         <div class="input-group">

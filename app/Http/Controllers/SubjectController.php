@@ -39,7 +39,6 @@ class SubjectController extends AppBaseController
         $this->middleware('auth');
     }
 
-
     /**
      * Shows index Subjects view
      *
@@ -62,7 +61,6 @@ class SubjectController extends AppBaseController
         }
     }
 
-
     /**
      * Shows create Subject view
      *
@@ -74,7 +72,6 @@ class SubjectController extends AppBaseController
 
         return view('subjects.create');
     }
-
 
     /**
      * Creates new Subject
@@ -98,7 +95,6 @@ class SubjectController extends AppBaseController
 
         return redirect(route('subjects.index'));
     }
-
 
     /**
      * Shows show Subject view using specified id
@@ -128,7 +124,6 @@ class SubjectController extends AppBaseController
         }
     }
 
-
     /**
      * Shows edit Subject view using specified id
      *
@@ -150,7 +145,6 @@ class SubjectController extends AppBaseController
             return view('subjects.edit')->with(['subject' => $subject]);
         }
     }
-
 
     /**
      * Updates User Subject using specified id
@@ -178,7 +172,6 @@ class SubjectController extends AppBaseController
 
         return redirect(route('subjects.index'));
     }
-
 
     /**
      * Removes Subject using specified id.
@@ -238,10 +231,9 @@ class SubjectController extends AppBaseController
 
             Flash::error('Subject or Users do not not exist!');
 
-            return redirect(route('subjects.edit' , $subject));
+            return redirect(route('subjects.edit', $subject));
         }
     }
-
 
     /**
      * Shows assign users view using specified id
@@ -300,10 +292,9 @@ class SubjectController extends AppBaseController
 
             Flash::error('Group or Subjects do not not exist!');
 
-            return redirect(route('subjects.edit' , $subject));
+            return redirect(route('subjects.edit', $subject));
         }
     }
-
 
     /**
      * Shows assign group view using specified id

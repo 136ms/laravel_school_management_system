@@ -18,7 +18,7 @@
                     <td>{{ $subject->name }}</td>
                     <td>{{ $subject->groups()->count() }}</td>
                     <td>{{ $subject->users()->count() }}</td>
-                    <td  style="width: 120px">
+                    <td style="width: 120px">
                         {!! Form::open(['route' => ['subjects.destroy', $subject->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             <a href="{{ route('subjects.show', [$subject->id]) }}"

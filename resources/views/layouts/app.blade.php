@@ -48,13 +48,15 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="/avatars/{{ Auth::user()->avatar }}" class="user-image img-circle elevation-2" alt="User profile picture">
+                    <img src="/avatars/{{ Auth::user()->avatar }}" class="user-image img-circle elevation-2"
+                         alt="User profile picture">
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
                     <li class="user-header bg-primary">
-                        <img src="/avatars/{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User profile picture">
+                        <img src="/avatars/{{ Auth::user()->avatar }}" class="img-circle elevation-2"
+                             alt="User profile picture">
                         <p>
                             {{ Auth::user()->fullName }}
                         </p>Roles:

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Subject extends Model
 {
     use HasFactory;
+
     public $table = 'subjects';
 
     public $fillable = [
@@ -34,7 +35,7 @@ class Subject extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function grades() : HasMany
+    public function grades(): HasMany
     {
         return $this->hasMany(Grade::class);
     }

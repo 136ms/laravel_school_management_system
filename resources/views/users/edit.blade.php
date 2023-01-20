@@ -42,7 +42,8 @@
             {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
-                <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 50px" alt="User profile picture">
+                <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 50px"
+                     alt="User profile picture">
                 <div class="row">
                     @include('users.fields')
                 </div>

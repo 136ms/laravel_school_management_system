@@ -30,7 +30,8 @@
                 </div>
                 <div class="card-body" id="print-data">
                     @include('flash::message')
-                    <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 5%" alt="User profile picture">
+                    <img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 5%"
+                         alt="User profile picture">
                     <br>
                     <strong>ID</strong>
                     <p class="text-muted">{{$user->id}}</p>
@@ -72,11 +73,11 @@
         </div>
     </section>
     <script>
-        document.getElementById("print-button").addEventListener("click", function(){
+        document.getElementById("print-button").addEventListener("click", function () {
             var dataToPrint = document.getElementById("print-data");
             window.document.write(dataToPrint.innerHTML);
             window.print();
-            setTimeout(function(){
+            setTimeout(function () {
                 window.history.back();
             });
         });

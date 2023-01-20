@@ -24,7 +24,8 @@
             @foreach($users as $user)
                 <tr>
                     @include('flash::message')
-                    <td><img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2" style="width: 50px" alt="User profile picture"></td>
+                    <td><img src="/avatars/{{ $user->avatar }}" class="user-image img-circle elevation-2"
+                             style="width: 50px" alt="User profile picture"></td>
                     <td>{{ $user->id }}.</td>
                     <td>{{ $user->fname }}</td>
                     <td>{{ $user->lname }}</td>
@@ -34,9 +35,9 @@
                     <td>{{ mb_strimwidth($user->gender, 0, 10, "...")}}</td>
                     <td>{{ $user->phonenum }}</td>
                     <td>
-                    @foreach($user->roles as $role)
-                        {{ $role['name'] }}
-                    @endforeach
+                        @foreach($user->roles as $role)
+                            {{ $role['name'] }}
+                        @endforeach
                     </td>
                     <td>{{ $user->groups()->count() }}</td>
                     <td>{{ $user->subjects()->count() }}</td>

@@ -83,7 +83,7 @@ class User extends Authenticable
         return $this->belongsToMany(static::class, "teacher_user", "user_id", "teacher_id");
     }
 
-    public function grades() : HasMany
+    public function grades(): HasMany
     {
         return $this->hasMany(Grade::class, 'author_id');
     }

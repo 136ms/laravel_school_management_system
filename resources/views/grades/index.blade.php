@@ -1,4 +1,6 @@
-@section('title'){{'User list'}}@endsection
+@section('title')
+    {{'User list'}}
+@endsection
 @section('title')
     {{"Grade list"}}
 @endsection
