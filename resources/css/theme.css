@@ -1,18 +1,18 @@
 /* Admin */
 body.admin .card-header{
-    background-color: #212529 !important;
+    background-color: #343a40 !important;
 }
 
 body.admin .card-primary.card-outline{
-    border-top: 3px solid #212529;
+    border-top: 3px solid #343a40;
 }
 
 body.admin .badge{
-    background-color: #212529 !important;
+    background-color: #343a40 !important;
 }
 
 body.admin .user-header{
-    background-color: #212529 !important;
+    background-color: #343a40 !important;
 }
 
 /* Student */
