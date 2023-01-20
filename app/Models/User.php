@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticable;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -82,8 +83,8 @@ class User extends Authenticable
         return $this->belongsToMany(static::class, "teacher_user", "user_id", "teacher_id");
     }
 
-    public function grades()
+    public function grades() : HasMany
     {
-        return $this->hasMany(Grade::class);
+        return $this->hasMany(Grade::class, 'author_id');
     }
 }
