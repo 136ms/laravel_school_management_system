@@ -20,8 +20,10 @@ class CreateGradesTable extends Migration
             $table->float('weight');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('subject_id')->nullable();
+            $table->unsignedBigInteger('author_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->foreign('author_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
