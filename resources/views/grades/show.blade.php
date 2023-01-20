@@ -42,6 +42,9 @@
                     <strong>Grade</strong>
                     <p class="text-muted">{{$grade->grade}}</p>
 
+                    <strong>Author</strong>
+                    <p class="text-muted">{{$grade->author->fullName}}</p>
+
                     <strong>Created at</strong>
                     <p class="text-muted">{{$grade->created_at}}</p>
 
