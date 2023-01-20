@@ -85,6 +85,13 @@ class RolesTableSeeder extends Seeder
             'user_picture_update',
             'users_picture_edit',
             'users_picture_update',
+            'grades_access',
+            'grades_create',
+            'grades_store',
+            'grades_show',
+            'grades_edit',
+            'grades_update',
+            'grades_destroy',
         ];
 
         $adminPermissions = [
@@ -130,6 +137,13 @@ class RolesTableSeeder extends Seeder
             'user_picture_update',
             'users_picture_edit',
             'users_picture_update',
+            'grades_access',
+            'grades_create',
+            'grades_store',
+            'grades_show',
+            'grades_edit',
+            'grades_update',
+            'grades_destroy',
         ];
 
         foreach ($permissions as $permission) {
