@@ -15,8 +15,8 @@
 </div>
 
 <div class="form-group col-sm-6">
-    {!! Form::label('users[]', 'Users:') !!}
-    {!! Form::select('users[]', $users->pluck('lname', 'id'), null, ['class' => 'form-control', 'multiple'=> 'multiple']) !!}
+    {!! Form::label('user_id', 'Student:') !!}
+    {!! Form::select('user_id', $users->pluck('lname', 'id'), null, ['class' => 'form-control']) !!}
 </div>
 
 

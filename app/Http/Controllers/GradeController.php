@@ -99,6 +99,7 @@ class GradeController extends Controller
             $grade['grade'] = intval($input['grade']);
             $grade['weight'] = floatval($input['weight']);
             $grade['author_id'] = Auth::id();
+            $grade['user_id'] = $input['user_id'];
             $grade->save();
 
             Flash::success('Grade was created successfully.');
