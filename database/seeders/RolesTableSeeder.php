@@ -92,10 +92,13 @@ class RolesTableSeeder extends Seeder
             'grades_edit',
             'grades_update',
             'grades_destroy',
+            'grades_teacher_table',
+            'grades_student_table',
             'print_grades',
             'print_groups',
             'print_profiles',
             'print_subjects',
+            'print_users',
         ];
 
         $adminPermissions = [
@@ -109,7 +112,10 @@ class RolesTableSeeder extends Seeder
             'profile_edit',
             'profile_update',
             'user_picture_edit',
-            'user_picture_update'
+            'user_picture_update',
+            'grades_student_table',
+            'grades_access',
+            'grades_show',
         ];
 
         $parentPermissions = [
@@ -148,6 +154,7 @@ class RolesTableSeeder extends Seeder
             'grades_edit',
             'grades_update',
             'grades_destroy',
+            'grades_teacher_table',
             'print_grades',
             'print_groups',
             'print_profiles',
