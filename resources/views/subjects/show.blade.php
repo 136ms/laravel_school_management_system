@@ -18,6 +18,9 @@
                        href="{{ route('subjects.index') }}">
                         Back
                     </a>
+                    <a class="btn btn-primary float-right mr-1" id="print-button">
+                        Print
+                    </a>
                 </div>
             </div>
             <div class="card card-primary">
@@ -40,4 +43,16 @@
             </div>
         </div>
     </section>
+    @can('print_subjects')
+        <script>
+            document.getElementById("print-button").addEventListener("click", function () {
+                var dataToPrint = document.getElementById("print-data");
+                window.document.write(dataToPrint.innerHTML);
+                window.print();
+                setTimeout(function () {
+                    window.history.back();
+                });
+            });
+        </script>
+    @endcan
 @endsection

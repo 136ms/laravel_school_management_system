@@ -10,6 +10,9 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">{{$user->fname}} {{$user->lname}} profile</h1>
                 </div>
+                <a class="btn btn-primary float-right mr-1" id="print-button">
+                    Print
+                </a>
             </div>
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
@@ -60,4 +63,16 @@
             </div>
         </div>
     </div>
+    @can('print_profiles')
+        <script>
+            document.getElementById("print-button").addEventListener("click", function () {
+                var dataToPrint = document.getElementById("print-data");
+                window.document.write(dataToPrint.innerHTML);
+                window.print();
+                setTimeout(function () {
+                    window.history.back();
+                });
+            });
+        </script>
+    @endcan
 @endsection
