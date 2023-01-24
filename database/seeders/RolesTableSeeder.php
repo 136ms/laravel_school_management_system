@@ -92,6 +92,10 @@ class RolesTableSeeder extends Seeder
             'grades_edit',
             'grades_update',
             'grades_destroy',
+            'print_grades',
+            'print_groups',
+            'print_profiles',
+            'print_subjects',
         ];
 
         $adminPermissions = [
@@ -144,6 +148,10 @@ class RolesTableSeeder extends Seeder
             'grades_edit',
             'grades_update',
             'grades_destroy',
+            'print_grades',
+            'print_groups',
+            'print_profiles',
+            'print_subjects',
         ];
 
         foreach ($permissions as $permission) {
