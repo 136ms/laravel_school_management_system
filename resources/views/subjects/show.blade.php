@@ -25,7 +25,7 @@
                     @endcan
                 </div>
             </div>
-            <div class="card card-primary">
+            <div class="card card-primary" id="print-data">
                 <div class="card-header">
                     <h3 class="card-title">About {{$subject->name}}</h3>
                 </div>

@@ -26,7 +26,7 @@
                     <h3 class="profile-username text-center">{{$user->fname}} {{$user->lname}}</h3>
                     <a href="{{route('profiles.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
                     <br>
-                    <div class="card card-primary">
+                    <div class="card card-primary" id="print-data">
                         <div class="card-header">
                             <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
                         </div>
