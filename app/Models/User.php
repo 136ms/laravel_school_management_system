@@ -87,4 +87,9 @@ class User extends Authenticable
     {
         return $this->hasMany(Grade::class, 'author_id');
     }
+
+    public function studentGrades(): HasMany
+    {
+        return $this->hasMany(Grade::class, 'user_id');
+    }
 }
