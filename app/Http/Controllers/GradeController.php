@@ -56,6 +56,7 @@ class GradeController extends Controller
         $grades = $this->gradeRepository->paginate(10);
         $users = $this->userRepository->paginate(10);
         $subjects = $this->subjectRepository->paginate(10);
+        $userGrades = Auth::user()->studentGrades;
 
         if (!isset($grades)) {
             Flash::error('Grades were not found.');
@@ -67,7 +68,8 @@ class GradeController extends Controller
                 ->with([
                     'grades' => $grades,
                     'users' => $users,
-                    'subjects' => $subjects
+                    'subjects' => $subjects,
+                    'userGrades' => $userGrades
                 ]);
         }
     }
