@@ -20,9 +20,11 @@
                            href="{{ route('users.index') }}">
                             Back
                         </a>
-                        <a class="btn btn-primary float-right mr-1" id="print-button">
-                            Print
-                        </a>
+                        @can('print_users')
+                            <a class="btn btn-primary float-right mr-1" id="print-button">
+                                Print
+                            </a>
+                        @endcan
                     </div>
                 </div>
                 <div class="card card-primary">
