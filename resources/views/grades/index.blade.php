@@ -33,7 +33,12 @@
             <div class="clearfix"></div>
 
             <div class="card">
-                @include('grades.table')
+                @can('grades_teacher_table')
+                    @include('grades.table')
+                @endcan
+                @can('grades_student_table')
+                    @include('grades.userTable')
+                @endcan
             </div>
         </div>
     @endcan
