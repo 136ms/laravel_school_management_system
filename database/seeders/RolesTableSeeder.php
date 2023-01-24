@@ -132,6 +132,7 @@ class RolesTableSeeder extends Seeder
             'users_access',
             'subjects_access',
             'groups_access',
+            'groups_show',
             'users_show',
             'dashboard_access',
             'teacher_widget',
