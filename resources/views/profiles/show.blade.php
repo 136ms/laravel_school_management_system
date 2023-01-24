@@ -10,9 +10,11 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">{{$user->fname}} {{$user->lname}} profile</h1>
                 </div>
+                @can('print_profiles')
                 <a class="btn btn-primary float-right mr-1" id="print-button">
                     Print
                 </a>
+                @endcan
             </div>
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
