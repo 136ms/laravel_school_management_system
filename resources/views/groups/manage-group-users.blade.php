@@ -1,5 +1,5 @@
 @section('title')
-    {{'Manage users'}}
+    {{'Manage group users'}}
 @endsection
 @extends('layouts.app')
 

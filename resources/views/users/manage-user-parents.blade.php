@@ -1,5 +1,5 @@
 @section('title')
-    {{'Manage parents'}}
+    {{'Manage user parents'}}
 @endsection
 @extends('layouts.app')
 
