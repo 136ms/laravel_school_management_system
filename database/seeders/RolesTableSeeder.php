@@ -129,8 +129,8 @@ class RolesTableSeeder extends Seeder
         ];
 
         $teacherPermissions = [
-            'users_access',
             'subjects_access',
+            'subjects_show',
             'groups_access',
             'groups_show',
             'users_show',
@@ -160,6 +160,7 @@ class RolesTableSeeder extends Seeder
             'print_groups',
             'print_profiles',
             'print_subjects',
+            'print_users',
         ];
 
         foreach ($permissions as $permission) {
