@@ -29,19 +29,29 @@
                     <td>{{ $grade->created_at }}</td>
                     <td>{{ $grade->updated_at }}</td>
                     <td>
-                        {!! Form::open(['route' => ['grades.destroy', $grade->id], 'method' => 'delete']) !!}
+                        @can('grades_destroy')
+                            {!! Form::open(['route' => ['grades.destroy', $grade->id], 'method' => 'delete']) !!}
+                        @endcan
                         <div class='btn-group'>
-                            <a href="{{ route('grades.show', [$grade->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-eye"></i>
-                            </a>
-                            <a href="{{ route('grades.edit', [$grade->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @can('grades_show')
+                                <a href="{{ route('grades.show', [$grade->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            @endcan
+                            @can('grades_edit')
+                                <a href="{{ route('grades.edit', [$grade->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            @endcan
+                            @can('grades_destroy')
+                                {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @endcan
                         </div>
-                        {!! Form::close() !!}
+                        @can('grades_destroy')
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                 </tr>
             @endforeach

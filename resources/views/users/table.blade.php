@@ -44,19 +44,29 @@
                     <td>{{ $user->parents()->count() }}</td>
                     <td>{{ $user->teachers()->count() }}</td>
                     <td>
-                        {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
+                        @can('users_destroy')
+                            {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
+                        @endcan
                         <div class='btn-group'>
-                            <a href="{{ route('users.show', [$user->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-eye"></i>
-                            </a>
-                            <a href="{{ route('users.edit', [$user->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @can('users_show')
+                                <a href="{{ route('users.show', [$user->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            @endcan
+                            @can('users_edit')
+                                <a href="{{ route('users.edit', [$user->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            @endcan
+                            @can('users_destroy')
+                                {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @endcan
                         </div>
-                        {!! Form::close() !!}
+                        @can('users_destroy')
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                 </tr>
             @endforeach

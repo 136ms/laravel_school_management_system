@@ -19,19 +19,29 @@
                     <td>{{ $group->users()->count() }}</td>
                     <td>{{ $group->subjects()->count() }}</td>
                     <td style="width: 120px">
-                        {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'delete']) !!}
+                        @can('groups_destroy')
+                            {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'delete']) !!}
+                        @endcan
                         <div class='btn-group'>
-                            <a href="{{ route('groups.show', [$group->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-eye"></i>
-                            </a>
-                            <a href="{{ route('groups.edit', [$group->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @can('groups_show')
+                                <a href="{{ route('groups.show', [$group->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            @endcan
+                            @can('groups_edit')
+                                <a href="{{ route('groups.edit', [$group->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            @endcan
+                            @can('groups_destroy')
+                                {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @endcan
                         </div>
-                        {!! Form::close() !!}
+                        @can('groups_destroy')
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                 </tr>
             @endforeach

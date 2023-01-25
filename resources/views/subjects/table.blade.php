@@ -19,19 +19,29 @@
                     <td>{{ $subject->groups()->count() }}</td>
                     <td>{{ $subject->users()->count() }}</td>
                     <td style="width: 120px">
-                        {!! Form::open(['route' => ['subjects.destroy', $subject->id], 'method' => 'delete']) !!}
+                        @can('subjects_destroy')
+                            {!! Form::open(['route' => ['subjects.destroy', $subject->id], 'method' => 'delete']) !!}
+                        @endcan
                         <div class='btn-group'>
-                            <a href="{{ route('subjects.show', [$subject->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-eye"></i>
-                            </a>
-                            <a href="{{ route('subjects.edit', [$subject->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @can('subjects_show')
+                                <a href="{{ route('subjects.show', [$subject->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            @endcan
+                            @can('subjects_edit')
+                                <a href="{{ route('subjects.edit', [$subject->id]) }}"
+                                   class='btn btn-default btn-xs'>
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            @endcan
+                            @can('subjects_destroy')
+                                {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @endcan
                         </div>
-                        {!! Form::close() !!}
+                        @can('subjects_destroy')
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                 </tr>
             @endforeach
