@@ -99,6 +99,8 @@ class RolesTableSeeder extends Seeder
             'print_profiles',
             'print_subjects',
             'print_users',
+            'children_access',
+            'children_edit',
         ];
 
         $adminPermissions = [
@@ -125,7 +127,9 @@ class RolesTableSeeder extends Seeder
             'profile_edit',
             'profile_update',
             'user_picture_edit',
-            'user_picture_update'
+            'user_picture_update',
+            'children_access',
+            'children_edit',
         ];
 
         $teacherPermissions = [

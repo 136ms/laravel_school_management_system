@@ -38,3 +38,12 @@
         </a>
     </li>
 @endcan
+
+@can('children_access')
+    <li class="nav-item">
+        <a href="{{ route('children.index') }}" class="nav-link {{ Request::is('children*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-child text-pink"></i>
+            <p>Children</p>
+        </a>
+    </li>
+@endcan
