@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
+use App\Models\User;
 use App\Repositories\GradeRepository;
 use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
@@ -17,6 +18,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
+use Spatie\Permission\Models\Role;
 
 class GradeController extends Controller
 {
@@ -159,7 +161,10 @@ class GradeController extends Controller
 
         /** @var Grade $grade */
         $grade = $this->gradeRepository->find($id);
-        $users = $this->userRepository->all();
+        $studentRole = Role::findByName('Student');
+        $users = User::whereHas('roles', function ($query) use ($studentRole) {
+            $query->where('role_id', '=', $studentRole->id);
+        })->get();
         $subjects = $this->subjectRepository->all();
 
         if (!isset($grade)) {
