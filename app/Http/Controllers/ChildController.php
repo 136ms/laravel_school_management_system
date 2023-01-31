@@ -6,6 +6,7 @@ use App\Http\Requests\UpdateSubjectRequest;
 use App\Models\Grade;
 use App\Models\Subject;
 use App\Models\User;
+use App\Repositories\GradeRepository;
 use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
@@ -17,6 +18,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Laracasts\Flash\Flash;
 
@@ -31,13 +33,18 @@ class ChildController extends AppBaseController
     /** @var GroupRepository $groupRepository */
     private GroupRepository $groupRepository;
 
+    /** @var GradeRepository $gradeRepository */
+    private GradeRepository $gradeRepository;
+
     public function __construct(UserRepository    $userRepository,
                                 SubjectRepository $subjectRepository,
-                                GroupRepository   $groupRepository)
+                                GroupRepository   $groupRepository,
+                                GradeRepository   $gradeRepository)
     {
         $this->userRepository = $userRepository;
         $this->subjectRepository = $subjectRepository;
         $this->groupRepository = $groupRepository;
+        $this->gradeRepository = $gradeRepository;
         $this->middleware('auth');
     }
 
@@ -73,44 +80,25 @@ class ChildController extends AppBaseController
         //abort_if(Gate::denies('children_show'), 403);
         $children = Auth::user()->children;
         $children = $children->find($id);
+        $subject = $children->subjects[0];
         $teachers = $this->userRepository->getUserTeacherNames($id);
         $subjects = $this->subjectRepository->getUserSubjectNames($id);
         $groups = $this->groupRepository->getUserGroupNames($id);
+        $grades = $this->gradeRepository->all(['user_id'=> $children->id, 'subject_id' => $subject->id]);
 
-        if (!isset($children)) {
-            Flash::error('Children was not found');
+        if(!isset($children)){
+        Flash::error('Children was not found');
 
-            return view('children.index');
-        } else {
-            return view('children.show')->with([
-                'children' => $children,
-                'teachers' => $teachers,
-                'subjects' => $subjects,
-                'groups' => $groups,
-            ]);
-        }
+        return view('children.index');
+    } else {
+        return view('children.show')->with([
+            'children' => $children,
+            'teachers' => $teachers,
+            'subjects' => $subjects,
+            'groups' => $groups,
+            'grades' => $grades,
+        ]);
     }
-
-    /**
-     * Shows edit Child view using specified id
-     *
-     * @param int $id
-     * @return View|Factory|Redirector|Application|RedirectResponse
-     */
-    public function edit(int $id): View|Factory|Redirector|Application|RedirectResponse
-    {
-        abort_if(Gate::denies('children_edit'), 403);
-
-        /** @var User $children */
-        $children = Auth::user()->children()->find($id);
-
-        if (!isset($children)) {
-            Flash::error('Children were not found');
-
-            return redirect(route('children.index'));
-        } else {
-            return view('children.edit', $children->id)->with(['children' => $children]);
-        }
     }
 
     /**
