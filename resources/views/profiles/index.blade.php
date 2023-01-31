@@ -48,6 +48,10 @@
                             <p class="text-muted">{{$user->phonenum}}</p>
                             <strong><i class="fas fa-user"></i> Roles</strong>
                             <p class="text-muted">{{$roles}}</p>
+                            <strong><i class="fas fa-user"></i> Parents</strong>
+                            <p class="text-muted">{{$parents}}</p>
+                            <strong><i class="fas fa-user"></i> Teachers</strong>
+                            <p class="text-muted">{{$teachers}}</p>
                             @can('admin_access')
                                 <strong><i class="fas fa-user"></i> Permissions</strong>
                                 <p class="text-muted">{{$permissions}}</p>
