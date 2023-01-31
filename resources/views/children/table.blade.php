@@ -33,12 +33,6 @@
                                     <i class="far fa-eye"></i>
                                 </a>
                             @endcan
-                            @can('children_edit')
-                                <a href="{{ route('children.edit', [$child->id]) }}"
-                                   class='btn btn-default btn-xs'>
-                                    <i class="far fa-edit"></i>
-                                </a>
-                            @endcan
                         </div>
                         @can('users_destroy')
                             {!! Form::close() !!}
