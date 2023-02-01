@@ -30,28 +30,36 @@
                             <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
                         </div>
                         <div class="card-body">
-                            <strong><i class="fas fa-user"></i> ID</strong>
-                            <p class="text-muted">{{$user->id}}</p>
-                            <strong><i class="fas fa-user"></i> First name</strong>
-                            <p class="text-muted">{{$user->fname}}</p>
-                            <strong><i class="fas fa-user"></i> Last name</strong>
-                            <p class="text-muted">{{$user->lname}}</p>
-                            <strong><i class="fas fa-user"></i> Birth date</strong>
-                            <p class="text-muted">{{date_format($user->birthdate, "d.m.Y")}}</p>
-                            <strong><i class="fas fa-user"></i> Address</strong>
-                            <p class="text-muted">{{$user->address}}</p>
-                            <strong><i class="fas fa-user"></i> E-Mail</strong>
-                            <p class="text-muted">{{$user->email}}</p>
-                            <strong><i class="fas fa-user"></i> Gender</strong>
-                            <p class="text-muted">{{$user->gender}}</p>
-                            <strong><i class="fas fa-user"></i> Phone number</strong>
-                            <p class="text-muted">{{$user->phonenum}}</p>
-                            <strong><i class="fas fa-user"></i> Roles</strong>
-                            <p class="text-muted">{{$roles}}</p>
-                            <strong><i class="fas fa-user"></i> Parents</strong>
-                            <p class="text-muted">{{$parents}}</p>
-                            <strong><i class="fas fa-user"></i> Teachers</strong>
-                            <p class="text-muted">{{$teachers}}</p>
+                            @can('profiles_access')
+                                <strong><i class="fas fa-user"></i> ID</strong>
+                                <p class="text-muted">{{$user->id}}</p>
+                                <strong><i class="fas fa-user"></i> First name</strong>
+                                <p class="text-muted">{{$user->fname}}</p>
+                                <strong><i class="fas fa-user"></i> Last name</strong>
+                                <p class="text-muted">{{$user->lname}}</p>
+                                <strong><i class="fas fa-user"></i> Birth date</strong>
+                                <p class="text-muted">{{date_format($user->birthdate, "d.m.Y")}}</p>
+                                <strong><i class="fas fa-user"></i> Address</strong>
+                                <p class="text-muted">{{$user->address}}</p>
+                                <strong><i class="fas fa-user"></i> E-Mail</strong>
+                                <p class="text-muted">{{$user->email}}</p>
+                                <strong><i class="fas fa-user"></i> Gender</strong>
+                                <p class="text-muted">{{$user->gender}}</p>
+                                <strong><i class="fas fa-user"></i> Phone number</strong>
+                                <p class="text-muted">{{$user->phonenum}}</p>
+                                <strong><i class="fas fa-user"></i> Roles</strong>
+                                <p class="text-muted">{{$roles}}</p>
+                            @endcan
+                            @can('student_widget')
+                                <strong><i class="fas fa-user"></i> Parents</strong>
+                                <p class="text-muted">{{$parents}}</p>
+                                <strong><i class="fas fa-user"></i> Teachers</strong>
+                                <p class="text-muted">{{$teachers}}</p>
+                            @endcan
+                            @can('parent_widget')
+                                <strong><i class="fas fa-user"></i> Children</strong>
+                                <p class="text-muted">{{$children}}</p>
+                            @endcan
                             @can('admin_access')
                                 <strong><i class="fas fa-user"></i> Permissions</strong>
                                 <p class="text-muted">{{$permissions}}</p>
