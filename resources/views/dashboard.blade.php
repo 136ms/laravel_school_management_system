@@ -124,19 +124,19 @@
                                 <h5>User</h5>
                                 @can('profiles_access')
                                     <a href="{{ route('profile.index') }}"
-                                       class='btn btn-outline-primary'><i class="fa fa-user text-purple"></i>
+                                       class='btn btn-outline-primary'><i class="fa fa-user text-red"></i>
                                         Profile
                                     </a>
                                 @endcan
                                 @can('profile_edit')
                                     <a href="{{ route('profile.edit') }}"
-                                       class='btn btn-outline-primary'><i class="fa fa-edit text-purple"></i>
+                                       class='btn btn-outline-primary'><i class="fa fa-edit text-red"></i>
                                         Edit profile
                                     </a>
                                 @endcan
                                 @can('user_picture_edit')
                                     <a href="{{ route('user.avatar') }}"
-                                       class='btn btn-outline-primary'><i class="fa fa-edit text-purple"></i>
+                                       class='btn btn-outline-primary'><i class="fa fa-edit text-red"></i>
                                         Profile avatar
                                     </a>
                                 @endcan
