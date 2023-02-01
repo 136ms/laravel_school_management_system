@@ -66,35 +66,5 @@ class UsersTableSeeder extends Seeder
             ]);
         $adminRole = Role::findByName('admin');
         $admin->assignRole($adminRole);
-
-        // seed student
-        /** @var User $student */
-        $student = User::factory()
-            ->create([
-                'email' => 'student@role.com',
-                'password' => Hash::make('student'),
-            ]);
-        $studentRole = Role::findByName('student');
-        $student->assignRole($studentRole);
-
-        // seed teacher
-        /** @var User $teacher */
-        $teacher = User::factory()
-            ->create([
-                'email' => 'teacher@role.com',
-                'password' => Hash::make('teacher'),
-            ]);
-        $teacherRole = Role::findByName('teacher');
-        $teacher->assignRole($teacherRole);
-
-        // seed parent
-        /** @var User $parent */
-        $parent = User::factory()
-            ->create([
-                'email' => 'parent@role.com',
-                'password' => Hash::make('parent'),
-            ]);
-        $parentRole = Role::findByName('parent');
-        $parent->assignRole($parentRole);
     }
 }
