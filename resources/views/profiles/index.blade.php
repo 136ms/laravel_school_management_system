@@ -31,43 +31,43 @@
                         </div>
                         <div class="card-body">
                             @can('profiles_access')
-                                <strong><i class="fas fa-user"></i> ID</strong>
+                                <strong><i class="fas fa-id-badge"></i> ID</strong>
                                 <p class="text-muted">{{$user->id}}</p>
                                 <strong><i class="fas fa-user"></i> First name</strong>
                                 <p class="text-muted">{{$user->fname}}</p>
                                 <strong><i class="fas fa-user"></i> Last name</strong>
                                 <p class="text-muted">{{$user->lname}}</p>
-                                <strong><i class="fas fa-user"></i> Birth date</strong>
+                                <strong><i class="fas fa-birthday-cake"></i> Birth date</strong>
                                 <p class="text-muted">{{date_format($user->birthdate, "d.m.Y")}}</p>
-                                <strong><i class="fas fa-user"></i> Address</strong>
+                                <strong><i class="fas fa-address-card"></i> Address</strong>
                                 <p class="text-muted">{{$user->address}}</p>
-                                <strong><i class="fas fa-user"></i> E-Mail</strong>
+                                <strong><i class="fas fa-envelope"></i> E-Mail</strong>
                                 <p class="text-muted">{{$user->email}}</p>
                                 <strong><i class="fas fa-user"></i> Gender</strong>
                                 <p class="text-muted">{{$user->gender}}</p>
-                                <strong><i class="fas fa-user"></i> Phone number</strong>
+                                <strong><i class="fas fa-phone"></i> Phone number</strong>
                                 <p class="text-muted">{{$user->phonenum}}</p>
-                                <strong><i class="fas fa-user"></i> Roles</strong>
+                                <strong><i class="fas fa-user-tie"></i> Roles</strong>
                                 <p class="text-muted">{{$roles}}</p>
                             @endcan
                             @can('student_widget')
-                                <strong><i class="fas fa-user"></i> Parents</strong>
+                                <strong><i class="fas fa-child"></i> Parents</strong>
                                 <p class="text-muted">{{$parents}}</p>
-                                <strong><i class="fas fa-user"></i> Teachers</strong>
+                                <strong><i class="fas fa-chalkboard-teacher"></i> Teachers</strong>
                                 <p class="text-muted">{{$teachers}}</p>
                             @endcan
                             @can('parent_widget')
-                                <strong><i class="fas fa-user"></i> Children</strong>
+                                <strong><i class="fas fa-child"></i> Children</strong>
                                 <p class="text-muted">{{$children}}</p>
                             @endcan
                             @can('admin_access')
-                                <strong><i class="fas fa-user"></i> Permissions</strong>
+                                <strong><i class="fas fa-adjust"></i> Permissions</strong>
                                 <p class="text-muted">{{$permissions}}</p>
-                                <strong><i class="fas fa-user"></i> Groups</strong>
+                                <strong><i class="fas fa-users"></i> Groups</strong>
                                 <p class="text-muted">{{$groups}}</p>
-                                <strong><i class="fas fa-user"></i> Subjects</strong>
+                                <strong><i class="fas fa-book"></i> Subjects</strong>
                                 <p class="text-muted">{{$subjects}}</p>
-                                <strong><i class="fas fa-user"></i> Teachers</strong>
+                                <strong><i class="fas fa-chalkboard-teacher"></i> Teachers</strong>
                                 <p class="text-muted">{{$teachers}}</p>
                             @endcan
                         </div>
