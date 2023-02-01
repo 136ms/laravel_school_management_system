@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\GradeRepository;
 use App\Repositories\GroupRepository;
 use App\Repositories\SubjectRepository;
 use App\Repositories\UserRepository;
@@ -22,6 +23,9 @@ class DashboardController extends Controller
     /** @var GroupRepository */
     private GroupRepository $groupRepository;
 
+    /** @var GradeRepository */
+    private GradeRepository $gradeRepository;
+
     /**
      * Create a new controller instance.
      *
@@ -30,12 +34,14 @@ class DashboardController extends Controller
     public function __construct(
         SubjectRepository $subjectRepository,
         UserRepository    $userRepository,
-        GroupRepository   $groupRepository
+        GroupRepository   $groupRepository,
+        GradeRepository   $gradeRepository
     )
     {
         $this->subjectRepository = $subjectRepository;
         $this->userRepository = $userRepository;
         $this->groupRepository = $groupRepository;
+        $this->gradeRepository = $gradeRepository;
         $this->middleware('auth');
     }
 
@@ -47,7 +53,7 @@ class DashboardController extends Controller
     public function index(): Renderable
     {
         /** @var User $user */
-        $user = Auth::user();
+        $user = Auth::getUser();
 
         if (isset($user)) {
             return view('dashboard')->with([
@@ -62,6 +68,7 @@ class DashboardController extends Controller
                 'children' => $this->userRepository->getChildrenNames(),
                 'roles' => $this->userRepository->getRoleNames(),
                 'permissions' => $this->userRepository->getPermissions(),
+                'grades' =>  $this->gradeRepository->paginate(10),
             ]);
         } else {
             Flash::error('Please login to your account.');
