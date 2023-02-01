@@ -58,6 +58,7 @@
                                     <h3 class="card-title">Grades</h3>
                                 </div>
                                 @include('grades.table')
+                                <span class="badge bg-primary">Average {{$userGrades}}</span>
                             </div>
                         </div>
                     @endcan
