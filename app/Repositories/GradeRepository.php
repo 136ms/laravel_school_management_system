@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Grade;
 use App\Models\User;
+use Laracasts\Flash\Flash;
 
 class GradeRepository extends BaseRepository
 {
@@ -26,16 +27,22 @@ class GradeRepository extends BaseRepository
         return Grade::class;
     }
 
-    public function calculateGradesAverage($gradeList) : string
+    public function calculateGradesAverage($gradeList): string
     {
-        $totalWeight = 0;
-        $totalGradePoint = 0;
+        $total = 0;
+        $weight_sum = 0;
         foreach ($gradeList as $grade) {
-            $weight = $grade['weight'];
-            $gradePoint = $grade['grade'];
-            $totalWeight += $weight;
-            $totalGradePoint += $weight * $gradePoint;
+            if (!isset($grade['grade_point']) || !isset($grade['weight'])) {
+
+                return false;
+            }
+            $total += $grade['grade_point'] * $grade['weight'];
+            $weight_sum += $grade['weight'];
         }
-        return $totalGradePoint / $totalWeight;
+        if ($weight_sum === 0) {
+            Flash::error('You have no grades');
+            return false;
+        }
+        return $total / $weight_sum;
     }
 }

@@ -6,8 +6,8 @@
     @can('dashboard_access')
         @can('dashboard_access')
             <div class="container">
+                @include('flash::message')
                 <div class="row pt-3">
-                    @include('flash::message')
                     <div class="col-sm-4">
                         <div class="card card-primary">
                             <div class="card-header">
