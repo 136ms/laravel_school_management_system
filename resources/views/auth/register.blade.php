@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }} | Registration Page</title>
+    <title>{{ config('app.name') }} | {{__('auth.registerTitle')}}</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -38,7 +38,7 @@
 
     <div class="card">
         <div class="card-body register-card-body">
-            <p class="login-box-msg">Register a new membership</p>
+            <p class="login-box-msg">{{__('auth.register')}}</p>
 
             <form method="post" action="{{ route('register') }}">
                 @csrf
@@ -48,7 +48,7 @@
                            name="fname"
                            class="form-control @error('fname') is-invalid @enderror"
                            value="{{ old('fname') }}"
-                           placeholder="Křestní jméno">
+                           placeholder="{{__('auth.registerFName')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -64,7 +64,7 @@
                            name="lname"
                            class="form-control @error('lname') is-invalid @enderror"
                            value="{{ old('lname') }}"
-                           placeholder="Přijmení">
+                           placeholder="{{__('auth.registerLName')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -80,7 +80,7 @@
                            name="birthdate"
                            class="form-control @error('birthdate') is-invalid @enderror"
                            value="{{ old('birthdate') }}"
-                           placeholder="Datum narození:">
+                           placeholder="{{__('auth.registerBirthDate')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -96,7 +96,7 @@
                            name="address"
                            class="form-control @error('adress') is-invalid @enderror"
                            value="{{ old('adress') }}"
-                           placeholder="Adress">
+                           placeholder="{{__('auth.registerAddress')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -111,7 +111,7 @@
                     <input type="text"
                            name="gender"
                            class="form-control @error('gender') is-invalid @enderror"
-                           placeholder="Gender">
+                           placeholder="{{__('auth.registerGender')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -126,7 +126,7 @@
                     <input type="tel"
                            name="phonenum"
                            class="form-control @error('phonenum') is-invalid @enderror"
-                           placeholder="Phonenum">
+                           placeholder="{{__('auth.registerPhoneNum')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -142,7 +142,7 @@
                            name="email"
                            value="{{ old('email') }}"
                            class="form-control @error('email') is-invalid @enderror"
-                           placeholder="Email">
+                           placeholder="{{__('auth.registerEmail')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -157,7 +157,7 @@
                     <input type="password"
                            name="password"
                            class="form-control @error('password') is-invalid @enderror"
-                           placeholder="Password">
+                           placeholder="{{__('auth.registerPassword')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -172,30 +172,30 @@
                     <input type="password"
                            name="password_confirmation"
                            class="form-control"
-                           placeholder="Retype password">
+                           placeholder="{{__('auth.registerRetypePass')}}">
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-lock"></span></div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <div class="icheck-primary">
                             <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                             <label for="agreeTerms">
-                                I agree to the <a href="#">terms</a>
+                                {{__('auth.registerAgree')}} <a href="#">{{__('auth.registerTerms')}}</a>
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary btn-block">{{__('auth.registerButton')}}</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
-            <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+            <a href="{{ route('login') }}" class="text-center">{{__('auth.registerAlready')}}</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->
