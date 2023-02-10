@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name')}} | @yield('title')</title>
+    <title>{{ config('app.name')}} | {{__('main.dashboardTitle')}}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Font Awesome -->
@@ -59,17 +59,17 @@
                              alt="User profile picture">
                         <p>
                             {{ Auth::user()->fullName }}
-                        </p>Roles:
+                        </p>{{__('main.roles')}}:
                         @foreach(Auth::user()->roles as $role)
                             <small>{{$role->name}}</small>
                         @endforeach
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="{{route('profile.index')}}" class="btn btn-default btn-flat">Profile</a>
+                        <a href="{{route('profile.index')}}" class="btn btn-default btn-flat">{{__('main.profile')}}</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Sign out
+                            {{__('main.signOut')}}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -93,12 +93,12 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 0.0.1
+            <b>{{__('main.version')}}</b> 0.0.1
         </div>
         <strong>
             Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.
         </strong>
-        All rights reserved.
+        {{__('main.rights')}}.
     </footer>
 </div>
 

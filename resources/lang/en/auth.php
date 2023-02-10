@@ -23,4 +23,6 @@ return [
     'confirm' => "Please confirm your password before continuing",
     'confirmPassword' => "Confirm password",
     'resetPassword' => "Reset password",
+    'sendPassReset' => "Send Password Reset Link",
+    'passReset' => "You forgot your password? Here you can easily retrieve a new password.",
 ];

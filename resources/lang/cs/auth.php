@@ -23,4 +23,6 @@ return [
     'confirm' => "Prosím potvrďte své heslo před pokračováním",
     'confirmPassword' => "Potvrďte heslo",
     'resetPassword' => "Resetovat heslo",
+    'sendPassReset' => "Poslat link na reset hesla",
+    'passReset' => "Zapomněli jste heslo? Zde můžete jednoduše resetovat své heslo.",
     ];
