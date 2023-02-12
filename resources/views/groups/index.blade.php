@@ -9,13 +9,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-users"></i> Group list</h1>
+                        <h1><i class="fas fa-users"></i> {{__('groups.groupList')}}</h1>
                     </div>
                     @can('groups_create')
                         <div class="col-sm-6">
                             <a class="btn btn-primary float-right"
                                href="{{ route('groups.create') }}">
-                                Add Group
+                                {{__('groups.addGroup')}}
                             </a>
                         </div>
                     @endcan

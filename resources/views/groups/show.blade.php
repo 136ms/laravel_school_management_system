@@ -18,31 +18,31 @@
                     <div class="col-sm-6">
                         <a class="btn btn-default float-right"
                            href="{{ route('groups.index') }}">
-                            Back
+                            {{__('groups.back')}}
                         </a>
                         @can('print_groups')
                             <a class="btn btn-primary float-right mr-1" id="print-button">
-                                Print
+                                {{__('groups.print')}}
                             </a>
                         @endcan
                     </div>
                 </div>
                 <div class="card card-primary" id="print-data">
                     <div class="card-header">
-                        <h3 class="card-title">About {{$group->name}}</h3>
+                        <h3 class="card-title">{{__('groups.detail')}} {{$group->name}}</h3>
                     </div>
                     <div class="card-body">
-                        <strong>Group ID</strong>
+                        <strong>{{__('groups.id')}}</strong>
                         <p class="text-muted">{{$group->id}}</p>
-                        <strong>Group name</strong>
+                        <strong>{{__('groups.groupName')}}</strong>
                         <p class="text-muted">{{$group->name}}</p>
-                        <strong>Group users</strong>
+                        <strong>{{__('groups.groupUsers')}}</strong>
                         <p class="text-muted">{{$users}}</p>
-                        <strong>Group subjects</strong>
+                        <strong>{{__('groups.groupSubjects')}}</strong>
                         <p class="text-muted">{{$subjects}}</p>
-                        <strong>Created at</strong>
+                        <strong>{{__('groups.created')}}</strong>
                         <p class="text-muted">{{$group->created_at}}</p>
-                        <strong>Updated at</strong>
+                        <strong>{{__('groups.updated')}}</strong>
                         <p class="text-muted">{{$group->updated_at}}</p>
                     </div>
                 </div>

@@ -4,11 +4,11 @@
         <table class="table" id="groups-table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Users</th>
-                <th>Subjects</th>
-                <th colspan="3">Actions</th>
+                <th>{{__('groups.id')}}</th>
+                <th>{{__('groups.groupName')}}</th>
+                <th>{{__('groups.groupUsers')}}</th>
+                <th>{{__('groups.groupSubjects')}}</th>
+                <th colspan="3">{{__('groups.actions')}}</th>
             </tr>
             </thead>
             <tbody>

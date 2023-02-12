@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h1>
                             <i class="fas fa-users"></i>
-                            Add Group
+                            {{__('groups.addGroup')}}
                         </h1>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
                 </div>
 
                 <div class="card-footer">
-                    {!! Form::submit('Add group', ['class' => 'btn btn-primary']) !!}
-                    <a href="{{ route('groups.index') }}" class="btn btn-default"> Cancel </a>
+                    {!! Form::submit(__('groups.addGroup'), ['class' => 'btn btn-primary']) !!}
+                    <a href="{{ route('groups.index') }}" class="btn btn-default"> {{__('subjects.cancel')}} </a>
                 </div>
 
                 {!! Form::close() !!}

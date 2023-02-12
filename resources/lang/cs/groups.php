@@ -1,0 +1,23 @@
+<?php
+return [
+    'groupList' => "Seznam tříd",
+    'addGroup' => "Přidat třídu",
+    'editGroup' => "Editovat třídu",
+    'manageUsers' => "Změnit uživatele",
+    'manageSubjects' => "Změnit předměty",
+    'manageGroupSubjects' => "Změnit předměty třídy",
+    'manageGroupUsers' => "Změnit uživatele třídy",
+    'cancel' => "Zrušit",
+    'edit' => "Editovat",
+    'name' => "Název:",
+    'back' => "Zpět",
+    'print' => "Tisknout",
+    'detail' => "O",
+    'id' => "ID",
+    'groupName' => "Název třídy",
+    'groupUsers' => "Uživatelé třídy",
+    'groupSubjects' => "Předměty třídy",
+    'created' => "Vytvořeno",
+    'updated' => "Aktualizováno",
+    'actions' => "Akce",
+];

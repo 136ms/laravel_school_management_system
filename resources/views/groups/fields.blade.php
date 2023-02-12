@@ -1,5 +1,5 @@
 <!-- Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', __('groups.name')) !!}
     {!! Form::text('name', null, ['class' => 'form-control', 'required', 'maxlength' => 255]) !!}
 </div>

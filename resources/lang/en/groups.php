@@ -1,0 +1,22 @@
+<?php
+return [
+    'addGroup' => "Add group",
+    'editGroup' => "Edit group",
+    'manageUsers' => "Manage users",
+    'manageSubjects' => "Manage subjects",
+    'manageGroupSubjects' => "Manage group subjects",
+    'manageGroupUsers' => "Manage group users",
+    'cancel' => "Cancel",
+    'edit' => "Edit",
+    'name' => "Name:",
+    'back' => "Back",
+    'print' => "Print",
+    'detail' => "About",
+    'id' => "ID",
+    'groupName' => "Group name",
+    'groupUsers' => "Group users",
+    'groupSubjects' => "Group subjects",
+    'created' => "Created",
+    'updated' => "Updated",
+    'actions' => "Actions",
+];

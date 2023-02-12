@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h1>
                             <i class="fas fa-users"></i>
-                            Edit Group
+                            {{__('groups.editGroup')}}
                         </h1>
                     </div>
                 </div>
@@ -22,10 +22,10 @@
 
             @include('flash::message')
             @can('group_users_update')
-                <a href="{{ route('groups.users.show', $group->id) }}" class="btn btn-primary"> Manage users </a>
+                <a href="{{ route('groups.users.show', $group->id) }}" class="btn btn-primary"> {{__('groups.manageUsers')}} </a>
             @endcan
             @can('group_subjects_update')
-                <a href="{{ route('groups.subjects.show', $group->id) }}" class="btn btn-primary"> Manage subjects </a>
+                <a href="{{ route('groups.subjects.show', $group->id) }}" class="btn btn-primary"> {{__('groups.manageSubjects')}} </a>
             @endcan
 
             <div class="card">
@@ -39,8 +39,8 @@
                 </div>
 
                 <div class="card-footer">
-                    {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                    <a href="{{ route('groups.index') }}" class="btn btn-default"> Cancel </a>
+                    {!! Form::submit(__('subjects.edit'), ['class' => 'btn btn-primary']) !!}
+                    <a href="{{ route('groups.index') }}" class="btn btn-default"> {{__('subjects.cancel')}} </a>
                 </div>
 
                 {!! Form::close() !!}
