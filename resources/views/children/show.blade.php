@@ -17,18 +17,18 @@
                     <div class="col-sm-6">
                         <a class="btn btn-default float-right"
                            href="{{ route('children.index') }}">
-                            Back
+                            {{__('children.back')}}
                         </a>
                         @can('print_children')
                             <a class="btn btn-primary float-right mr-1" id="print-button">
-                                Print
+                                {{__('children.print')}}
                             </a>
                         @endcan
                     </div>
                 </div>
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">About {{$children->fullName}}</h3>
+                        <h3 class="card-title">{{__('children.detail')}} {{$children->fullName}}</h3>
                     </div>
                     <div class="card-body" id="print-data">
                         @include('flash::message')
@@ -36,51 +36,51 @@
                              style="width: 5%"
                              alt="User profile picture">
                         <br>
-                        <strong>ID</strong>
+                        <strong>{{__('children.id')}}</strong>
                         <p class="text-muted">{{$children->id}}</p>
 
-                        <strong>Groups</strong>
+                        <strong>{{__('children.childGroups')}}</strong>
                         <p class="text-muted">{{$groups}}</p>
 
-                        <strong>Subjects</strong>
+                        <strong>{{__('children.childSubjects')}}</strong>
                         <p class="text-muted">{{$subjects}}</p>
 
-                        <strong>Teachers</strong>
+                        <strong>{{__('children.childTeachers')}}</strong>
                         <p class="text-muted">{{$teachers}}</p>
 
-                        <strong>First name</strong>
+                        <strong>{{__('children.fName')}}</strong>
                         <p class="text-muted">{{$children->fname}}</p>
-                        <strong>Last name</strong>
+                        <strong>{{__('children.lName')}}</strong>
                         <p class="text-muted">{{$children->lname}}</p>
-                        <strong>Birth date</strong>
+                        <strong>{{__('children.bDate')}}</strong>
                         <p class="text-muted">{{date_format($children->birthdate, "d.m.Y")}}</p>
-                        <strong>Address</strong>
+                        <strong>{{__('children.address')}}</strong>
                         <p class="text-muted">{{$children->address}}</p>
-                        <strong>E-Mail</strong>
+                        <strong>{{__('children.email')}}</strong>
                         <p class="text-muted">{{$children->email}}</p>
-                        <strong>Gender</strong>
+                        <strong>{{__('children.gender')}}</strong>
                         <p class="text-muted">{{$children->gender}}</p>
-                        <strong>Phone number</strong>
+                        <strong>{{__('children.phone')}}</strong>
                         <p class="text-muted">{{$children->phonenum}}</p>
-                        <strong>Created at</strong>
+                        <strong>{{__('children.created')}}</strong>
                         <p class="text-muted">{{$children->created_at}}</p>
-                        <strong>Update at</strong>
+                        <strong>{{__('children.updated')}}</strong>
                         <p class="text-muted">{{$children->updated_at}}</p>
-                        <strong>Email verified at</strong>
+                        <strong>{{__('children.emailVerified')}}</strong>
                         <p class="text-muted">{{$children->email_verified_at}}</p>
-                        <strong>Grades</strong>
+                        <strong>{{__('children.childGrades')}}</strong>
                         <div class="table-responsive">
                             <table class="table" id="users-table">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Grade</th>
-                                    <th>Weight</th>
-                                    <th>Name</th>
-                                    <th>Author</th>
-                                    <th>Subject</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
+                                    <th>{{__('children.id')}}</th>
+                                    <th>{{__('children.grade')}}</th>
+                                    <th>{{__('children.weight')}}</th>
+                                    <th>{{__('children.name')}}</th>
+                                    <th>{{__('children.author')}}</th>
+                                    <th>{{__('children.subject')}}</th>
+                                    <th>{{__('children.created')}}</th>
+                                    <th>{{__('children.updated')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

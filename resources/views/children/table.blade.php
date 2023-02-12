@@ -3,14 +3,14 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                <th>Avatar</th>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Groups</th>
-                <th>Subjects</th>
-                <th>Teachers</th>
-                <th colspan="3">Actions</th>
+                <th>{{__('children.avatar')}}</th>
+                <th>{{__('children.id')}}</th>
+                <th>{{__('children.fName')}}</th>
+                <th>{{__('children.lName')}}</th>
+                <th>{{__('children.childGroups')}}</th>
+                <th>{{__('children.childSubjects')}}</th>
+                <th>{{__('children.childTeachers')}}</th>
+                <th colspan="3">{{__('children.actions')}}</th>
             </tr>
             </thead>
             <tbody>
