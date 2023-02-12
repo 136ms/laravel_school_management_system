@@ -16,30 +16,30 @@
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
                        href="{{ route('subjects.index') }}">
-                        Back
+                        {{__('subjects.back')}}
                     </a>
                     @can('print_subjects')
                         <a class="btn btn-primary float-right mr-1" id="print-button">
-                            Print
+                            {{__('subjects.print')}}
                         </a>
                     @endcan
                 </div>
             </div>
             <div class="card card-primary" id="print-data">
                 <div class="card-header">
-                    <h3 class="card-title">About {{$subject->name}}</h3>
+                    <h3 class="card-title">{{__('subjects.about')}} {{$subject->name}}</h3>
                 </div>
                 <div class="card-body">
                     @include('flash::message')
-                    <strong>Subject ID</strong>
+                    <strong>{{__('subjects.subjectId')}}</strong>
                     <p class="text-muted">{{$subject->id}}</p>
-                    <strong>Subject name</strong>
+                    <strong>{{__('subjects.subjectName')}}</strong>
                     <p class="text-muted">{{$subject->name}}</p>
 
-                    <strong>Subject groups</strong>
+                    <strong>{{__('subjects.subjectGroups')}}</strong>
                     <p class="text-muted">{{$groups}}</p>
 
-                    <strong>Subject users</strong>
+                    <strong>{{__('subjects.subjectUsers')}}</strong>
                     <p class="text-muted">{{$users}}</p>
                 </div>
             </div>

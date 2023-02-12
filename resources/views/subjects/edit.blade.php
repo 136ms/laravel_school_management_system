@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h1>
                             <i class="fas fa-book"></i>
-                            Edit Subject
+                            {{__('subjects.editSubject')}}
                         </h1>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                 </div>
 
                 <div class="card-footer">
-                    {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                    <a href="{{ route('subjects.index') }}" class="btn btn-default"> Cancel </a>
+                    {!! Form::submit(__('subjects.edit'), ['class' => 'btn btn-primary']) !!}
+                    <a href="{{ route('subjects.index') }}" class="btn btn-default"> {{__('subjects.cancel')}} </a>
                 </div>
 
                 {!! Form::close() !!}

@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h1>
                             <i class="fas fa-user"></i>
-                            Manage group users
+                            {{__('subjects.manageSubjectUser')}}
                         </h1>
                     </div>
                 </div>
@@ -29,15 +29,15 @@
                         <input type="hidden" name="subject_id" value="{{ $subject->id }}">
                         <div class="form-group">
                             <h5>{{$subject->name}}</h5>
-                            {!! Form::label('users[]', 'Update users:') !!}
+                            {!! Form::label('users[]', __('subjects.updateUsers')) !!}
                             {!! Form::select('users[]', $users->pluck('lname', 'id'), $subject->users->pluck('id'), ['class' => 'form-control', 'multiple'=> 'multiple']) !!}
                         </div>
                     </div>
                 </div>
 
                 <div class="card-footer">
-                    {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-                    <a href="{{ route('subjects.edit', $subject) }}" class="btn btn-default"> Cancel </a>
+                    {!! Form::submit(__('subjects.update'), ['class' => 'btn btn-primary']) !!}
+                    <a href="{{ route('subjects.edit', $subject) }}" class="btn btn-default"> {{__('subjects.cancel')}} </a>
                 </div>
 
                 {!! Form::close() !!}
