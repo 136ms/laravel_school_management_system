@@ -1,0 +1,21 @@
+<?php
+return [
+    'gradeList' => "Grade list",
+    'addGrade' => "Add grade",
+    'editGrade' => "Edit grade",
+    'edit' => "Edit",
+    'add' => "Add",
+    'cancel' => "Cancel",
+    'name' => "Název",
+    'grade' => "Grade",
+    'weight' => "Weight",
+    'student' => "Student",
+    'subject' => "Subject",
+    'back' => "Back",
+    'print' => "Print",
+    'detail' => "About",
+    'author' => "Author",
+    'created' => "Created at",
+    'updated' => "Updated at",
+    'actions' => "Actions",
+];

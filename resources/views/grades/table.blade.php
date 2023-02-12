@@ -3,16 +3,16 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Grade</th>
-                <th>Weight</th>
-                <th>Author</th>
-                <th>Student</th>
-                <th>Subject</th>
-                <th>Created at</th>
-                <th>Updated at</th>
-                <th colspan="3">Actions</th>
+                <th>{{__('grades.id')}}</th>
+                <th>{{__('grades.name')}}</th>
+                <th>{{__('grades.grade')}}</th>
+                <th>{{__('grades.weight')}}</th>
+                <th>{{__('grades.author')}}</th>
+                <th>{{__('grades.student')}}</th>
+                <th>{{__('grades.subject')}}</th>
+                <th>{{__('grades.created')}}</th>
+                <th>{{__('grades.updated')}}</th>
+                <th colspan="3">{{__('grades.actions')}}</th>
             </tr>
             </thead>
             <tbody>

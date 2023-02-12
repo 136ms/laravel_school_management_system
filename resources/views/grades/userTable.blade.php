@@ -3,13 +3,13 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Grade</th>
-                <th>Weight</th>
-                <th>Author</th>
-                <th>Subject</th>
-                <th colspan="3">Actions</th>
+                <th>{{__('grades.id')}}</th>
+                <th>{{__('grades.name')}}</th>
+                <th>{{__('grades.grade')}}</th>
+                <th>{{__('grades.weight')}}</th>
+                <th>{{__('grades.author')}}</th>
+                <th>{{__('grades.subject')}}</th>
+                <th colspan="3"><th>{{__('grades.actions')}}</th></th>
             </tr>
             </thead>
             <tbody>

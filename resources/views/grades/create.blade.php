@@ -11,7 +11,7 @@
                 <div class="col-sm-12">
                     <h1>
                         <i class="fas fa-user"></i>
-                        Add Grade
+                        {{__('grades.addGrade')}}
                     </h1>
                 </div>
             </div>
@@ -35,8 +35,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('grades.index') }}" class="btn btn-default"> Cancel </a>
+                {!! Form::submit(__('grades.add'), ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('grades.index') }}" class="btn btn-default"> {{__('grades.cancel')}} </a>
             </div>
 
             {!! Form::close() !!}

@@ -17,47 +17,47 @@
                     <div class="col-sm-6">
                         <a class="btn btn-default float-right"
                            href="{{ route('grades.index') }}">
-                            Back
+                            {{__('grades.back')}}
                         </a>
                         @can('print_grades')
                             <a class="btn btn-primary float-right mr-1" id="print-button">
-                                Print
+                                {{__('grades.print')}}
                             </a>
                         @endcan
                     </div>
                 </div>
                 <div class="card card-primary" id="print-data">
                     <div class="card-header">
-                        <h3 class="card-title">About {{$grade->name}}</h3>
+                        <h3 class="card-title">{{__('grades.detail')}} {{$grade->name}}</h3>
                     </div>
                     <div class="card-body" id="print-data">
                         @include('flash::message')
 
-                        <strong>ID</strong>
+                        <strong>{{__('grades.id')}}</strong>
                         <p class="text-muted">{{$grade->id}}</p>
 
-                        <strong>Name</strong>
+                        <strong>{{__('grades.name')}}</strong>
                         <p class="text-muted">{{$grade->name}}</p>
 
-                        <strong>Weight</strong>
+                        <strong>{{__('grades.weight')}}</strong>
                         <p class="text-muted">{{$grade->weight}}</p>
 
-                        <strong>Grade</strong>
+                        <strong>{{__('grades.grade')}}</strong>
                         <p class="text-muted">{{$grade->grade}}</p>
 
-                        <strong>Author</strong>
+                        <strong>{{__('grades.author')}}</strong>
                         <p class="text-muted">{{$grade->author->fullName}}</p>
 
-                        <strong>Student</strong>
+                        <strong>{{__('grades.student')}}</strong>
                         <p class="text-muted">{{$grade->student->fullName}}</p>
 
-                        <strong>Subject</strong>
+                        <strong>{{__('grades.subject')}}</strong>
                         <p class="text-muted">{{$grade->subject->name}}</p>
 
-                        <strong>Created at</strong>
+                        <strong>{{__('grades.created')}}</strong>
                         <p class="text-muted">{{$grade->created_at}}</p>
 
-                        <strong>Updated at</strong>
+                        <strong>{{__('grades.updated')}}</strong>
                         <p class="text-muted">{{$grade->updated_at}}</p>
                     </div>
                 </div>

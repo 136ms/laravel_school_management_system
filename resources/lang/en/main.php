@@ -12,4 +12,5 @@ return [
     'groups' => "Groups",
     'grades' => "Grades",
     'children' => "Children",
+    'roleError' => "You need a different role",
 ];

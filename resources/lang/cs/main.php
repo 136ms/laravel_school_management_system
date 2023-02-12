@@ -12,4 +12,5 @@ return [
     'groups' => "Třídy",
     'grades' => "Známky",
     'children' => "Děti",
+    'roleError' => "Potřebujete jinou roli",
 ];

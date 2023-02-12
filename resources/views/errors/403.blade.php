@@ -1,5 +1,5 @@
 @extends('errors::minimal')
 
-@section('title', __('You need a different role'))
+@section('title', __('main.roleError'))
 @section('code', '403')
-@section('message', __($exception->getMessage() ?: 'You need different role'))
+@section('message', __($exception->getMessage() ?: 'main.roleError'))

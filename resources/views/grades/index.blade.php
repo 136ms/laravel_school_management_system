@@ -1,7 +1,4 @@
 @section('title')
-    {{'User list'}}
-@endsection
-@section('title')
     {{"Grade list"}}
 @endsection
 @extends('layouts.app')
@@ -12,13 +9,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-graduation-cap"></i> Grade list</h1>
+                        <h1><i class="fas fa-graduation-cap"></i> {{__('grades.gradeList')}}</h1>
                     </div>
                     @can('grades_create')
                         <div class="col-sm-6">
                             <a class="btn btn-primary float-right"
                                href="{{ route('grades.create') }}">
-                                Add Grade
+                                {{__('grades.addGrade')}}
                             </a>
                         </div>
                     @endcan
