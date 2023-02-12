@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h1>
                             <i class="fas fa-user"></i>
-                            Manage user teachers
+                            {{__('users.userManageTeachers')}}
                         </h1>
                     </div>
                 </div>
@@ -29,15 +29,15 @@
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <div class="form-group">
                             <h5>{{$user->fname}} {{$user->lname}}</h5>
-                            {!! Form::label('teachers[]', 'Update groups:') !!}
+                            {!! Form::label('teachers[]', __('users.userManageGroups')) !!}
                             {!! Form::select('teachers[]', $teachers->pluck('lname', 'id'), $user->teachers->pluck('id'), ['class' => 'form-control', 'multiple'=> 'multiple']) !!}
                         </div>
                     </div>
                 </div>
 
                 <div class="card-footer">
-                    {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-                    <a href="{{ route('users.edit', $user) }}" class="btn btn-default"> Cancel </a>
+                    {!! Form::submit(__('users.teacherSubmit'), ['class' => 'btn btn-primary']) !!}
+                    <a href="{{ route('users.edit', $user) }}" class="btn btn-default"> {{__('users.userCancel')}} </a>
                 </div>
 
                 {!! Form::close() !!}

@@ -11,7 +11,7 @@
                 <div class="col-sm-12">
                     <h1>
                         <i class="fas fa-user"></i>
-                        Edit User
+                        {{__('users.userEdit')}}
                     </h1>
                 </div>
             </div>
@@ -22,22 +22,22 @@
 
         @include('flash::message')
         @can('roles_update')
-            <a href="{{ route('users.roles.update', $user->id) }}" class="btn btn-primary"> Manage roles </a>
+            <a href="{{ route('users.roles.update', $user->id) }}" class="btn btn-primary"> {{__('users.userManageRoles')}} </a>
         @endcan
         @can('users_groups_update')
-            <a href="{{ route('users.groups.update', $user->id) }}" class="btn btn-primary"> Manage groups </a>
+            <a href="{{ route('users.groups.update', $user->id) }}" class="btn btn-primary"> {{__('users.userManageGroups')}} </a>
         @endcan
         @can('users_subjects_update')
-            <a href="{{ route('users.subjects.update', $user->id) }}" class="btn btn-primary"> Manage subjects </a>
+            <a href="{{ route('users.subjects.update', $user->id) }}" class="btn btn-primary"> {{__('users.userManageSubjects')}} </a>
         @endcan
         @can('users_parents_update')
-            <a href="{{ route('users.parents.update', $user->id) }}" class="btn btn-primary"> Manage parents </a>
+            <a href="{{ route('users.parents.update', $user->id) }}" class="btn btn-primary"> {{__('users.userManageParents')}} </a>
         @endcan
         @can('users_parents_update')
-            <a href="{{ route('users.teachers.update', $user->id) }}" class="btn btn-primary"> Manage teachers </a>
+            <a href="{{ route('users.teachers.update', $user->id) }}" class="btn btn-primary"> {{__('users.userManageTeachers')}} </a>
         @endcan
         @can('users_picture_update')
-            <a href="{{ route('users.avatar.update', $user->id) }}" class="btn btn-primary"> Manage avatar </a>
+            <a href="{{ route('users.avatar.update', $user->id) }}" class="btn btn-primary"> {{__('users.userManageAvatar')}} </a>
         @endcan
         <div class="card">
             {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
@@ -51,8 +51,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('users.index') }}" class="btn btn-default"> Cancel </a>
+                {!! Form::submit(__('users.userEdit'), ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('users.index') }}" class="btn btn-default"> {{__('users.userCancel')}} </a>
             </div>
 
             {!! Form::close() !!}

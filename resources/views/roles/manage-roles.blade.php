@@ -10,7 +10,7 @@
                 <div class="col-sm-12">
                     <h1>
                         <i class="fas fa-user"></i>
-                        Manage roles
+                        {{__('users.userManageRoles')}}
                     </h1>
                 </div>
             </div>
@@ -28,15 +28,15 @@
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <div class="form-group">
                         <h5>{{$user->fullName}}</h5>
-                        {!! Form::label('roles[]', 'Update roles:') !!}
+                        {!! Form::label('roles[]', __('users.userManageRoles')) !!}
                         {!! Form::select('roles[]', $roles->pluck('name', 'id'), $user->roles->pluck('id'), ['class' => 'form-control', 'multiple'=> 'multiple']) !!}
                     </div>
                 </div>
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default"> Cancel </a>
+                {!! Form::submit(__('users.roleSubmit'), ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default"> {{__('users.userCancel')}} </a>
             </div>
 
             {!! Form::close() !!}

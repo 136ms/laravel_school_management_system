@@ -23,4 +23,6 @@ return [
     'profile' => "Profile",
     'editProfile' => "Edit profile",
     'profileAvatar' => "Profile avatar",
+    'create' => "Create",
+    'lists' => "Lists",
 ];

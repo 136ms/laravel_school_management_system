@@ -3,21 +3,21 @@
         <table class="table" id="users-table">
             <thead>
             <tr>
-                <th>Avatar</th>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Birth date</th>
-                <th>Address</th>
-                <th>E-mail</th>
-                <th>Gender</th>
-                <th>Phone number</th>
-                <th>Role</th>
-                <th>Groups</th>
-                <th>Subjects</th>
-                <th>Parents</th>
-                <th>Teachers</th>
-                <th colspan="3">Actions</th>
+                <th>{{__('users.avatar')}}</th>
+                <th>{{__('users.iD')}}</th>
+                <th>{{__('users.fName')}}</th>
+                <th>{{__('users.lName')}}</th>
+                <th>{{__('users.bDate')}}</th>
+                <th>{{__('users.address')}}</th>
+                <th>{{__('users.email')}}</th>
+                <th>{{__('users.gender')}}</th>
+                <th>{{__('users.phone')}}</th>
+                <th>{{__('users.roles')}}</th>
+                <th>{{__('users.groups')}}</th>
+                <th>{{__('users.subjects')}}</th>
+                <th>{{__('users.parents')}}</th>
+                <th>{{__('users.teachers')}}</th>
+                <th colspan="3">{{__('users.actions')}}</th>
             </tr>
             </thead>
             <tbody>

@@ -23,4 +23,6 @@ return [
     'profile' => "Profil",
     'editProfile' => "Editovat profil",
     'profileAvatar' => "Profilový obrázek",
+    'create' => "Vytvořit",
+    'lists' => "Seznamy",
 ];

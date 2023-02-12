@@ -8,11 +8,11 @@
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{$user->fname}} {{$user->lname}} profile</h1>
+                    <h1 class="m-0">{{$user->fname}} {{$user->lname}} {{__('profile.profile')}}</h1>
                 </div>
                 @can('print_profiles')
                 <a class="btn btn-primary float-right mr-1" id="print-button">
-                    Print
+                    {{__('profile.profilePrint')}}
                 </a>
                 @endcan
             </div>
@@ -24,39 +24,39 @@
 
                     </div>
                     <h3 class="profile-username text-center">{{$user->fname}} {{$user->lname}}</h3>
-                    <a href="{{route('profiles.edit', $user)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
+                    <a href="{{route('profiles.edit', $user)}}" class="btn btn-primary btn-block"><b>{{__('profile.editButton')}}</b></a>
                     <br>
                     <div class="card card-primary" id="print-data">
                         <div class="card-header">
-                            <h3 class="card-title">About {{$user->fname}} {{$user->lname}}</h3>
+                            <h3 class="card-title">{{__('profile.detail')}} {{$user->fname}} {{$user->lname}}</h3>
                         </div>
                         <div class="card-body">
-                            <strong><i class="fas fa-user"></i> ID</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileId')}}</strong>
                             <p class="text-muted">{{$user->id}}</p>
-                            <strong><i class="fas fa-user"></i> First name</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileFname')}}</strong>
                             <p class="text-muted">{{$user->fname}}</p>
-                            <strong><i class="fas fa-user"></i> Last name</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileLname')}}</strong>
                             <p class="text-muted">{{$user->lname}}</p>
-                            <strong><i class="fas fa-user"></i> Birth date</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileBirthDate')}}</strong>
                             <p class="text-muted">{{date_format($user->birthdate, "d.m.Y")}}</p>
-                            <strong><i class="fas fa-user"></i> Address</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileAddress')}}</strong>
                             <p class="text-muted">{{$user->address}}</p>
-                            <strong><i class="fas fa-user"></i> E-Mail</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileEmail')}}</strong>
                             <p class="text-muted">{{$user->email}}</p>
-                            <strong><i class="fas fa-user"></i> Gender</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileGender')}}</strong>
                             <p class="text-muted">{{$user->gender}}</p>
-                            <strong><i class="fas fa-user"></i> Phone number</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profilePhoneNum')}}</strong>
                             <p class="text-muted">{{$user->phonenum}}</p>
-                            <strong><i class="fas fa-user"></i> Roles</strong>
+                            <strong><i class="fas fa-user"></i> {{__('profile.profileRoles')}}</strong>
                             <p class="text-muted">{{$roles}}</p>
                             @can('admin_access')
-                                <strong><i class="fas fa-user"></i> Permissions</strong>
+                                <strong><i class="fas fa-user"></i> {{__('profile.profilePermissions')}}</strong>
                                 <p class="text-muted">{{$permissions}}</p>
-                                <strong><i class="fas fa-user"></i> Groups</strong>
+                                <strong><i class="fas fa-user"></i> {{__('profile.profileGroups')}}</strong>
                                 <p class="text-muted">{{$groups}}</p>
-                                <strong><i class="fas fa-user"></i> Subjects</strong>
+                                <strong><i class="fas fa-user"></i> {{__('profile.profileSubjects')}}</strong>
                                 <p class="text-muted">{{$subjects}}</p>
-                                <strong><i class="fas fa-user"></i> Teachers</strong>
+                                <strong><i class="fas fa-user"></i> {{__('profile.profileTeachers')}}</strong>
                                 <p class="text-muted">{{$teachers}}</p>
                             @endcan
                         </div>

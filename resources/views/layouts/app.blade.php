@@ -59,7 +59,7 @@
                              alt="User profile picture">
                         <p>
                             {{ Auth::user()->fullName }}
-                        </p>{{__('main.roles')}}:
+                        </p>{{__('dashboard.roles')}}:
                         @foreach(Auth::user()->roles as $role)
                             <small>{{$role->name}}</small>
                         @endforeach

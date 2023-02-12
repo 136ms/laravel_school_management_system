@@ -10,7 +10,7 @@
                 <div class="col-sm-12">
                     <h1>
                         <i class="fas fa-user"></i>
-                        Edit Profile
+                        {{__('profile.editProfile')}}
                     </h1>
                 </div>
             </div>
@@ -21,7 +21,7 @@
 
         @include('flash::message')
         @can('roles_update')
-            <a href="{{ route('users.roles.update', $user->id) }}" class="btn btn-primary"> Manage roles </a>
+            <a href="{{ route('users.roles.update', $user->id) }}" class="btn btn-primary"> {{__('profile.profileManageRoles')}} </a>
         @endcan
         <div class="card">
             {!! Form::model($user, ['route' => ['profile.update', $user->id], 'method' => 'patch']) !!}
@@ -33,8 +33,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('profile.index') }}" class="btn btn-default"> Cancel </a>
+                {!! Form::submit(__('profile.editButton'), ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('profile.index') }}" class="btn btn-default"> {{__('profile.profileCancel')}} </a>
             </div>
 
             {!! Form::close() !!}

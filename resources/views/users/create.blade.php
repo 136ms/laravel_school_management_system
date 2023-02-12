@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h1>
                             <i class="fas fa-user"></i>
-                            Add User
+                            {{__('users.addUser')}}
                         </h1>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="row">
                         @include('users.fields')
                         <div class="form-group col-sm-6">
-                            {!! Form::label('roles[]', 'Roles:') !!}
+                            {!! Form::label('roles[]', __('users.roles')) !!}
                             {!! Form::select('roles[]', $roles->pluck('name', 'id'), null, ['class' => 'form-control', 'multiple'=> 'multiple']) !!}
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                 </div>
 
                 <div class="card-footer">
-                    {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
-                    <a href="{{ route('users.index') }}" class="btn btn-default"> Cancel </a>
+                    {!! Form::submit(__('users.userAdd'), ['class' => 'btn btn-primary']) !!}
+                    <a href="{{ route('users.index') }}" class="btn btn-default">{{__('users.userCancel')}} </a>
                 </div>
 
                 {!! Form::close() !!}

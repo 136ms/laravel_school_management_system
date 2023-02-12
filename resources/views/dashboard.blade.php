@@ -68,7 +68,7 @@
                                 <h3 class="card-title">{{__('dashboard.functions')}}</h3>
                             </div>
                             <div class="card-body">
-                                <h5>Lists</h5>
+                                <h5>{{__('dashboard.lists')}}</h5>
                                 @can('subjects_access')
                                     <a href="{{ route('subjects.index', [$subjects]) }}"
                                        class='btn btn-outline-primary'><i class="fas fa-book text-purple"></i>
@@ -95,7 +95,7 @@
                                 @endcan
                             </div>
                             <div class="card-body">
-                                <h5>Create</h5>
+                                <h5>{{__('dashboard.create')}}</h5>
                                 @can('subjects_create')
                                     <a href="{{ route('subjects.create', [$subjects]) }}"
                                        class='btn btn-outline-primary'><i class="fa fa-book text-purple"></i>
