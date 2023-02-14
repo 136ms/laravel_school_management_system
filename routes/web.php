@@ -73,8 +73,11 @@ Route::get('profile/edit', [App\Http\Controllers\ProfileController::class, 'edit
 Route::patch('profile/update', [App\Http\Controllers\ProfileController::class, 'updateUserProfile'])->name('profile.update');
 
 //Dashboard
-Route::get('/', function () {
-    return redirect('dashboard');
-});
-
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+//Language
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
