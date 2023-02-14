@@ -6,7 +6,7 @@ return [
     'edit' => "Edit",
     'add' => "Add",
     'cancel' => "Cancel",
-    'name' => "Název",
+    'name' => "Name",
     'grade' => "Grade",
     'weight' => "Weight",
     'student' => "Student",
@@ -18,4 +18,5 @@ return [
     'created' => "Created at",
     'updated' => "Updated at",
     'actions' => "Actions",
+    'id' => "ID",
 ];
