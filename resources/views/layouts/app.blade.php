@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use Illuminate\Support\Facades\App; @endphp
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -99,6 +100,7 @@
             Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.
         </strong>
         {{__('main.rights')}}.
+        @include('language_switcher')
     </footer>
 </div>
 
