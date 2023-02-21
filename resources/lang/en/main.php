@@ -1,10 +1,10 @@
 <?php
 return [
-    'roles' => "Role",
-    'profile' => "Profil",
-    'signOut' => "Odhlásit se",
-    'version' => "Verze",
-    'rights' => "Všechna práva vyhrazena",
+    'roles' => "Roles",
+    'profile' => "Profile",
+    'signOut' => "Sign-Out",
+    'version' => "Version",
+    'rights' => "All rights reserved",
     'dashboard' => "Dashboard",
     'dashboardTitle' => "Dashboard",
     'users' => "Users",
