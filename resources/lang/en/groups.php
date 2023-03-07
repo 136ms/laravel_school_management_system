@@ -19,4 +19,5 @@ return [
     'created' => "Created",
     'updated' => "Updated",
     'actions' => "Actions",
+    'groupList' => "Group list",
 ];
