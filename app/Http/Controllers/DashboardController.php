@@ -58,7 +58,7 @@ class DashboardController extends Controller
         if (isset($user)) {
             return view('dashboard')->with([
                 'user' => $user,
-                'userGrades' => $this->gradeRepository->calculateGradesAverage($user->grades),
+                'userGrades' => $this->gradeRepository->calculateGradesAverage($user->studentGrades),
                 'userCount' => $this->userRepository->count(),
                 'subjects' => $this->subjectRepository->getSubjectNames(),
                 'subjectCount' => $this->subjectRepository->count(),

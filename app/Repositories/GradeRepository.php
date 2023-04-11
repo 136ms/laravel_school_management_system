@@ -3,8 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Grade;
-use App\Models\User;
-use Laracasts\Flash\Flash;
 
 class GradeRepository extends BaseRepository
 {
@@ -27,22 +25,22 @@ class GradeRepository extends BaseRepository
         return Grade::class;
     }
 
-    public function calculateGradesAverage($gradeList): string
+    public function calculateGradesAverage($gradeList): float
     {
-        $total = 0;
-        $weight_sum = 0;
-        foreach ($gradeList as $grade) {
-            if (!isset($grade['grade_point']) || !isset($grade['weight'])) {
+        $grades = collect($gradeList);
 
-                return false;
-            }
-            $total += $grade['grade_point'] * $grade['weight'];
-            $weight_sum += $grade['weight'];
+        $gradePoints = $grades->pluck('grade')->filter()->toArray();
+        $weights = $grades->pluck('weight')->filter()->toArray();
+
+        if (empty($gradePoints) || empty($weights)) {
+            return 0.0;
         }
-        if ($weight_sum === 0) {
-            Flash::error('You have no grades');
-            return false;
-        }
-        return $total / $weight_sum;
+        $weightedGrades = array_map(function ($grade, $weight) {
+            return $grade * $weight;
+        }, $gradePoints, $weights);
+
+        $average = array_sum($weightedGrades) / array_sum($weights);
+
+        return round($average, 2);
     }
 }

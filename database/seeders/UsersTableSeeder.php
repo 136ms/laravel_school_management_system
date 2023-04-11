@@ -18,45 +18,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        // seed groups
-        $groups = Group::factory(10)
-            ->has(Subject::factory(10))
-            ->create();
-
-        $subjects = Subject::all();
-
-        // seed admin user
-        User::factory(1)
-            ->create([
-                'email' => 'test@gmail.com',
-                'password' => Hash::make('12345'),
-            ]);
-
-        // seed users
-        $users = User::factory(10)
-            // create parents
-            ->has(User::factory(2), 'parents')
-                ->create();
-
-        // seed teachers
-        $teachers = User::factory(1)
-            // create teachers
-            ->has(User::factory(1), 'teachers')
-            // create subjects
-            ->has(Subject::factory(1))
-            ->create();
-
-        // $users = User::all(); // all users with parents;
-
-        // connect all generated students to groups and subjects (parents don`t)
-        $users->each(function (User $user) use ($subjects, $groups, $teachers) {
-           $user->groups()->sync($groups);
-           $user->teachers()->sync($teachers);
-           $user->subjects()->sync($groups[0]->subjects);
-        });
-        */
-
         // seed admin user
         /** @var User $admin */
         $admin = User::factory()
@@ -66,5 +27,45 @@ class UsersTableSeeder extends Seeder
             ]);
         $adminRole = Role::findByName('admin');
         $admin->assignRole($adminRole);
+
+        // seed parent1 user
+        /** @var User $parent1 */
+        $parent1 = User::factory()
+            ->create([
+                'email' => 'parent@role.com',
+                'password' => Hash::make('parent1'),
+            ]);
+        $parentRole = Role::findByName('parent');
+        $parent1->assignRole($parentRole);
+
+        // seed parent2 user
+        /** @var User $parent2 */
+        $parent2 = User::factory()
+            ->create([
+                'email' => 'parent2@role.com',
+                'password' => Hash::make('parent2'),
+            ]);
+        $parentRole = Role::findByName('parent');
+        $parent2->assignRole($parentRole);
+
+        // seed student user
+        /** @var User $student */
+        $student = User::factory()
+            ->create([
+                'email' => 'student@role.com',
+                'password' => Hash::make('student'),
+            ]);
+        $studentRole = Role::findByName('student');
+        $student->assignRole($studentRole);
+
+        // seed teacher user
+        /** @var User $teacher */
+        $teacher = User::factory()
+            ->create([
+                'email' => 'teacher@role.com',
+                'password' => Hash::make('teacher'),
+            ]);
+        $teacherRole = Role::findByName('teacher');
+        $teacher->assignRole($teacherRole);
     }
 }
