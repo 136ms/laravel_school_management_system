@@ -19,4 +19,5 @@ return [
     'created' => "Vytvořeno",
     'updated' => "Aktualizováno",
     'actions' => "Akce",
+    'missingGrades' => "Nemáte žádné známky!",
 ];

@@ -20,4 +20,5 @@ return [
     'updated' => "Updated",
     'actions' => "Actions",
     'groupList' => "Group list",
+    'missingGroups' => "No groups",
 ];

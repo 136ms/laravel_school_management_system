@@ -38,7 +38,7 @@ class SubjectRepository extends BaseRepository
 
         $subjects = $user->subjects;
         if ($subjects->isEmpty()) {
-            return 'No subjects';
+            return __('subjects.missingSubjects');
         }
 
         $subjectNames = $subjects->map(function ($subject) {
@@ -65,7 +65,7 @@ class SubjectRepository extends BaseRepository
 
         $users = $subject->users;
         if ($users->isEmpty()) {
-            return 'No users';
+            return __('users.missingUsers');
         }
 
         $userNames = $users->map(function ($user) {
@@ -92,7 +92,7 @@ class SubjectRepository extends BaseRepository
 
         $subjects = $user->subjects;
         if ($subjects->isEmpty()) {
-            return 'No subjects';
+            return __('subjects.missingSubjects');
         }
 
         $subjectNames = $subjects->map(function ($subject) {

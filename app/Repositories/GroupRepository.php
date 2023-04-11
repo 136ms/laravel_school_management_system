@@ -42,7 +42,7 @@ class GroupRepository extends BaseRepository
 
         $groups = $user->groups;
         if ($groups->isEmpty()) {
-            return 'No groups';
+            return __('groups.missingGroups');
         }
 
         $groupNames = $groups->map(function ($group) {
@@ -70,7 +70,7 @@ class GroupRepository extends BaseRepository
 
         $groups = $user->groups;
         if ($groups->isEmpty()) {
-            return 'No groups';
+            return __('groups.missingGroups');
         }
 
         $groupNames = $groups->map(function ($group) {
@@ -97,7 +97,7 @@ class GroupRepository extends BaseRepository
 
         $groups = $subject->groups;
         if ($groups->isEmpty()) {
-            return 'No groups';
+            return __('groups.missingGroups');
         }
 
         $groupNames = $groups->map(function ($group) {

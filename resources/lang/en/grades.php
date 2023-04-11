@@ -19,4 +19,5 @@ return [
     'updated' => "Updated at",
     'actions' => "Actions",
     'id' => "ID",
+    'missingGrades' => "You do not have any grades!",
 ];

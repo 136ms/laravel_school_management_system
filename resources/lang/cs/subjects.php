@@ -23,4 +23,5 @@ return [
     'groups' => "Třídy",
     'users' => "Uživatelé",
     'actions' => "Akce",
+    'missingSubjects' => "Žádné předměty",
 ];

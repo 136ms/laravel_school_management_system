@@ -42,4 +42,5 @@ return [
     'groups' => "Třídy",
     'actions' => "Akce",
     'avatar' => "Profilový obrázek",
+    'missingUsers' => "Žádní uživatelé",
 ];

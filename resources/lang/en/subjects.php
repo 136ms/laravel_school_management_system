@@ -23,4 +23,5 @@ return [
     'groups' => "Groups",
     'users' => "Users",
     'actions' => "Actions",
+    'missingSubjects' => "No subjects",
 ];

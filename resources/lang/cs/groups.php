@@ -20,4 +20,5 @@ return [
     'created' => "Vytvořeno",
     'updated' => "Aktualizováno",
     'actions' => "Akce",
+    'missingGroups' => "Žádné třídy",
 ];

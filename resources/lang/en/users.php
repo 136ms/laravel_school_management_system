@@ -42,4 +42,5 @@ return [
     'groups' => "Groups",
     'actions' => "Actions",
     'avatar' => "Avatar",
+    'missingUsers' => "No users",
 ];
