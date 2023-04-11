@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     @can('student_widget')
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title">{{__('dashboard.grades')}}</h3>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     @endcan
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">{{__('dashboard.functions')}}</h3>
