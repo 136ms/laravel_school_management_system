@@ -42,6 +42,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">{{__('users.submitPicture')}}</button>
+                        <a href="{{ route('profile.index') }}" class="btn btn-default"> {{__('profile.profileCancel')}} </a>
                     </div>
                 </form>
             </div>
