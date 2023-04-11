@@ -16,7 +16,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('user_id', __('grades.student')) !!}
-    {!! Form::select('user_id', $users->pluck('lname', 'id'), null, ['class' => 'form-control']) !!}
+    {!! Form::select('user_id', $students->pluck('lname', 'id'), null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group col-sm-6">

@@ -89,9 +89,22 @@ class GradeController extends Controller
         $users = $this->userRepository->all();
         $subjects = $this->subjectRepository->all();
 
+        $students = [];
+
+        foreach ($users as $user)
+        {
+            if ($user->hasRole('Student'))
+            {
+                $students[] = $user;
+            }
+        }
+
+        $students = collect($students);
+
         return view('grades.create')->with([
             'grades' => $grades,
             'users' => $users,
+            'students' => $students,
             'subjects' => $subjects,
         ]);
     }
@@ -166,6 +179,17 @@ class GradeController extends Controller
             $query->where('role_id', '=', $studentRole->id);
         })->get();
         $subjects = $this->subjectRepository->all();
+        $students = [];
+
+        foreach ($users as $user)
+        {
+            if ($user->hasRole('Student'))
+            {
+                $students[] = $user;
+            }
+        }
+
+        $students = collect($students);
 
         if (!isset($grade)) {
             Flash::error($grade->name . ' was not found');
@@ -176,6 +200,7 @@ class GradeController extends Controller
                 'grade' => $grade,
                 'users' => $users,
                 'subjects' => $subjects,
+                'students' => $students
             ]);
         }
     }
