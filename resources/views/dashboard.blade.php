@@ -68,7 +68,6 @@
                                 <h3 class="card-title">{{__('dashboard.functions')}}</h3>
                             </div>
                             <div class="card-body">
-                                <h5>{{__('dashboard.lists')}}</h5>
                                 @can('subjects_access')
                                     <a href="{{ route('subjects.index', [$subjects]) }}"
                                        class='btn btn-outline-primary'><i class="fas fa-book text-purple"></i>
@@ -93,9 +92,24 @@
                                         {{__('dashboard.children')}}
                                     </a>
                                 @endcan
-                            </div>
-                            <div class="card-body">
-                                <h5>{{__('dashboard.create')}}</h5>
+                                @can('profiles_access')
+                                    <a href="{{ route('profile.index') }}"
+                                       class='btn btn-outline-primary'><i class="fa fa-user text-red"></i>
+                                        {{__('dashboard.profile')}}
+                                    </a>
+                                @endcan
+                                @can('profile_edit')
+                                    <a href="{{ route('profile.edit') }}"
+                                       class='btn btn-outline-primary'><i class="fa fa-edit text-red"></i>
+                                        {{__('dashboard.editProfile')}}
+                                    </a>
+                                @endcan
+                                @can('user_picture_edit')
+                                    <a href="{{ route('user.avatar') }}"
+                                       class='btn btn-outline-primary'><i class="fa fa-edit text-red"></i>
+                                        {{__('dashboard.profileAvatar')}}
+                                    </a>
+                                @endcan
                                 @can('subjects_create')
                                     <a href="{{ route('subjects.create', [$subjects]) }}"
                                        class='btn btn-outline-primary'><i class="fa fa-book text-purple"></i>
@@ -121,31 +135,9 @@
                                     </a>
                                 @endcan
                             </div>
-                            <div class="card-body">
-                                <h5>{{__('dashboard.singleUser')}}</h5>
-                                @can('profiles_access')
-                                    <a href="{{ route('profile.index') }}"
-                                       class='btn btn-outline-primary'><i class="fa fa-user text-red"></i>
-                                        {{__('dashboard.profile')}}
-                                    </a>
-                                @endcan
-                                @can('profile_edit')
-                                    <a href="{{ route('profile.edit') }}"
-                                       class='btn btn-outline-primary'><i class="fa fa-edit text-red"></i>
-                                        {{__('dashboard.editProfile')}}
-                                    </a>
-                                @endcan
-                                @can('user_picture_edit')
-                                    <a href="{{ route('user.avatar') }}"
-                                       class='btn btn-outline-primary'><i class="fa fa-edit text-red"></i>
-                                        {{__('dashboard.profileAvatar')}}
-                                    </a>
-                                @endcan
-                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         @endcan
     @endcan
 @endsection
