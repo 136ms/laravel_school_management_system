@@ -69,7 +69,7 @@ class DashboardController extends Controller
                 'children' => $this->userRepository->getChildrenNames(),
                 'roles' => $this->userRepository->getRoleNames(),
                 'permissions' => $this->userRepository->getPermissions(),
-                'grades' =>  $this->gradeRepository->paginate(10),
+                'grades' =>  $user->studentGrades()->paginate(10),
             ]);
         } else {
             Flash::error('Please login to your account.');
