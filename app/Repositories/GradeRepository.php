@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Grade;
+use Laracasts\Flash\Flash;
 
 class GradeRepository extends BaseRepository
 {
@@ -27,6 +28,7 @@ class GradeRepository extends BaseRepository
 
     public function calculateGradesAverage($gradeList): float
     {
+        if (isset($gradeList)){
         $grades = collect($gradeList);
 
         $gradePoints = $grades->pluck('grade')->filter()->toArray();
@@ -42,5 +44,8 @@ class GradeRepository extends BaseRepository
         $average = array_sum($weightedGrades) / array_sum($weights);
 
         return round($average, 2);
+        }
+        Flash::error(__('grades.missingGrades'));
+        return 0;
     }
 }
