@@ -322,4 +322,20 @@ class SubjectController extends AppBaseController
             return view('subjects.edit')->with(['subject' => $subject]);
         }
     }
+
+    /**
+     * Subject searchbar function
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function search(Request $request): View
+    {
+        $query = $request->input('query');
+
+        $subjects = Subject::where('name', 'LIKE', '%' . $query . '%')
+            ->paginate(10);
+
+        return view('subjects.index', compact('subjects'));
+    }
 }

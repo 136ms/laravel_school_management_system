@@ -327,4 +327,19 @@ class GroupController extends AppBaseController
             return view('groups.edit')->with(['group' => $group]);
         }
     }
+
+    /**
+     * Group searchbar function
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function search(Request $request) : View
+    {
+        $query = $request->input('query');
+
+        $groups = Group::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        return view('groups.index', compact('groups'));
+    }
 }

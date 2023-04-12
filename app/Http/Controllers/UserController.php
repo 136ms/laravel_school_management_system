@@ -605,4 +605,25 @@ class UserController extends AppBaseController
             return back();
         }
     }
+
+    /**
+     * User searchbar function
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function search(Request $request) : View
+    {
+        $query = $request->input('query');
+
+        $users = User::where('fname', 'LIKE', '%' . $query . '%')
+            ->orWhere('lname', 'LIKE', '%' . $query . '%')
+            ->orWhere('address', 'LIKE', '%' . $query . '%')
+            ->orWhere('email', 'LIKE', '%' . $query . '%')
+            ->orWhere('phonenum', 'LIKE', '%' . $query . '%')
+            ->paginate(10);
+
+        return view('users.index', compact('users'));
+    }
+
 }

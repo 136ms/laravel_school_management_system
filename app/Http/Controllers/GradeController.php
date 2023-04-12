@@ -261,5 +261,23 @@ class GradeController extends Controller
         }
         return redirect(route('grades.index'));
     }
+
+    /**
+     * Grade searchbar function
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function search(Request $request) : View
+    {
+        $query = $request->input('query');
+
+        $grades = Grade::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('grade', 'LIKE', '%' . $query . '%')
+            ->orWhere('weight', 'LIKE', '%' . $query . '%')
+            ->paginate(10);
+
+        return view('grades.index', compact('grades'));
+    }
 }
 

@@ -126,4 +126,22 @@ class ChildController extends AppBaseController
 
         return redirect(route('children.index'));
     }
+
+    /**
+     * Children searchbar function
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function search(Request $request) : View
+    {
+        $query = $request->input('query');
+
+        $children = User::with('children')
+            ->where('fname', 'LIKE', '%' . $query . '%')
+            ->orWhere('lname', 'LIKE', '%' . $query . '%')
+            ->paginate(10);
+
+        return view('children.index', compact('children'));
+    }
 }
