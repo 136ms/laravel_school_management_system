@@ -2,7 +2,7 @@
 return [
     'addSubject' => "Add subject",
     'editSubject' => "Edit subject",
-    'subjectList' => "Edit subject",
+    'subjectList' => "Subject list",
     'add' => "Add",
     'edit' => "Edit",
     'back' => "Back",
