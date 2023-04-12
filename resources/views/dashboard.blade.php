@@ -24,44 +24,53 @@
                                     <span class="badge bg-primary">{{__('dashboard.permissions')}}</span>
                                     <p class="text-muted">{{$permissions}}</p>
                                 @endcan
-                                @can('student_widget')
-                                    <h5 class="text-muted">{{__('dashboard.studentWidget')}}</h5>
-                                    <span class="badge bg-primary">{{__('dashboard.groups')}}</span>
-                                    <p class="text-muted">{{$groups}}</p>
-                                    <span class="badge bg-primary">{{__('dashboard.subjects')}}</span>
-                                    <p class="text-muted">{{$subjects}}</p>
-                                    <span class="badge bg-primary">{{__('dashboard.teachers')}}</span>
-                                    <p class="text-muted">{{$teachers}}</p>
-                                    <span class="badge bg-primary">{{__('dashboard.parents')}}</span>
-                                    <p class="text-muted">{{$parents}}</p>
-                                @endcan
-                                @can('teacher_widget')
-                                    <h5 class="text-muted">{{__('dashboard.teacherWidget')}}</h5>
-                                    <span class="badge bg-primary">{{__('dashboard.groups')}}</span>
-                                    <p class="text-muted">{{$groups}}</p>
+                                @cannot('Admin')
+                                    @can('student_widget')
+                                        <h5 class="text-muted">{{__('dashboard.studentWidget')}}</h5>
+                                        <span class="badge bg-primary">{{__('dashboard.groups')}}</span>
+                                        <p class="text-muted">{{$groups}}</p>
+                                        <span class="badge bg-primary">{{__('dashboard.subjects')}}</span>
+                                        <p class="text-muted">{{$subjects}}</p>
+                                        <span class="badge bg-primary">{{__('dashboard.teachers')}}</span>
+                                        <p class="text-muted">{{$teachers}}</p>
+                                        <span class="badge bg-primary">{{__('dashboard.parents')}}</span>
+                                        <p class="text-muted">{{$parents}}</p>
+                                    @endcan
+                                @endcannot
+                                @cannot('Admin')
+                                    @can('teacher_widget')
+                                        <h5 class="text-muted">{{__('dashboard.teacherWidget')}}</h5>
+                                        <span class="badge bg-primary">{{__('dashboard.groups')}}</span>
+                                        <p class="text-muted">{{$groups}}</p>
 
-                                    <span class="badge bg-primary">{{__('dashboard.subjects')}}</span>
-                                    <p class="text-muted">{{$subjects}}</p>
-                                @endcan
-                                @can('parent_widget')
-                                    <h5 class="text-muted">{{__('dashboard.parentWidget')}}</h5>
-                                    <span class="badge bg-primary">{{__('dashboard.children')}}</span>
-                                    <p class="text-muted">{{$children}}</p>
-                                @endcan
+                                        <span class="badge bg-primary">{{__('dashboard.subjects')}}</span>
+                                        <p class="text-muted">{{$subjects}}</p>
+                                    @endcan
+                                @endcannot
+                                @cannot('Admin')
+                                    @can('parent_widget')
+                                        <h5 class="text-muted">{{__('dashboard.parentWidget')}}</h5>
+                                        <span class="badge bg-primary">{{__('dashboard.children')}}</span>
+                                        <p class="text-muted">{{$children}}</p>
+                                    @endcan
+                                @endcannot
                             </div>
                         </div>
                     </div>
-                    @cannot('Admin|Parent|Teacher')
-                        <div class="col-sm-6">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">{{__('dashboard.grades')}}</h3>
+                    @cannot('Admin')
+                        @can('student_widget')
+                            <div class="col-sm-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">{{__('dashboard.grades')}}</h3>
+                                    </div>
+                                    @include('grades.table')
+                                    <span
+                                        class="badge bg-primary">{{__('dashboard.gradeAverage')}} {{$userGrades}}</span>
                                 </div>
-                                @include('grades.table')
-                                <span class="badge bg-primary">{{__('dashboard.gradeAverage')}} {{$userGrades}}</span>
                             </div>
-                        </div>
-                    @endcan
+                        @endcan
+                    @endcannot
                     <div class="col-sm-6">
                         <div class="card card-primary">
                             <div class="card-header">
