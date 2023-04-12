@@ -75,6 +75,14 @@ Route::patch('profile/update', [App\Http\Controllers\ProfileController::class, '
 //Dashboard
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
+//Searchbar
+Route::get('/search/users', [App\Http\Controllers\UserController::class, 'search'])->name('search.users');
+Route::get('/search/subjects', [App\Http\Controllers\SubjectController::class, 'search'])->name('search.subjects');
+Route::get('/search/groups', [App\Http\Controllers\GroupController::class, 'search'])->name('search.groups');
+Route::get('/search/grades', [App\Http\Controllers\GradeController::class, 'search'])->name('search.grades');
+Route::get('/search/children', [App\Http\Controllers\ChildController::class, 'search'])->name('search.children');
+
+
 //Language
 Route::get('/{locale}', function ($locale) {
     app()->setLocale($locale);
