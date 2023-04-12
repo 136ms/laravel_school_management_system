@@ -33,9 +33,11 @@
                 @can('grades_teacher_table')
                     @include('grades.table')
                 @endcan
-                @can('grades_student_table')
-                    @include('grades.userTable')
-                @endcan
+                @cannot('Admin|Parent|Teacher')
+                    @can('grades_student_table')
+                        @include('grades.userTable')
+                    @endcan
+                @endcannot
             </div>
         </div>
     @endcan

@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    @can('student_widget')
+                    @cannot('Admin|Parent|Teacher')
                         <div class="col-sm-6">
                             <div class="card card-primary">
                                 <div class="card-header">
