@@ -24,7 +24,7 @@ class GroupFactory extends Factory
     {
 
         return [
-            'name' => implode(",", $this->faker->randomElements(['1.AI', '2.AI', '3.AI', '4.AI', '1.AH', '2.AH', '3.AH', '4.AH','1.KC', '2.KC', '3.KC'], 1, false)),
+            'name' => implode(",", $this->faker->unique()->randomElements(['1.AI', '2.AI', '3.AI', '4.AI', '1.AH', '2.AH', '3.AH', '4.AH','1.KC', '2.KC', '3.KC', '1.DP', '2.DP', '3.DP'])),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];
