@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'admin@role.com',
                 'password' => Hash::make('admin'),
             ]);
-        $adminRole = Role::findByName('admin');
+        $adminRole = Role::findByName('Admin');
         $admin->assignRole($adminRole);
 
         // seed parent1 user
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'parent@role.com',
                 'password' => Hash::make('parent1'),
             ]);
-        $parentRole = Role::findByName('parent');
+        $parentRole = Role::findByName('Parent');
         $parent1->assignRole($parentRole);
 
         // seed parent2 user
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'parent2@role.com',
                 'password' => Hash::make('parent2'),
             ]);
-        $parentRole = Role::findByName('parent');
+        $parentRole = Role::findByName('Parent');
         $parent2->assignRole($parentRole);
 
         // seed student user
@@ -55,7 +55,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'student@role.com',
                 'password' => Hash::make('student'),
             ]);
-        $studentRole = Role::findByName('student');
+        $studentRole = Role::findByName('Student');
         $student->assignRole($studentRole);
 
         // seed teacher user
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'teacher@role.com',
                 'password' => Hash::make('teacher'),
             ]);
-        $teacherRole = Role::findByName('teacher');
+        $teacherRole = Role::findByName('Teacher');
         $teacher->assignRole($teacherRole);
     }
 }
