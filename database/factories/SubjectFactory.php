@@ -24,7 +24,37 @@ class SubjectFactory extends Factory
     {
 
         return [
-            'name' => $this->faker->randomElement(['ANJ','APP', 'CJL','CVD','MAT','VAP', 'ICT']),
+            'name' => $this->faker->unique()->randomElement([
+                '3D grafika a multimédia',
+                'Anglický jazyk',
+                'Cvičení z programování',
+                'Cvičení z administrativy',
+                'Český jazyk a literatura',
+                'Člověk v dějinách',
+                'Konfigurace a správa ICT zařízení',
+                'Konverzace v Anglickém jazyce',
+                'Matematika', 'Tělesná výchova',
+                'Vývoj desktopových a mobilních aplikací',
+                'Fyzika',
+                'Německý jazyk',
+                'Manažerská studia',
+                'Ekonomika a účetnictví',
+                'Práce s počítačem',
+                'Bussiness komunikace a etiketa',
+                'Biologie',
+                'Hotelnictví a hospitality management',
+                'Cestovní ruch a průvodcovství',
+                'Geografie cestovního ruchu',
+                'Beverage',
+                'Informatika',
+                'Biologie a ekologie',
+                'Aplikovaná psychologie',
+                'Účetnictví',
+                'Písemná a elektronická komunikace',
+                'Management',
+                'Učební praxe',
+                'Marketing'
+            ]),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];
