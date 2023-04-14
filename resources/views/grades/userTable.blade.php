@@ -13,7 +13,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($userGrades as $grade)
+            @foreach($grades as $grade)
                 <tr>
                     @include('flash::message')
                     <td>{{ $grade->id }}.</td>

@@ -7,7 +7,6 @@
                 <th>{{__('groups.id')}}</th>
                 <th>{{__('groups.groupName')}}</th>
                 <th>{{__('groups.groupUsers')}}</th>
-                <th>{{__('groups.groupSubjects')}}</th>
                 <th colspan="3">{{__('groups.actions')}}</th>
             </tr>
             </thead>
@@ -17,7 +16,6 @@
                     <td>{{ $group->id }}.</td>
                     <td>{{ $group->name }}</td>
                     <td>{{ $group->users()->count() }}</td>
-                    <td>{{ $group->subjects()->count() }}</td>
                     <td style="width: 120px">
                         @can('groups_destroy')
                             {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'delete']) !!}
