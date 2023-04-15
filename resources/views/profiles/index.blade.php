@@ -1,5 +1,5 @@
 @section('title')
-    {{'Profile'}}
+    {{__('titles.profile')}}
 @endsection
 @extends('layouts.app')
 @section('content')

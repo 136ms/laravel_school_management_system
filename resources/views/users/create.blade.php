@@ -1,5 +1,5 @@
 @section('title')
-    {{'Add user'}}
+    {{__('titles.create')}}
 @endsection
 @extends('layouts.app')
 

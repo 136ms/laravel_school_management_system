@@ -1,5 +1,5 @@
 @section('title')
-    {{'User list'}}
+    {{__('titles.list')}}
 @endsection
 @extends('layouts.app')
 

@@ -1,5 +1,5 @@
 @section('title')
-    {{'Manage user teachers'}}
+    {{__('titles.edit')}}
 @endsection
 @extends('layouts.app')
 

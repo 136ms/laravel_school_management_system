@@ -1,5 +1,5 @@
 @section('title')
-    {{'Edit subject'}}
+    {{__('titles.edit')}}
 @endsection
 @extends('layouts.app')
 

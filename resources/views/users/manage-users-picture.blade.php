@@ -1,5 +1,5 @@
 @section('title')
-    {{'Manage users profile picture'}}
+    {{__('titles.edit')}}
 @endsection
 @extends('layouts.app')
 

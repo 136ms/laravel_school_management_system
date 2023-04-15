@@ -1,5 +1,5 @@
 @section('title')
-    {{'Manage roles'}}
+    {{__('titles.edit')}}
 @endsection
 @extends('layouts.app')
 

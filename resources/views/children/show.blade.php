@@ -1,5 +1,5 @@
 @section('title')
-    {{'Children'}}
+    {{$children->fullName}}
 @endsection
 @extends('layouts.app')
 

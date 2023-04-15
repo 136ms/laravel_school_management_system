@@ -1,5 +1,5 @@
 @section('title')
-    {{'Add grade'}}
+    {{__('titles.create')}}
 @endsection
 @extends('layouts.app')
 

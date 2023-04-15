@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name')}} | {{__('main.dashboardTitle')}}</title>
+    <title>{{ config('app.name')}} | {{__('titles.dashboard')}}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Font Awesome -->
@@ -96,10 +96,6 @@
         <div class="float-right d-none d-sm-block">
             <b>{{__('main.version')}}</b> 0.0.1
         </div>
-        <strong>
-            Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.
-        </strong>
-        {{__('main.rights')}}.
         @include('language_switcher')
     </footer>
 </div>

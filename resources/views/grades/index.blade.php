@@ -1,5 +1,5 @@
 @section('title')
-    {{"Grade list"}}
+    {{__('titles.list')}}
 @endsection
 @extends('layouts.app')
 

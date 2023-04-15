@@ -1,5 +1,5 @@
 @section('title')
-    {{'Dashboard'}}
+    {{__('titles.create')}}
 @endsection
 @extends('layouts.app')
 @section('content')

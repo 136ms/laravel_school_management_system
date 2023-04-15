@@ -1,5 +1,5 @@
 @section('title')
-    {{$user->fname}} {{$user->lname}}
+    {{$user->fullName}}
 @endsection
 @extends('layouts.app')
 
@@ -11,8 +11,7 @@
                     <div class="col-sm-6">
                         <h1>
                             <i class="fas fa-user"></i>
-                            {{$user->fname}}
-                            {{$user->lname}}
+                            {{$user->fullName}}
                         </h1>
                     </div>
                     <div class="col-sm-6">
